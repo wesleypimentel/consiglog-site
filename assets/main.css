@@ -1,0 +1,10 @@
+:root {
+  --font: "Inter";
+}
+html {
+  min-height: 100vh;
+}
+body {
+  min-height: 100vh;
+  font-family: var(--font);
+}
