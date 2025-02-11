@@ -1,14 +1,16 @@
 <header id="header" class="header bg-white py-2 shadow-lg sticky-top dropdowns-hover">
   <div class="container-fluid px-4 px-lg-2">
     <div class="row align-items-center align-middle">
+
       <!-- Coluna 2: Logo SVG -->
-      <div class="col-5 col-md-4 offset-md-4 col-lg-2 offset-lg-0 text-start text-md-center order-1 order-lg-2 logo">
+      <div class="col-4 col-md-4 col-lg-2 offset-lg-0 text-center order-2 order-lg-2 logo">
         <a href="{{ '/' | relative_path }}" class="navbar-brand" id="header-logo">
           <img src="{{ 'assets/img/consiglog-logo.svg' | relative_path }}" alt="ConsigLog">
         </a>
       </div>
+
       <!-- Coluna 3: Área do Cliente, Hamburger e CTA -->
-      <div class="col-7 col-md-4 col-lg-5 text-end order-2 order-lg-3">
+      <div class="col-4 col-md-4 col-lg-5 text-end order-2 order-lg-3">
         <!-- Área do Cliente -->
         <div class="btn-group me-2">
           <button type="button" class="btn btn-light d-inline-flex align-items-center gap-0 gap-lg-2" data-bs-toggle="offcanvas" data-bs-target="#areaClienteOffcanvas"  aria-controls="areaClienteOffcanvas">
@@ -18,13 +20,14 @@
         </div>
         
         <!-- Botão Hamburger -->
-        <button class="btn navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="btn navbar-toggler d-lg-none d-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <!-- <span class="navbar-toggler-icon"></span> -->
           <span class="material-symbols-rounded">menu</span>
         </button>
         <!-- CTA -->
         <button type="button" class="btn btn-primary d-none d-lg-inline-flex">Solicitar Apresentação</button>
       </div>
+
       <!-- Coluna 1: Menu de Navegação (Responsivo) -->
       <div class="col-12 col-lg-5 py-0 text-start order-3 order-lg-1">
         <nav class="navbar navbar-expand-lg navbar-light py-0">
@@ -70,6 +73,15 @@
             <footer class="px-0 py-2"></footer>
           </div>
         </nav>
+      </div>
+
+      <!-- Coluna 1: Mobile -->
+      <div class="col-4 order-1 d-inline-flex d-lg-none">
+        <!-- Botão Hamburger -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <!-- <span class="navbar-toggler-icon"></span> -->
+          <span class="material-symbols-rounded">menu</span>
+        </button>
       </div>
     </div>
   </div>
