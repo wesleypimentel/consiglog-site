@@ -1,0 +1,17 @@
+@font-face {
+  font-family: "nj";
+  src: url("nj-bk-webfont.woff2") format("woff2"),
+    url("nj-bk-webfont.woff") format("woff"),
+    url("nj-bk-webfont.svg#njbk") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "nj";
+  src: url("nj-xbld-webfont.woff2") format("woff2"),
+    url("nj-xbld-webfont.woff") format("woff"),
+    url("nj-xbld-webfont.svg#njxbld") format("svg");
+  font-weight: bold;
+  font-style: normal;
+}
