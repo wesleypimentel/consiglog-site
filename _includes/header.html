@@ -3,7 +3,7 @@
     <div class="row align-items-center align-middle">
 
       <!-- Coluna 2: Logo SVG -->
-      <div class="col-4 col-md-4 col-lg-2 offset-lg-0 text-center order-2 order-lg-2 logo">
+      <div class="col-4 col-md-4 col-lg-2 offset-lg-0 text-center order-2 order-lg-2 p-0 logo">
         <a href="{{ '/' | relative_path }}" class="navbar-brand" id="header-logo">
           <img src="{{ 'assets/img/consiglog-logo.svg' | relative_path }}" alt="ConsigLog">
         </a>
@@ -13,7 +13,7 @@
       <div class="col-4 col-md-4 col-lg-5 text-end order-2 order-lg-3 pe-0 pe-lg-4">
         <!-- Área do Cliente -->
         <div class="btn-group me-lg-2">
-          <button type="button" class="btn btn-light d-inline-flex align-items-center gap-0 gap-lg-2" data-bs-toggle="offcanvas" data-bs-target="#areaClienteOffcanvas"  aria-controls="areaClienteOffcanvas">
+          <button type="button" class="btn btn-light d-inline-flex align-items-center gap-0 gap-lg-2 px-3 border-0" data-bs-toggle="offcanvas" data-bs-target="#areaClienteOffcanvas"  aria-controls="areaClienteOffcanvas">
             <span class="material-symbols-rounded">account_circle</span>
             <span class="d-none d-xl-inline-flex">Área do Cliente</span>
           </button>
@@ -25,7 +25,7 @@
           <span class="material-symbols-rounded">menu</span>
         </button>
         <!-- CTA -->
-        <button type="button" class="btn btn-primary d-none d-lg-inline-flex">Solicitar Apresentação</button>
+        <a href="#apresentacao" role="button" class="btn btn-primary d-none d-lg-inline-flex">Solicitar Apresentação</a>
       </div>
 
       <!-- Coluna 1: Menu de Navegação (Responsivo) -->
@@ -39,7 +39,7 @@
           <!-- Links do Menu -->
           <div class="collapse navbar-collapse py-0" id="navbarNav">
             <header class="px-0 py-2"></header>
-            <ul class="navbar-nav gap-0 gap-xl-3 p-lg-3">
+            <ul class="navbar-nav nav-justified gap-0 gap-xl-3 p-lg-3">
               <li class="nav-item">
                 <a class="nav-link" href="{{ '/' | relative_path }}">
                   <span class="material-symbols-rounded d-none d-lg-inline">home</span>
@@ -70,7 +70,10 @@
                 </ul>
               </li>
             </ul>
-            <footer class="px-0 py-2"></footer>
+            <footer class="px-0 py-2 d-lg-none text-center">
+              <!-- CTA -->
+            <a href="#apresentacao" role="button" class="btn btn-primary d-inline-flex d-lg-none">Solicitar Apresentação</a>
+            </footer>
           </div>
         </nav>
       </div>

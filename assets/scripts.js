@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
   // Seleciona todos os elementos com data-bs-toggle="dropdown"
   document.querySelectorAll("[data-bs-toggle='dropdown']").forEach((toggle) => {
     const parent = toggle.parentElement; // Elemento pai (dropdown ou btn-group)
@@ -45,9 +45,23 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+document.addEventListener("DOMContentLoaded", () => {
+  // Seleciona todos os elementos com o atributo data-bg-image
+  const elements = document.querySelectorAll("[data-bg-image]");
+
+  // Itera sobre cada elemento encontrado
+  elements.forEach((element) => {
+    const bgImage = element.getAttribute("data-bg-image"); // Pega o valor do atributo
+    if (bgImage) {
+      element.style.backgroundImage = `url('${bgImage}')`; // Aplica como background-image
+    }
+  });
+});
+
+
 
 // CSS VAR
-cssVar = function (name, value) {
+const cssVar = (name, value) => {
   if (name[0] != '-') name = '--' + name // --
   if (value) document.documentElement.style.setProperty(name, value)
   return getComputedStyle(document.documentElement).getPropertyValue(name);
@@ -55,7 +69,7 @@ cssVar = function (name, value) {
 
 
 /**
- * Função genérica para monitorar a altura de um elemento e atualizar uma variável CSS.
+ * Monitorar a altura de um elemento e atualizar uma variável CSS.
  * @param {string} selector - O seletor do elemento a ser monitorado.
  * @param {string} cssVariable - O nome da variável CSS a ser atualizada.
  */
@@ -72,7 +86,7 @@ function observeElementHeight(selector, cssVariable) {
    */
   function updateHeight() {
     const height = `${element.offsetHeight}px`;
-    cssVar(cssVariable, height);
+    document.documentElement.style.setProperty(`--${cssVariable}`, height);
   }
 
   // Inicializa o ResizeObserver para monitorar mudanças no tamanho do elemento
@@ -87,7 +101,6 @@ function observeElementHeight(selector, cssVariable) {
   updateHeight();
 }
 
-// Exemplo de uso:
 document.addEventListener('DOMContentLoaded', () => {
   // Monitora o header e atualiza a variável --header-height
   observeElementHeight('#header', 'header-height');
@@ -95,3 +108,84 @@ document.addEventListener('DOMContentLoaded', () => {
   // Você pode monitorar outros elementos também, por exemplo:
   // observeElementHeight('.sidebar', 'sidebar-height');
 });
+
+
+
+
+// Função para rolar a página de forma suave
+const scrollToViewportHeight = () => {
+  window.scrollTo({
+    top: window.innerHeight,
+    behavior: 'smooth'
+  });
+};
+
+const scrollByViewportHeight = () => {
+  window.scrollBy({
+    top: window.innerHeight,
+    behavior: 'smooth'
+  });
+};
+
+// Seleciona todos os elementos com href="#down" e id="scroll-down"
+const downLinks = document.querySelectorAll('a[href="#down"]');
+const scrollDownButtons = document.querySelectorAll('#scroll-down');
+
+// Adiciona o evento de clique para os links com href="#down"
+downLinks.forEach(link => {
+  link.addEventListener('click', (event) => {
+    event.preventDefault(); // Impede o comportamento padrão do link
+    scrollToViewportHeight(); // Rola 1x a altura da viewport
+  });
+});
+
+// Adiciona o evento de clique para os elementos com id="scroll-down"
+scrollDownButtons.forEach(button => {
+  button.addEventListener('click', (event) => {
+    event.preventDefault(); // Impede o comportamento padrão do link
+    scrollByViewportHeight(); // Rola a altura da viewport a partir da posição atual
+  });
+});
+
+
+let lastScrollY = window.scrollY;
+
+const handleScroll = () => {
+  const currentScrollY = window.scrollY;
+  const htmlElement = document.documentElement;
+
+  // Verifica se está no topo da página
+  if (currentScrollY === 0) {
+    htmlElement.classList.add('on-top');
+    htmlElement.classList.remove('top-offset');
+  } else {
+    htmlElement.classList.remove('on-top');
+    htmlElement.classList.add('top-offset');
+  }
+
+  // Verifica a direção do scroll (para cima ou para baixo)
+  if (currentScrollY > lastScrollY) {
+    // Scroll para baixo
+    htmlElement.classList.add('scroll-down');
+    htmlElement.classList.remove('scroll-up');
+  } else if (currentScrollY < lastScrollY) {
+    // Scroll para cima
+    htmlElement.classList.add('scroll-up');
+    htmlElement.classList.remove('scroll-down');
+  }
+
+  // Verifica se o scroll ultrapassou a altura do header
+  const headerHeight = parseInt(cssVar('--header-height'), 10);
+  if (currentScrollY > headerHeight) {
+    htmlElement.classList.add('header-offset');
+  } else {
+    htmlElement.classList.remove('header-offset');
+  }
+
+  lastScrollY = currentScrollY;
+};
+
+window.addEventListener('scroll', handleScroll, { passive: true });
+
+// Executa uma vez no carregamento para verificar o estado inicial
+handleScroll();
