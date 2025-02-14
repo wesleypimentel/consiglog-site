@@ -73,12 +73,12 @@ title: ConsigLog
   <section id="home-intro" class="position-relative">
     <div class="container">
       <div id="home-intro-box">
-        <div class="row gap-4 align-items-center">
-          <div class="col-lg-5 overflow-hidden position-relative px-0" id="home-intro-slider">
+        <div class="row m-0">
+          <div class="col-xl-6 overflow-hidden position-relative px-0 text-balanced text-hyphens" id="home-intro-slider">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
-                <div class="row m-0">
-                  <div class="col-8">
+                <div class="row">
+                  <div class="col-8 m-0">
                     <h2>
                       Segurança
                     </h2>
@@ -88,13 +88,13 @@ title: ConsigLog
                     <a href="#" class="btn btn-link p-0">Saiba mais</a>
                   </div>
                   <div class="col-4">
-                    Icone de escudo
+                    <span class="svg-icon material-symbols-rounded light">verified_user</span>
                   </div>
                 </div>
               </div>
               <div class="swiper-slide">
                 <div class="row">
-                  <div class="col-8">
+                  <div class="col-8 m-0">
                     <h2>
                       Tecnologia
                     </h2>
@@ -104,21 +104,26 @@ title: ConsigLog
                     <a href="#" class="btn btn-link p-0">Saiba mais</a>
                   </div>
                   <div class="col-4">
-                    Icone de Computador
+                    <span class="svg-icon material-symbols-rounded light">devices</span>
                   </div>
                 </div>
               </div>
             </div>
             <!-- Botões de navegação -->
-            <div class="home-intro-swiper-next">
-              <span class="material-symbols-rounded">arrow_right</span>
-            </div>
-            <div class="home-intro-swiper-prev">
-              <span class="material-symbols-rounded">arrow_left</span>
+            <div class="home-intro-swiper-nav">
+              <button type="button" class="home-intro-swiper-prev opacity-25">
+                <span class="material-symbols-rounded light">arrow_back</span>
+              </button>
+              <button type="button" class="home-intro-swiper-next">
+                <span class="material-symbols-rounded light">arrow_forward</span>
+              </button>
             </div>
           </div>
-          <div class="col-lg-7 row" id="home-intro-cta">
-            <div class="col-6">
+          <div class="col-auto p-4 px-0">
+            <div class="separator horz-lines vert m-auto opacity-25"></div>
+          </div>
+          <div class="col-xl-5 flex-grow-1 row m-0 py-0 ps-5 pe-0 text-balanced" id="home-intro-cta">
+            <div class="col-6 py-5 align-content-center">
               <h2>
                 Solicite uma
                 <strong>Apresentação</strong>
@@ -130,8 +135,8 @@ title: ConsigLog
                 Falar com especialista
               </a>
             </div>
-            <div class="col-6">
-              Imagem do cara
+            <div class="col-6 align-content-end text-end p-0">
+              <img src="{{'/assets/img/consiglog-cta-apresent-img.webp' | relative_url }}" alt="Solicitar Apresentação" class="img-fluid">
             </div>
           </div>
         </div>
@@ -142,6 +147,7 @@ title: ConsigLog
     document.addEventListener("DOMContentLoaded", function () {
       var swiper = new Swiper("#home-intro-slider", {
         loop: true,
+        spaceBetween: 0,
         autoplay: {
           delay: 6000,
           disableOnInteraction: false,
