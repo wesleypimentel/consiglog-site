@@ -4,71 +4,8 @@ title: ConsigLog
 ---
 
 <main>
-  <section id="home-slider" class="swiper" data-bg-image="{{ '/assets/img/exemplo.webp' | relative_url }}">
-    <canvas id="canvas" class="canvas"></canvas>
-    <div class="swiper-wrapper">
-      <div class="swiper-slide">
-        <div class="container">
-          <div class="slide-box angled-corner-box bottom-right">
-            <h1 class="h1 display-5">
-              <small class="lined">Especialista em</small>
-              <span>Gestão de margens</span>
-              <strong class="text-primary">Consignáveis</strong>
-            </h1>
-            <p>
-              Na Consiglog, somos especialistas em gestão de margens consignáveis, oferecendo <b>soluções tecnológicas</b> inovadoras e personalizadas para maximizar a eficiência e os resultados do seu negócio.
-            </p>
-            <a href="{{ '/solucoes' | relative_url }}" class="btn btn-primary">Conheça nossas soluções</a>
-          </div>
-        </div>
-      </div>
-      <div class="swiper-slide">
-        <div class="container">
-          <div class="slide-box angled-corner-box bottom-right">
-            <h2 class="h1 display-5">
-              <small class="lined">Exemplo de</small>
-              <span>Outras</span>
-              <strong class="text-primary">Soluções</strong>
-            </h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi accusantium amet tempora officia quo quas optio molestiae fugiat nam dolorum, tenetur asperiores alias culpa eos! Mollitia culpa quod laboriosam cupiditate?
-            </p>
-            <a href="{{ '/solucoes' | relative_url }}" class="btn btn-primary">Conheça nossas soluções</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Botões de navegação -->
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-  
-    <!-- Paginação -->
-    <div class="swiper-pagination">
-      <div class="container text-lg-start p-lg-0"></div>
-    </div>
-  </section>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      var swiper = new Swiper("#home-slider", {
-        loop: true,
-        autoplay: {
-          delay: 6000,
-          disableOnInteraction: false,
-        },
-        pagination: {
-          el: ".swiper-pagination .container",
-          clickable: true,
-        },
-        navigation: {
-          nextEl: "#home-slider .swiper-button-next",
-          prevEl: "#home-slider .swiper-button-prev",
-        },
-        effect: "slide", // Altere para "slide", "cube", "coverflow", etc.
-        speed: 1000, // Velocidade da transição
-    });
-  });
-  </script>
+
+  {% include home-headline.html %}
 
   <section id="home-intro" class="position-relative">
     <div class="container">
@@ -78,7 +15,7 @@ title: ConsigLog
             <div class="swiper-wrapper">
               <div class="swiper-slide">
                 <div class="row">
-                  <div class="col-8 m-0">
+                  <div class="col-sm-8 m-0 order-last order-sm-first">
                     <h2>
                       Segurança
                     </h2>
@@ -87,14 +24,14 @@ title: ConsigLog
                     </p>
                     <a href="#" class="btn btn-link p-0">Saiba mais</a>
                   </div>
-                  <div class="col-4">
+                  <div class="col-sm-4 m-0 p-0">
                     <span class="svg-icon material-symbols-rounded light">verified_user</span>
                   </div>
                 </div>
               </div>
               <div class="swiper-slide">
                 <div class="row">
-                  <div class="col-8 m-0">
+                  <div class="col-sm-8 m-0 order-last order-sm-first">
                     <h2>
                       Tecnologia
                     </h2>
@@ -103,7 +40,7 @@ title: ConsigLog
                     </p>
                     <a href="#" class="btn btn-link p-0">Saiba mais</a>
                   </div>
-                  <div class="col-4">
+                  <div class="col-sm-4 m-0 p-0">
                     <span class="svg-icon material-symbols-rounded light">devices</span>
                   </div>
                 </div>
@@ -122,8 +59,8 @@ title: ConsigLog
           <div class="col-auto p-4 px-0">
             <div class="separator horz-lines vert m-auto opacity-25"></div>
           </div>
-          <div class="col-xl-5 flex-grow-1 row m-0 py-0 ps-5 pe-0 text-balanced" id="home-intro-cta">
-            <div class="col-6 py-5 align-content-center">
+          <div class="col-xl-5 flex-grow-1 row m-0 py-0 ps-3 ps-md-5 pe-0 text-balanced" id="home-intro-cta">
+            <div class="col-sm-6 py-5 align-content-center z-1">
               <h2>
                 Solicite uma
                 <strong>Apresentação</strong>
@@ -135,10 +72,10 @@ title: ConsigLog
                 Falar com especialista
               </a>
             </div>
-            <div class="col-6 align-content-end text-end p-0">
+            <div class="col-sm-6 align-content-end text-center text-sm-end p-0">
               <img src="{{'/assets/img/consiglog-cta-apresent-img.webp' | relative_url }}" alt="Solicitar Apresentação" class="img-fluid">
             </div>
-          </div>
+          </div>         
         </div>
       </div>
     </div>
@@ -169,125 +106,3 @@ title: ConsigLog
     <a href="{{ '/sobre' | relative_url }}" class="btn btn-primary">Ir para Sobre</a>
   </div>
 </main>
-
-<script>
-(function () {	
-	var canvas,
-      ctx,
-      mousePos,
-      points = [],
-      maxDist = 400,
-      colour = "255,255,255";
-
-	function init () {
-		//Add on load scripts
-		canvas = document.getElementById("canvas");
-    parent = document.getElementById('home-slider');
-		ctx = canvas.getContext("2d");
-		parent.addEventListener("mousemove",function(evt){
-			mousePos = getMousePos(canvas,evt);
-		});
-		resizeCanvas();
-		generatePoints(80);
-		pointFun();
-		setInterval(pointFun,16);
-		window.addEventListener('resize', resizeCanvas, false);
-	}
-	//Particle constructor
-	function point () {
-		this.x = (Math.random()*(canvas.width+maxDist))-(maxDist/2);
-		this.y = (Math.random()*(canvas.height+maxDist))-(maxDist/2);
-		this.vx = (Math.random()*1)-.5;
-		this.vy = (Math.random()*1)-.5;
-    this.dia = Math.random()*3+1;
-		points.push(this);
-	}
-	//Point generator
-	function generatePoints (amount) {
-		var temp;
-		for (var i = 0; i < amount; i++) {
-			temp = new point();
-		};
-		// console.log(points);
-	}
-	//Point drawer
-	function draw (obj) {
-		ctx.beginPath();
-		ctx.fillStyle = "rgb("+colour+")";
-		if(obj.dia){
-      ctx.arc(obj.x,obj.y,obj.dia,0,2*Math.PI);
-    }else{
-      ctx.arc(obj.x,obj.y,2,0,2*Math.PI);
-    }
-		ctx.closePath();
-		ctx.fill();
-		//ctx.stroke();
-	}
-	//Updates point position values
-	function update (obj) {
-		obj.x += obj.vx;
-		obj.y += obj.vy;
-		if (obj.x > canvas.width+(maxDist/2)) {
-			obj.x = -(maxDist/2);
-		}
-		else if (obj.xpos < -(maxDist/2)) {
-			obj.x = canvas.width+(maxDist/2);
-		}
-		if (obj.y > canvas.height+(maxDist/2)) {
-			obj.y = -(maxDist/2);
-		}
-		else if (obj.y < -(maxDist/2)) {
-			obj.y = canvas.height+(maxDist/2);
-		}
-	}
-	//
-	function pointFun () {
-		ctx.clearRect(0, 0, canvas.width, canvas.height);
-		if (mousePos) {
-			collision(mousePos,maxDist*2);
-			draw(mousePos);
-		}
-		for (var i = 0; i < points.length; i++) {
-			collision(points[i],maxDist);
-      draw(points[i]);
-			update(points[i]);
-		};
-	}
-
-	function collision (obj,dist) {
-		var temp;
-		for (var i = 0; i < points.length; i++) {
-			//Don't interact with self
-			if (obj !== points[i]) {
-				temp = Math.sqrt(Math.pow((obj.x - points[i].x),2) + Math.pow((obj.y - points[i].y),2));
-				if (temp<dist) {
-					ctx.beginPath();
-					ctx.moveTo(obj.x, obj.y);
-					ctx.strokeStyle = "rgba("+colour+","+.8*Math.pow((dist-temp)/dist,5)+")";
-          ctx.moveTo(obj.x, obj.y);
-					ctx.lineTo(points[i].x, points[i].y);
-					ctx.closePath();
-					ctx.stroke();
-				};
-			}
-		};
-	}
-
-	function resizeCanvas() {
-		canvas.width = window.innerWidth;
-	canvas.height = window.innerHeight;
-		pointFun();
-	}
-
-	function getMousePos(cvs, evt1) {
-		var rect = cvs.getBoundingClientRect();
-		return {
-			x: evt1.clientX - rect.left,
-			y: evt1.clientY - rect.top
-		};
-	}
-
-	//Execute when DOM has loaded
-	document.addEventListener('DOMContentLoaded',init,false);
-})();
-</script>

@@ -566,6 +566,12 @@ h2 {
       font-size: 0.9em;
     }
   }
+
+  @media (max-width: 767px) {
+    .swiper-slide {
+      padding: 30px 30px 60px;
+    }
+  }
 }
 #home-intro-slider {
   padding-bottom: 60px;
@@ -609,9 +615,15 @@ h2 {
       font-size: inherit;
     }
   }
+
+  @media (max-width: 767px) {
+    margin: 40px 15px;
+  }
 }
 #home-intro-cta {
-  img {
-    margin-top: -15%;
+  @media (min-width: 992px) {
+    img {
+      margin-top: -15%;
+    }
   }
 }
