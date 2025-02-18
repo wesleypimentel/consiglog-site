@@ -1,103 +1,69 @@
 ---
 layout: default
-title: ConsigLog
+title: ConsigLog | Gestão de Margens Consignáveis
 ---
 
 <main>
 
   {% include home-headline.html %}
 
-  <section id="home-intro" class="position-relative">
+  {% include home-intro-box.html %}
+
+  <section id="solucoes" class="section">
     <div class="container">
-      <div id="home-intro-box">
-        <div class="row m-0">
-          <div class="col-xl-6 overflow-hidden position-relative px-0 text-balanced text-hyphens" id="home-intro-slider">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <div class="row">
-                  <div class="col-sm-8 m-0 order-last order-sm-first">
-                    <h2>
-                      Segurança
-                    </h2>
-                    <p>
-                      Soluções integras e confiáveis de segurança no processamento e tráfego de dados e informações confidenciais.
-                    </p>
-                    <a href="#" class="btn btn-link p-0">Saiba mais</a>
-                  </div>
-                  <div class="col-sm-4 m-0 p-0">
-                    <span class="svg-icon material-symbols-rounded light">verified_user</span>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="row">
-                  <div class="col-sm-8 m-0 order-last order-sm-first">
-                    <h2>
-                      Tecnologia
-                    </h2>
-                    <p>
-                      Soluções digitais integradas e estratégicas de qualidade em linguagem de programação de última geração, e ambiente web compatível com todos os navegadores.
-                    </p>
-                    <a href="#" class="btn btn-link p-0">Saiba mais</a>
-                  </div>
-                  <div class="col-sm-4 m-0 p-0">
-                    <span class="svg-icon material-symbols-rounded light">devices</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Botões de navegação -->
-            <div class="home-intro-swiper-nav">
-              <button type="button" class="home-intro-swiper-prev opacity-25">
-                <span class="material-symbols-rounded light">arrow_back</span>
-              </button>
-              <button type="button" class="home-intro-swiper-next">
-                <span class="material-symbols-rounded light">arrow_forward</span>
-              </button>
-            </div>
+      <header class="section-headline mb-5">
+        <div class="row g-5 align-items-center">
+          <div class="col-md-7">
+            <h2 class="section-title">
+              <small>Conheça as nossas</small>
+              <strong>Soluções</strong>
+            </h2>
           </div>
-          <div class="col-auto p-4 px-0">
-            <div class="separator horz-lines vert m-auto opacity-25"></div>
+          <div class="col-md-5 text-balanced">
+            <p>
+              Com economia de recursos humanos, automação de processo, supressão de papel e eficiência de controle, o sistema da <b>ConsigLog</b> é ideal para a organização de <b>órgãos públicos e privados</b>.
+            </p>
           </div>
-          <div class="col-xl-5 flex-grow-1 row m-0 py-0 ps-3 ps-md-5 pe-0 text-balanced" id="home-intro-cta">
-            <div class="col-sm-6 py-5 align-content-center z-1">
-              <h2>
-                Solicite uma
-                <strong>Apresentação</strong>
-              </h2>
+        </div>
+      </header>
+      <div class="row g-5">
+        <div class="col-12">
+          <!-- Card LogConsig -->
+          <div class="card card-cover align-content-end flex-row bg-dark text-white text-balanced card-solucao mouse-glow">
+            <img src="{{ '/assets/img/consiglog-logconsig-img.webp' | relative_url }}" class="card-img" alt="LogConsig">
+            <div class="card-body">
+              <img src="{{ '/assets/img/consiglog-symbol-inv.svg' | relative_url }}" alt="LogConsig">
+              <h3 class="card-title">
+                <a href="{{'/solucoes/logconsig' | relative_url }}">
+                  Log<b>Consig</b>
+                </a>
+              </h3>
               <p>
-                A nossa equipe terá prazer em mostrar todas as vantagens em usar nossos sistemas.
+                O LogConsig é um sistema de <b>averbação eletrônica</b> para <b>empréstimo consignado</b> em folha de pagamento destinado a <b>órgãos públicos</b>. É inteiramente desenvolvido em plataforma web.
               </p>
-              <a href="#apresentacao" class="btn btn-primary">
-                Falar com especialista
-              </a>
+              <a class="btn btn-outline-info" href="{{'/solucoes/logconsig' | relative_url }}" title="Saiba mais sobre o LogConsig" aria-label="Saiba mais sobre o LogConsig">Saiba mais</a>
             </div>
-            <div class="col-sm-6 align-content-end text-center text-sm-end p-0">
-              <img src="{{'/assets/img/consiglog-cta-apresent-img.webp' | relative_url }}" alt="Solicitar Apresentação" class="img-fluid">
+          </div>
+          <!-- Card LogPrivado -->
+          <div class="card card-cover align-content-end flex-row bg-dark text-white text-balanced card-solucao mouse-glow">
+            <img src="{{ '/assets/img/consiglog-logprivado-img.webp' | relative_url }}" class="card-img" alt="LogPrivado">
+            <div class="card-body">
+              <img src="{{ '/assets/img/consiglog-symbol-inv.svg' | relative_url }}" alt="LogPrivado">
+              <h3 class="card-title">
+                <a href="{{'/solucoes/logprivado' | relative_url }}">
+                  Log<b>Privado</b>
+                </a>
+              </h3>
+              <p>
+                O LogPrivado é um sistema de <b>averbação eletrônica</b> para <b>empréstimo consignado</b> em folha de pagamento destinado a <b>empresas privadas</b> que autorizam seus empregados a contratarem esse tipo de financiamento.
+              </p>
+              <a class="btn btn-outline-info" href="{{'/solucoes/logprivado' | relative_url }}" title="Saiba mais sobre o LogPrivado" aria-label="Saiba mais sobre o LogPrivado">Saiba mais</a>
             </div>
-          </div>         
+          </div>
         </div>
       </div>
     </div>
   </section>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      var swiper = new Swiper("#home-intro-slider", {
-        loop: true,
-        spaceBetween: 0,
-        autoplay: {
-          delay: 6000,
-          disableOnInteraction: false,
-        },
-        navigation: {
-          nextEl: ".home-intro-swiper-next",
-          prevEl: ".home-intro-swiper-prev",
-        },
-        effect: "slide", // Altere para "slide", "cube", "coverflow", etc.
-        speed: 1000, // Velocidade da transição
-    });
-  });
-  </script>
   
   <!-- <img src="{{ '/assets/img/exemplo.webp' | relative_url }}" alt="Exemplo"> -->
   <div class="container">

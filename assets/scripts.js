@@ -189,3 +189,28 @@ window.addEventListener('scroll', handleScroll, { passive: true });
 
 // Executa uma vez no carregamento para verificar o estado inicial
 handleScroll();
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const elementsWithGlow = document.querySelectorAll('.mouse-glow');
+
+  elementsWithGlow.forEach((element) => {
+    // Cria o elemento de brilho
+    const glowEffect = document.createElement('div');
+    glowEffect.classList.add('glow-effect');
+    element.appendChild(glowEffect);
+
+    // Ativa o brilho ao mover o mouse
+    element.addEventListener('mousemove', (e) => {
+      const rect = element.getBoundingClientRect();
+      const offsetX = e.clientX - rect.left;
+      const offsetY = e.clientY - rect.top;
+
+      glowEffect.style.setProperty('--glow-x', `${offsetX}px`);
+      glowEffect.style.setProperty('--glow-y', `${offsetY}px`);
+      glowEffect.style.opacity = '0.5'; // Ativa o brilho
+    });
+  });
+});
