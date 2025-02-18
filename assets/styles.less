@@ -21,6 +21,9 @@
   --cor-prim: @cor-prim;
   --cor-prim-hgl: #e4b043;
 
+  --cor-neutra-1: #f8f9fa;
+  --cor-neutra-2: #d8e0e7;
+  --cor-neutra-3: #96a1ac;
   --cor-neutra-4: #3f4759;
   --cor-neutra-8: #1e1e2e;
   --cor-azul: #0077ff;
@@ -628,6 +631,8 @@ h2 {
   }
 
   @media (max-width: 767px) {
+    padding-bottom: 0px;
+
     .swiper-slide {
       padding: 30px 30px 60px;
     }
@@ -717,6 +722,13 @@ h2 {
       text-transform: none;
     }
   }
+  @media (max-width: 991px) {
+    .section-title {
+      font-size: 2.3rem;
+      padding-left: 0.5em;
+      border-left-width: 5px;
+    }
+  }
 }
 
 .card {
@@ -800,4 +812,12 @@ h2 {
       transform: scale(1.075);
     }
   }
+}
+
+#solucoes {
+  background: linear-gradient(
+    180deg,
+    var(--cor-neutra-1) 0%,
+    var(--cor-neutra-2) 100%
+  );
 }
