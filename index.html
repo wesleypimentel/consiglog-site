@@ -4,71 +4,14 @@ title: ConsigLog | Gestão de Margens Consignáveis
 ---
 
 <main>
-
+  <!-- Headline (Banner / Slider) -->
   {% include home-headline.html %}
-
+  <!-- Intro Box -->
   {% include home-intro-box.html %}
-
-  <section id="solucoes" class="section">
-    <div class="container">
-      <header class="section-headline mb-5">
-        <div class="row g-md-5 align-items-center">
-          <div class="col-md-7">
-            <h2 class="section-title">
-              <small>Conheça as nossas</small>
-              <strong>Soluções</strong>
-            </h2>
-          </div>
-          <div class="col-md-5 text-balanced">
-            <p>
-              Com economia de recursos humanos, automação de processo, supressão de papel e eficiência de controle, o sistema da <b>ConsigLog</b> é ideal para a organização de <b>órgãos públicos e privados</b>.
-            </p>
-          </div>
-        </div>
-      </header>
-      <div class="row g-md-5">
-        <div class="col-12">
-          <!-- Card LogConsig -->
-          <div class="card card-cover align-content-end flex-row bg-dark text-white text-balanced card-solucao mouse-glow">
-            <img src="{{ '/assets/img/consiglog-logconsig-img.webp' | relative_url }}" class="card-img" alt="LogConsig">
-            <div class="card-body">
-              <img src="{{ '/assets/img/consiglog-symbol-inv.svg' | relative_url }}" alt="LogConsig">
-              <h3 class="card-title">
-                <a href="{{'/solucoes/logconsig' | relative_url }}">
-                  Log<b>Consig</b>
-                </a>
-              </h3>
-              <p>
-                O LogConsig é um sistema de <b>averbação eletrônica</b> para <b>empréstimo consignado</b> em folha de pagamento destinado a <b>órgãos públicos</b>. É inteiramente desenvolvido em plataforma web.
-              </p>
-              <a class="btn btn-outline-info" href="{{'/solucoes/logconsig' | relative_url }}" title="Saiba mais sobre o LogConsig" aria-label="Saiba mais sobre o LogConsig">Saiba mais</a>
-            </div>
-          </div>
-          <!-- Card LogPrivado -->
-          <div class="card card-cover align-content-end flex-row bg-dark text-white text-balanced card-solucao mouse-glow">
-            <img src="{{ '/assets/img/consiglog-logprivado-img.webp' | relative_url }}" class="card-img" alt="LogPrivado">
-            <div class="card-body">
-              <img src="{{ '/assets/img/consiglog-symbol-inv.svg' | relative_url }}" alt="LogPrivado">
-              <h3 class="card-title">
-                <a href="{{'/solucoes/logprivado' | relative_url }}">
-                  Log<b>Privado</b>
-                </a>
-              </h3>
-              <p>
-                O LogPrivado é um sistema de <b>averbação eletrônica</b> para <b>empréstimo consignado</b> em folha de pagamento destinado a <b>empresas privadas</b> que autorizam seus empregados a contratarem esse tipo de financiamento.
-              </p>
-              <a class="btn btn-outline-info" href="{{'/solucoes/logprivado' | relative_url }}" title="Saiba mais sobre o LogPrivado" aria-label="Saiba mais sobre o LogPrivado">Saiba mais</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  <!-- <img src="{{ '/assets/img/exemplo.webp' | relative_url }}" alt="Exemplo"> -->
-  <div class="container">
-    <h2>Bem-vindo à página inicial!</h2>
-    <p>Este é o conteúdo da página inicial.</p>
-    <a href="{{ '/sobre' | relative_url }}" class="btn btn-primary">Ir para Sobre</a>
-  </div>
+  <!-- Soluções -->
+  {% include home-solucoes.html %}
+  <!-- Sobre -->
+  {% include home-sobre.html %}
+  <!-- CTA: Apres. (Fone + Botão) -->
+  {% include cta-apresentacao-fone-btn.html %}
 </main>

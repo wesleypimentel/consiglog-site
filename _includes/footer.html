@@ -1,3 +1,38 @@
-<footer class="bg-dark text-white text-center py-3">
-  <p>&copy; {{ "now" | date: "%Y" }} Meu Site. Todos os direitos reservados.</p>
+<footer id="footer" class="bg-dark text-bg-dark pt-5 pb-3">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-xxl-6">
+        <div class="d-flex">
+          <a href="{{ '/' | relative_url }}" class="col-lg-5 d-flex border-opacity-25 border border-1 border-light p-4 text-center">
+            <img src="{{ '/assets/img/consiglog-logo-inv.svg' }}" class="d-block m-auto" alt="ConsigLog">
+          </a>
+          <div class="col-lg-7 px-5 text-start">
+            <h5 class="text-primary fw-bold lined">
+              ConsigLog
+            </h5>
+            <small class="opacity-50 lh-sm text-balanced">
+              <p>
+                Fundada por especialistas no mercado financeiro, é especializada na gestão de margens consignáveis para órgãos públicos e empresas privadas. Oferecemos tratamento personalizado, focado em resultados e melhorias nos processos de nossos clientes. Nossas certificações garantem seriedade, compromisso e responsabilidade.
+              </p>
+            </small>
+          </div>
+        </div>
+        <p>Selos, certificações, etc.</p>
+        <p>Ícones redes sociais</p>
+      </div>
+      <div class="col-xxl-6">
+        <h5 class="text-primary lined">
+          <span><b>Matriz:</b> São Paulo, SP</span>
+        </h5>
+        <p>Dados</p>
+        <h5 class="text-primary lined">
+          <span><b>Filial:</b> Salvador, BA</span>
+        </h5>
+        <p>Dados</p>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <p>ConsigLog &copy; {{ "now" | date: "%Y" }} Meu Site. Todos os direitos reservados.</p>
+  </div>
 </footer>
