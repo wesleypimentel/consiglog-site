@@ -1,0 +1,36 @@
+# Home
+
+# Home > Título da seção de soluções
+home_section_title: |
+  <small>Conheça as nossas</small>
+  <strong>Soluções</strong>
+
+# Home > Descrição da seção de soluções
+home_section_desc: |
+  Com economia de recursos humanos, automação de processo, supressão de papel e eficiência de controle, o sistema da <b>ConsigLog</b> é ideal para a organização de <b>órgãos públicos e privados</b>.
+
+# Configurações globais
+config:
+  defaults:
+    logo_padrao: consiglog-symbol-inv.svg
+    link_texto: Saiba mais
+
+# Lista de soluções
+solucoes:
+  # LogConsig
+  - id: logconsig # ID da solução (e Slug)
+    titulo: LogConsig # Título da solução
+    tituloHTML: Log<b>Consig</b> # Título da solução com HTML
+    imagem: consiglog-logconsig-img.webp # Imagem da solução (capa / fundo)
+    descricao: O LogConsig é um sistema de <b>averbação eletrônica</b> para <b>empréstimo consignado</b> em folha de pagamento destinado a <b>órgãos públicos</b>. É inteiramente desenvolvido em plataforma web. # Descrição da solução
+    link: /solucoes/logconsig # Link para a página da solução
+    ativo: true # Ativa ou desativa a exibição da solução na home
+
+  # LogPrivado
+  - id: logprivado
+    titulo: LogPrivado
+    tituloHTML: Log<b>Privado</b>
+    imagem: consiglog-logprivado-img.webp
+    descricao: O LogPrivado é um sistema de <b>averbação eletrônica</b> para <b>empréstimo consignado</b> em folha de pagamento destinado a <b>empresas privadas</b> que autorizam seus empregados a contratarem esse tipo de financiamento.
+    link: /solucoes/logprivado
+    ativo: true

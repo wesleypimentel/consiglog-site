@@ -4,8 +4,8 @@
 
       <!-- Coluna 2: Logo SVG -->
       <div class="col-4 col-md-4 col-lg-2 offset-lg-0 text-center order-2 order-lg-2 p-0 logo">
-        <a href="{{ '/' | relative_path }}" class="navbar-brand" id="header-logo">
-          <img src="{{ 'assets/img/consiglog-logo.svg' | relative_path }}" alt="ConsigLog">
+        <a href="{{ site.data.header.logo.link | relative_path }}" class="navbar-brand" id="header-logo">
+          <img src="{{ site.data.header.logo.src | relative_path }}" alt="{{ site.data.header.logo.alt }}">
         </a>
       </div>
 
@@ -13,19 +13,18 @@
       <div class="col-4 col-md-4 col-lg-5 text-end order-2 order-lg-3 pe-0 pe-lg-4">
         <!-- Área do Cliente -->
         <div class="btn-group me-lg-2">
-          <button type="button" class="btn btn-light d-inline-flex align-items-center gap-0 gap-lg-2 px-3 border-0" data-bs-toggle="offcanvas" data-bs-target="#areaClienteOffcanvas"  aria-controls="areaClienteOffcanvas">
-            <span class="material-symbols-rounded">account_circle</span>
-            <span class="d-none d-xl-inline-flex">Área do Cliente</span>
+          <button type="button" class="btn btn-light d-inline-flex align-items-center gap-0 gap-lg-2 px-3 border-0" data-bs-toggle="offcanvas" data-bs-target="#areaClienteOffcanvas" aria-controls="areaClienteOffcanvas">
+            <span class="material-symbols-rounded">{{ site.data.header.area_cliente.icone }}</span>
+            <span class="d-none d-xl-inline-flex">{{ site.data.header.area_cliente.titulo }}</span>
           </button>
         </div>
         
         <!-- Botão Hamburger -->
         <button class="btn navbar-toggler d-lg-none d-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <!-- <span class="navbar-toggler-icon"></span> -->
           <span class="material-symbols-rounded">menu</span>
         </button>
         <!-- CTA -->
-        <a href="#apresentacao" role="button" class="btn btn-primary d-none d-lg-inline-flex">Solicitar Apresentação</a>
+        <a href="{{ site.data.header.cta.link }}" role="button" class="btn btn-primary d-none d-lg-inline-flex">{{ site.data.header.cta.titulo }}</a>
       </div>
 
       <!-- Coluna 1: Menu de Navegação (Responsivo) -->
@@ -40,39 +39,29 @@
           <div class="collapse navbar-collapse py-0" id="navbarNav">
             <header class="px-0 py-2"></header>
             <ul class="navbar-nav nav-justified gap-0 gap-xl-3 p-lg-3">
-              <li class="nav-item">
-                <a class="nav-link" href="{{ '/' | relative_path }}">
-                  <span class="material-symbols-rounded d-none d-lg-inline">home</span>
-                  <span class="d-lg-none">Página Inicial</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{ '/empresa' | relative_path }}"><span>Empresa</span></a>
-              </li>
-              <!-- Dropdown para "Soluções" -->
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="{{ '/solucoes' | relative_path }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <span>Soluções</span>
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="{{ '/solucoes/logconsig' | relative_path }}"><span>LogConsig</span></a></li>
-                  <li><a class="dropdown-item" href="{{ '/solucoes/logprivado' | relative_path }}"><span>LogPrivado</span></a></li>
-                </ul>
-              </li>
-              <!-- Dropdown para "Contato" -->
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="{{ '/contato' | relative_path }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Contato
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="{{ '/contato/' | relative_path }}"><span>Fale Conosco</span></a></li>
-                  <li><a class="dropdown-item" href="{{ '/trabalhe-conosco' | relative_path }}"><span>Trabalhe Conosco</span></a></li>
-                </ul>
-              </li>
+              {% for item in site.data.header.menu %}
+                <li class="nav-item {% if item.dropdown %}dropdown{% endif %}">
+                  <a class="nav-link {% if item.dropdown %}dropdown-toggle{% endif %}" href="{{ item.link | relative_path }}" {% if item.dropdown %}role="button" data-bs-toggle="dropdown" aria-expanded="false"{% endif %}>
+                    <!-- Ícone (exibido apenas em telas grandes, se existir) -->
+                    {% if item.icone %}
+                      <span class="material-symbols-rounded d-none d-lg-inline">{{ item.icone }}</span>
+                    {% endif %}
+                    <!-- Texto (exibido apenas em telas pequenas ou se não houver ícone) -->
+                    <span class="{% if item.icone %}d-lg-none{% endif %}">{{ item.titulo }}</span>
+                  </a>
+                  <!-- Dropdown (se houver) -->
+                  {% if item.dropdown %}
+                    <ul class="dropdown-menu">
+                      {% for subitem in item.dropdown %}
+                        <li><a class="dropdown-item" href="{{ subitem.link | relative_path }}">{{ subitem.titulo }}</a></li>
+                      {% endfor %}
+                    </ul>
+                  {% endif %}
+                </li>
+              {% endfor %}
             </ul>
             <footer class="px-0 py-3 d-lg-none text-center">
-              <!-- CTA -->
-            <a href="#apresentacao" role="button" class="btn btn-primary d-inline-flex d-lg-none">Solicitar Apresentação</a>
+              <a href="{{ site.data.header.cta.link }}" role="button" class="btn btn-primary d-inline-flex d-lg-none">{{ site.data.header.cta.titulo }}</a>
             </footer>
           </div>
         </nav>
@@ -82,7 +71,6 @@
       <div class="col-4 order-1 d-inline-flex d-lg-none">
         <!-- Botão Hamburger -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <!-- <span class="navbar-toggler-icon"></span> -->
           <span class="material-symbols-rounded">menu</span>
         </button>
       </div>
@@ -104,25 +92,30 @@
   <div class="offcanvas-body">
     <!-- Navegação dentro do offcanvas -->
     <nav class="nav flex-column">
-      <!-- Item com Submenu (Governo) -->
-      <div class="accordion" id="areaDoClienteAccordion">
-        <div class="accordion-item">
-          <h3 class="accordion-header" id="heading-governo">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#submenu-governo" aria-expanded="false" aria-controls="submenu-governo">Governo</button>
-          </h3>
-          <div id="submenu-governo" class="accordion-collapse collapse" aria-labelledby="heading-governo" data-bs-parent="#areaDoClienteAccordion">
-            <ul class="list-unstyled mb-0">
-              <li><a class="nav-link" href="https://govam.consiglog.com.br" target="_blank">Amazonas</a></li>
-              <li><a class="nav-link" href="https://govbahia.consiglog.com.br" target="_blank">Bahia</a></li>
-            </ul>
+      {% for item in site.data.header.area_cliente.links %}
+        {% if item.sublinks %}
+          <!-- Item com Submenu (Accordion) -->
+          <div class="accordion" id="areaDoClienteAccordion">
+            <div class="accordion-item">
+              <span class="accordion-header" id="heading-{{ item.titulo | slugify }}">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#submenu-{{ item.titulo | slugify }}" aria-expanded="false" aria-controls="submenu-{{ item.titulo | slugify }}">
+                  {{ item.titulo }}
+                </button>
+              </span>
+              <div id="submenu-{{ item.titulo | slugify }}" class="accordion-collapse collapse" aria-labelledby="heading-{{ item.titulo | slugify }}" data-bs-parent="#areaDoClienteAccordion">
+                <ul class="list-unstyled mb-0">
+                  {% for sublink in item.sublinks %}
+                    <li><a class="nav-link" href="{{ sublink.link }}" target="_blank">{{ sublink.titulo }}</a></li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-      <!-- Itens Simples -->
-      <a class="nav-link" href="https://saecprivado.consiglog.com.br" target="_blank">Hospitais</a>
-      <a class="nav-link" href="https://saec.consiglog.com.br/" target="_blank">Prefeituras</a>
-      <a class="nav-link" href="https://saec.consiglog.com.br/" target="_blank">Previdências</a>
-      <a class="nav-link" href="https://saec.consiglog.com.br/" target="_blank">Universidades</a>
+        {% else %}
+          <!-- Item Simples -->
+          <a class="nav-link" href="{{ item.link }}" target="_blank">{{ item.titulo }}</a>
+        {% endif %}
+      {% endfor %}
     </nav>
   </div>
 </aside>

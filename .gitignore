@@ -4,3 +4,7 @@ _site
 .jekyll-metadata
 vendor
 _config.yml
+*.min.html
+*.bkp.html
+*.min.markdown
+*.bkp.markdown

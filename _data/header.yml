@@ -1,0 +1,52 @@
+# Logo
+logo:
+  src: assets/img/consiglog-logo.svg
+  alt: ConsigLog
+  link: /
+
+# Menu de Navegação
+menu:
+  - titulo: Página Inicial
+    link: /
+    icone: home
+  - titulo: Empresa
+    link: /empresa
+  - titulo: Soluções
+    link: /solucoes
+    dropdown:
+      - titulo: LogConsig
+        link: /solucoes/logconsig
+      - titulo: LogPrivado
+        link: /solucoes/logprivado
+  - titulo: Contato
+    link: /contato
+    dropdown:
+      - titulo: Fale Conosco
+        link: /contato/
+      - titulo: Trabalhe Conosco
+        link: /trabalhe-conosco
+
+# Área do Cliente
+area_cliente:
+  titulo: Área do Cliente
+  icone: account_circle
+  links:
+    - titulo: Governo
+      sublinks:
+        - titulo: Amazonas
+          link: https://govam.consiglog.com.br
+        - titulo: Bahia
+          link: https://govbahia.consiglog.com.br
+    - titulo: Hospitais
+      link: https://saecprivado.consiglog.com.br
+    - titulo: Prefeituras
+      link: https://saec.consiglog.com.br/
+    - titulo: Previdências
+      link: https://saec.consiglog.com.br/
+    - titulo: Universidades
+      link: https://saec.consiglog.com.br/
+
+# CTA (Call to Action)
+cta:
+  titulo: Solicitar Apresentação
+  link: "#apresentacao"

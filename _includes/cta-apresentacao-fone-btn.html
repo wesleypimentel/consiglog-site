@@ -1,23 +1,27 @@
 <section id="cta-apresentacao-fone-btn" class="bg-primary-hgl text-dark py-5 mouse-glow">
-    <div class="container py-5">
-      <div class="row gy-3 gx-lg-5 align-items-center justify-content-between">
-        <div class="col-12 col-lg-6 pt-3 text-center text-lg-start text-balanced">
-          <h2 class="h2">
-            Solicite uma
-            <strong>Apresentação</strong>
-          </h2>
-          <p>
-            A nossa equipe terá prazer em mostrar todas as vantagens em usar nossos sistemas.
-          </p>
-        </div>
-        <div class="col-12 col-lg-6 text-center text-lg-end position-relative z-1">
-          <h3 class="h1 fw-bold font-title text-white">
-            <a href="tel:08000004664">
-              0800 000 4664
-            </a>
-          </h3>
-          <a href="#apresentacao" class="btn btn-light align-self-center border-0">Falar com Especialista</a>
-        </div>
+  <div class="container py-5">
+    <div class="row gy-3 gx-lg-5 align-items-center justify-content-between">
+      <!-- Texto e Descrição -->
+      <div class="col-12 col-lg-6 pt-3 text-center text-lg-start text-balanced">
+        <h2 class="h2">
+          {{ site.data.global.section_cta.title | markdownify }}
+        </h2>
+        <p>
+          {{ site.data.global.section_cta.description | markdownify }}
+        </p>
+      </div>
+
+      <!-- Telefone e Botão -->
+      <div class="col-12 col-lg-6 text-center text-lg-end position-relative z-1">
+        <h3 class="h1 fw-bold font-title text-white">
+          <a href="tel:{{ site.data.global.section_cta.phone | replace: '[fone: ', '' | replace: ']', '' }}" class="js-dynamic-phone">
+            {{ site.data.global.section_cta.phone }}
+          </a>
+        </h3>
+        <a href="{{ site.data.global.section_cta.button_link }}" class="btn btn-light align-self-center border-0">
+          {{ site.data.global.section_cta.button }}
+        </a>
       </div>
     </div>
-  </section>
+  </div>
+</section>

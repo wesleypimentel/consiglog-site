@@ -1,38 +1,85 @@
-<footer id="footer" class="bg-dark text-bg-dark pt-5 pb-3">
+<footer id="footer" class="bg-dark text-bg-dark pt-5 pb-0">
   <div class="container py-5">
-    <div class="row">
-      <div class="col-xxl-6">
-        <div class="d-flex">
-          <a href="{{ '/' | relative_url }}" class="col-lg-5 d-flex border-opacity-25 border border-1 border-light p-4 text-center">
-            <img src="{{ '/assets/img/consiglog-logo-inv.svg' }}" class="d-block m-auto" alt="ConsigLog">
+    <div class="row pb-3 gx-5 gy-5">
+      <!-- Footer: Esquerda -->
+      <div class="col-xl-6 pe-xl-5">
+        <!-- Empresa -->
+        <div class="d-flex flex-wrap mb-5">
+          <a href="{{ site.data.global.empresa.logo.link }}" class="col-12 col-md-5 d-flex border-opacity-25 border border-1 border-light p-4 text-center">
+            <img src="{{ site.data.global.empresa.logo.src }}" class="d-block m-auto" alt="{{ site.data.global.empresa.logo.alt }}">
           </a>
-          <div class="col-lg-7 px-5 text-start">
+          <div class="col-12 col-md-7 ps-md-5 mt-4 mt-md-0 text-start">
             <h5 class="text-primary fw-bold lined">
-              ConsigLog
+              {{ site.data.global.empresa.titulo }}
             </h5>
             <small class="opacity-50 lh-sm text-balanced">
-              <p>
-                Fundada por especialistas no mercado financeiro, é especializada na gestão de margens consignáveis para órgãos públicos e empresas privadas. Oferecemos tratamento personalizado, focado em resultados e melhorias nos processos de nossos clientes. Nossas certificações garantem seriedade, compromisso e responsabilidade.
-              </p>
+              <p>{{ site.data.global.empresa.descricao }}</p>
             </small>
           </div>
         </div>
-        <p>Selos, certificações, etc.</p>
-        <p>Ícones redes sociais</p>
+        <!-- Selos / Certificações -->
+        <div id="footer-selos-consiglog" class="d-flex flex-wrap gap-2 align-items-center mb-4 justify-content-evenly justify-content-lg-start">
+          {% for selo in site.data.global.selos %}
+            <div class="{{ selo.classe }}">
+              <img class="footer-selo" src="{{ selo.src }}" alt="{{ selo.alt }}">
+            </div>
+          {% endfor %}
+        </div>
+        <!-- Redes Sociais -->
+        <div id="footer-social-icons" class="d-flex flex-wrap gap-4 align-items-center pt-3 justify-content-evenly justify-content-lg-start border-top border-opacity-25 border-light border-1">
+          {% for rede in site.data.global.redes_sociais %}
+            <a href="{{ rede.link }}" target="_blank" rel="noopener">
+              <img src="{{ rede.icone }}" alt="{{ rede.nome }}">
+            </a>
+          {% endfor %}
+        </div>
       </div>
-      <div class="col-xxl-6">
-        <h5 class="text-primary lined">
-          <span><b>Matriz:</b> São Paulo, SP</span>
-        </h5>
-        <p>Dados</p>
-        <h5 class="text-primary lined">
-          <span><b>Filial:</b> Salvador, BA</span>
-        </h5>
-        <p>Dados</p>
+      <!-- Footer: Direita -->
+      <div class="col-xl-6">
+        <div class="row">
+          {% for endereco in site.data.global.enderecos %}
+            <div class="col-12 col-lg-6 col-xl-12">
+              <h5 class="text-primary lined">
+                <span><b>{{ endereco.tipo }}:</b> {{ endereco.localizacao }}</span>
+              </h5>
+              <ul class="icon-list py-3">
+                {% for detalhe in endereco.detalhes %}
+                  <li>
+                    <span class="material-symbols-rounded">{{ detalhe.icone }}</span>
+                    {% if detalhe.link %}
+                      <a href="{{ detalhe.link }}">{{ detalhe.texto }}</a>
+                    {% else %}
+                      <span>{{ detalhe.texto }}</span>
+                    {% endif %}
+                    {% if detalhe.subtexto %}
+                      <small class="opacity-50 fst-italic">{{ detalhe.subtexto }}</small>
+                    {% endif %}
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endfor %}
+        </div>
       </div>
     </div>
   </div>
-  <div class="container">
-    <p>ConsigLog &copy; {{ "now" | date: "%Y" }} Meu Site. Todos os direitos reservados.</p>
+  <!-- Footer: Copyright -->
+  <div id="footer-copyright" class="bg-light bg-opacity-10 py-3">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-between">
+        <div class="col-12 col-lg-auto text-center text-lg-start m-0">
+          <span>
+            {{ site.data.global.copyright.texto }}
+          </span>
+          {% for link in site.data.global.copyright.links %}
+            &nbsp;&middot;&nbsp;
+            <a href="{{ link.link }}">{{ link.texto }}</a>
+          {% endfor %}
+        </div>
+        <a href="#" title="Voltar ao topo" class="col-12 col-lg-auto text-center mt-4 mt-lg-0 p-2">
+          <span class="material-symbols-rounded">arrow_upward</span>
+        </a>
+      </div>
+    </div>
   </div>
 </footer>
