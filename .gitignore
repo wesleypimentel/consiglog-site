@@ -8,3 +8,7 @@ _config.yml
 *.bkp.html
 *.min.markdown
 *.bkp.markdown
+**/*.min.html
+**/*.bkp.html
+**/*.min.markdown
+**/*.bkp.markdown
