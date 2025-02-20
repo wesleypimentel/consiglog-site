@@ -3,11 +3,6 @@ _site
 .jekyll-cache
 .jekyll-metadata
 vendor
-_config.yml
-*.min.html
-*.bkp.html
-*.min.markdown
-*.bkp.markdown
 **/*.min.html
 **/*.bkp.html
 **/*.min.markdown
