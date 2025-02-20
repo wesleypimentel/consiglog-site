@@ -21,7 +21,7 @@
 title: ConsigLog
 email: contato@wesleypimentel.com.br
 description: "Soluções em Tecnologia para o Mercado de Crédito Consignado"
-baseurl: "/consiglog" # the subpath of your site, e.g. /blog
+baseurl: "/consiglog-site/" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 logo: "/assets/img/consiglog-logo.svg"
 favicon: "/assets/img/favicon.ico"
