@@ -29,6 +29,7 @@
   --cor-neutra-4: #3f4759;
   --cor-neutra-4-rgb: 63, 71, 89;
   --cor-neutra-8: #1e1e2e;
+  --cor-neutra-8-rgb: 30, 30, 46;
   --cor-azul: #0077ff;
   --cor-azul-drk: #131f2c;
 
@@ -83,6 +84,17 @@ p {
 ul[role="list"],
 ol[role="list"] {
   list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  small {
+    font-size: 0.5em;
+  }
 }
 
 html:focus-within {
@@ -169,6 +181,32 @@ select {
 
 .bg-primary-hgl {
   background-color: var(--cor-prim-hgl);
+}
+.bg-covered {
+  background-size: cover;
+  background-position: center;
+}
+.bg-overlay {
+  position: relative;
+
+  &:before {
+    content: "";
+    position: absolute;
+    inset: 0 0 0 0;
+    background-color: rgba(var(--cor-neutra-8-rgb), 0.8);
+    z-index: 0;
+  }
+
+  * {
+    position: relative;
+    z-index: 1;
+  }
+}
+.bg-fade-left {
+  &:before {
+    content: "";
+    background-image: linear-gradient(45deg, var(--cor-neutra-8), transparent);
+  }
 }
 
 .separator {
@@ -480,58 +518,58 @@ h3 {
     }
   }
 
-  .slide-box {
-    background-color: fade(#1e1e25, 40%);
-    backdrop-filter: blur(15px);
-
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: flex-start;
-    height: 100%;
-    padding: 45px 80px 45px 60px;
-    text-align: left;
-    max-width: 700px;
-    text-wrap: balance;
-    border-left: 10px solid var(--cor-prim);
-
-    --corner-size: 40px;
-
-    h1,
-    h2,
-    h3 {
-      width: 100%;
-    }
-
-    small {
-      font-size: 0.5em;
-      font-weight: 400;
-      text-transform: initial;
-      letter-spacing: 1px;
-      display: flex;
-      gap: 1em;
-      margin-bottom: 0.5em;
-    }
-
-    p {
-      font-weight: 300;
-      margin-bottom: 20px;
-    }
-
-    .btn {
-      margin-top: 20px;
-      padding: 15px 30px;
-    }
-
-    @media (max-width: 991px) {
-      border-left-width: 5px;
-      padding: 25px;
-    }
-  }
-
   .swiper-pagination {
     bottom: 100px;
     width: 100%;
+  }
+}
+
+.slide-box {
+  background-color: fade(#1e1e25, 40%);
+  backdrop-filter: blur(15px);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: flex-start;
+  height: 100%;
+  padding: 45px 80px 45px 60px;
+  text-align: left;
+  max-width: 700px;
+  text-wrap: balance;
+  border-left: 10px solid var(--cor-prim);
+
+  --corner-size: 40px;
+
+  h1,
+  h2,
+  h3 {
+    width: 100%;
+  }
+
+  small {
+    font-size: 0.5em;
+    font-weight: 400;
+    text-transform: initial;
+    letter-spacing: 1px;
+    display: flex;
+    gap: 1em;
+    margin-bottom: 0.5em;
+  }
+
+  p {
+    font-weight: 300;
+    margin-bottom: 20px;
+  }
+
+  .btn {
+    margin-top: 20px;
+    padding: 15px 30px;
+  }
+
+  @media (max-width: 991px) {
+    border-left-width: 5px;
+    padding: 25px;
   }
 }
 
