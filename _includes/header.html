@@ -4,8 +4,8 @@
 
       <!-- Coluna 2: Logo SVG -->
       <div class="col-4 col-md-4 col-lg-2 offset-lg-0 text-center order-2 order-lg-2 p-0 logo">
-        <a href="{{ site.data.header.logo.link | relative_path }}" class="navbar-brand" id="header-logo">
-          <img src="{{ site.data.header.logo.src | relative_path }}" alt="{{ site.data.header.logo.alt }}">
+        <a href="{{ site.data.header.logo.link | relative_url }}" class="navbar-brand" id="header-logo">
+          <img src="{{ site.data.header.logo.src | relative_url }}" alt="{{ site.data.header.logo.alt }}">
         </a>
       </div>
 
@@ -41,7 +41,7 @@
             <ul class="navbar-nav nav-justified gap-0 gap-xl-3 p-lg-3">
               {% for item in site.data.header.menu %}
                 <li class="nav-item {% if item.dropdown %}dropdown{% endif %}">
-                  <a class="nav-link {% if item.dropdown %}dropdown-toggle{% endif %}" href="{{ item.link | relative_path }}" {% if item.dropdown %}role="button" data-bs-toggle="dropdown" aria-expanded="false"{% endif %}>
+                  <a class="nav-link {% if item.dropdown %}dropdown-toggle{% endif %}" href="{{ item.link | relative_url }}" {% if item.dropdown %}role="button" data-bs-toggle="dropdown" aria-expanded="false"{% endif %}>
                     <!-- Ícone (exibido apenas em telas grandes, se existir) -->
                     {% if item.icone %}
                       <span class="material-symbols-rounded d-none d-lg-inline">{{ item.icone }}</span>
@@ -53,7 +53,7 @@
                   {% if item.dropdown %}
                     <ul class="dropdown-menu">
                       {% for subitem in item.dropdown %}
-                        <li><a class="dropdown-item" href="{{ subitem.link | relative_path }}">{{ subitem.titulo }}</a></li>
+                        <li><a class="dropdown-item" href="{{ subitem.link | relative_url }}">{{ subitem.titulo }}</a></li>
                       {% endfor %}
                     </ul>
                   {% endif %}

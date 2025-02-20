@@ -14,11 +14,9 @@
       <!-- Telefone e Botão -->
       <div class="col-12 col-lg-6 text-center text-lg-end position-relative z-1">
         <h3 class="h1 fw-bold font-title text-white">
-          <a href="tel:{{ site.data.global.section_cta.phone | replace: '[fone: ', '' | replace: ']', '' }}" class="js-dynamic-phone">
-            {{ site.data.global.section_cta.phone }}
-          </a>
+          {{ site.data.global.section_cta.phone }}
         </h3>
-        <a href="{{ site.data.global.section_cta.button_link }}" class="btn btn-light align-self-center border-0">
+        <a href="{{ site.data.global.section_cta.button_link | relative_url }}" class="btn btn-light align-self-center border-0">
           {{ site.data.global.section_cta.button }}
         </a>
       </div>
