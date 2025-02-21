@@ -4,18 +4,27 @@ title: Sobre a ConsigLog
 descricao: Soluções em tecnologia para o mercado de consignados
 descricao_longa: >
   A ConsigLog é uma empresa de tecnologia especializada em soluções para o mercado de consignados. Com mais de 10 anos de experiência, a empresa atua em todo o Brasil, oferecendo produtos e serviços para instituições financeiras, correspondentes bancários e empresas de tecnologia.
+descricao_media: >
+  Atuamos no mercado financeiro, tecnológico e de gestão de margens consignáveis, oferecendo soluções especializadas para setores públicos e privados em todo o Brasil.
 banner:
-  pre_title: Sobre a
+  pre_title: Somos a
   title: Consig<span class="text-primary">Log</span>
-  bgimg: /assets/img/exemplo.webp
-  img: /assets/img/exemplo.webp
-  cta: Fale com um especialista
-  cta_link: /contato?assunto=Falar com um especialista
+  bgimg: /assets/img/consiglog-empresa-bg.webp
+  img: false
+  cta: Fale conosco
+  cta_link: /contato
+  cta_sec: Saiba mais
+  cta_sec_link: '#sobre'
+
+# Quem somos
+empresa:
+  section_title: A empresa
+  link: false
 ---
 
 <main>
   <!-- Hero -->
-  <header class="p-3 p-lg-5 mb-4 bg-dark text-bg-dark bg-covered bg-overlay bg-fade-left" data-bg-image="{{ page.banner.bgimg | relative_url }}">
+  <header class="p-3 p-lg-5 bg-dark text-bg-dark bg-covered bg-overlay_off bg-fade-left_off" data-bg-image="{{ page.banner.bgimg | relative_url }}">
     <div class="container py-5">
       <div class="row align-items-center">
         <div class="col-lg-6">
@@ -25,20 +34,63 @@ banner:
               <strong>{{ page.banner.title }}</strong>
             </h1>
             <p class="text-balanced text-hyphens">{{ page.descricao_longa }}</p>
-            <a href="{{ page.banner.cta_link | relative_url }}" class="btn btn-primary" type="button">{{ page.banner.cta }}</a>
+            <div class="d-flex gap-2">
+              <a href="{{ page.banner.cta_link | relative_url }}" class="btn btn-primary" type="button">{{ page.banner.cta }}</a>
+              <a href="{{ page.banner.cta_sec_link }}" class="btn btn-outline-light" type="button">{{ page.banner.cta_sec }}</a>
+            </div>
           </div>
         </div>
         <div class="col-lg-6">
-          <img src="{{ page.banner.img | relative_url }}" alt="{{ page.title }}" class="img-fluid rounded shadow-lg">
+          {% if page.banner.img %}
+            <img src="{{ page.banner.img | relative_url }}" alt="{{ page.title }}" class="img-fluid rounded shadow-lg">
+          {% endif %}
         </div>
       </div>
     </div>
   </header>
 
-  <section class="container">
-    <h2>{{ site.title }}</h2>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum ullam, alias nostrum at ad amet tempore libero assumenda sunt cum! Est, perspiciatis! Quo odit laboriosam consequuntur nisi accusantium molestiae nam.</p>
-    <a href="{{ '/' | relative_url }}" class="btn btn-primary">Ir para a página inicial</a>
+  {% include home-sobre.html %}
+
+  <!-- Missão, Visão e Valores -->
+  <section id="mvv" class="section bg-light">
+    <div class="container py-5">
+      <header class="section-heading">
+        <h2 class="h1 section-title">Missão, Visão e Valores</h2>
+        <p class="text-muted">Conheça a missão, a visão e os valores da <strong>ConsigLog</strong>.</p>
+      </header>
+      <div class="d-flex flex-column flex-lg-row gap-5 gap-lg-3 mt-5">
+        <div class="card border-0">
+          <h3 class="fw-bold bg-primary card-header p-lg-4">Missão</h3>
+          <div class="card-body p-lg-4">
+            <p>
+              Oferecer serviços de excelência na área de tecnologia para o mercado financeiro, agregando valores para nossos clientes, colaboradores e empresa.
+            </p>
+          </div>
+        </div>
+        <div class="card border-0">
+          <h3 class="fw-bold bg-primary card-header p-lg-4">Visão</h3>
+          <div class="card-body p-lg-4">
+            <p>
+              Ser reconhecida como uma das melhores empresas em gestão de margens consignáveis nos segmentos de empresas públicas e privadas.
+            </p>
+          </div>
+        </div>
+        <div class="card border-0">
+          <h3 class="fw-bold bg-primary card-header p-lg-4">Valores</h3>
+          <div class="card-body p-lg-4">
+            <ul>
+              <li>Transparência;</li>
+              <li>Comprometimento;</li>
+              <li>Ética;</li>
+              <li>Agilidade;</li>
+              <li>Segurança nos processamentos.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
+
+  {% include cta-apresentacao-fone-btn.html %}
 
 </main>

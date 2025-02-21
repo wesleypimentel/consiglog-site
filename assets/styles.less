@@ -765,10 +765,12 @@ h3 {
     --py: 90px;
   }
 
+  .section-heading {
+    padding-left: 2em;
+    border-left: 10px solid var(--cor-prim);
+  }
   .section-title {
     font-size: 3rem;
-    padding-left: 0.75em;
-    border-left: 10px solid var(--cor-prim);
     display: flex;
     flex-direction: column;
 
@@ -780,10 +782,12 @@ h3 {
     }
   }
   @media (max-width: 991px) {
+    .section-heading {
+      padding-left: 1em;
+      border-left-width: 5px;
+    }
     .section-title {
       font-size: 2.3rem;
-      padding-left: 0.5em;
-      border-left-width: 5px;
     }
   }
 }

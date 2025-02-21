@@ -72,12 +72,15 @@ copyright:
 # Home > Seção: Sobre
 section_sobre:
   title: "<small>Sobre a</small> **Consig<span class='text-primary'>Log</span>**"
+  subtitle: "Especialista em Gestão de Margens Consignáveis"
   description: |
     A **Consiglog Tecnologia e Soluções** foi fundada por profissionais experientes do mercado financeiro e atua há mais de 10 anos como uma das maiores e mais respeitadas gestoras de margens consignáveis do Brasil.
 
     Com uma ampla sede em São Paulo e escritórios estratégicos em diversas regiões do país, contamos com uma equipe especializada nas áreas de tecnologia e operações, garantindo agilidade e eficiência no processo de implantação de novos convênios.
 
     Atualmente, estamos presentes em diversos estados brasileiros, com contratos firmados com mais de **140 convênios**, incluindo Governos Estaduais, Prefeituras Municipais, Autarquias e Empresas Privadas.
+  link: "/empresa"
+  link_title: Saiba mais
   image:
     src: "/assets/img/consiglog-predio.webp"
     alt: "ConsigLog (Prédio)"
