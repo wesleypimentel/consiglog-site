@@ -11,7 +11,7 @@
   scrollbar-color: var(--cor-neutra-3) var(--cor-neutra-1);
 }
 
-@cor-prim: #f3c360;
+@cor-prim: #edc263;
 @cor-prim-hover: brightness(@cor-prim, 10%);
 
 .trans {
@@ -21,19 +21,19 @@
 :root {
   --header-height: 0;
   --cor-prim: @cor-prim;
-  --cor-prim-hgl: #e4b043;
+  --cor-prim-hgl: saturate(@cor-prim, 10%);
 
   --cor-neutra-1: #f8f9fa;
   --cor-neutra-2: #d8e0e7;
-  --cor-neutra-3: #96a1ac;
-  --cor-neutra-4: #3f4759;
-  --cor-neutra-4-rgb: 63, 71, 89;
-  --cor-neutra-8: #1e1e2e;
-  --cor-neutra-8-rgb: 30, 30, 46;
+  --cor-neutra-3: #717988;
+  --cor-neutra-4: #4f5663;
+  --cor-neutra-4-rgb: 79, 86, 99;
+  --cor-neutra-8: #393e47;
+  --cor-neutra-8-rgb: 57, 62, 71;
   --cor-azul: #0077ff;
   --cor-azul-drk: #131f2c;
 
-  --font-title: "nj", Inter, Arial, Helvetica, sans-serif;
+  --font-title: "Stainless", Inter, Arial, Helvetica, sans-serif;
 
   --bs-primary: @cor-prim;
   --bs-primary-rgb: 243, 195, 96;
@@ -72,7 +72,7 @@ main {
 
 strong,
 b {
-  font-weight: 700;
+  font-weight: 900;
 }
 
 p {
@@ -286,6 +286,7 @@ select {
     gap: 10px;
     text-align: center;
     justify-content: center;
+    white-space: nowrap;
 
     ul a:hover,
     ul a:focus {
@@ -446,11 +447,11 @@ h2,
 h3 {
   .font-title;
   text-transform: uppercase;
-  font-weight: 100;
+  font-weight: 300;
 
   strong,
   b {
-    font-weight: 700;
+    font-weight: 900;
   }
 }
 
@@ -998,5 +999,64 @@ h3 {
   .icon,
   .material-symbols-rounded {
     color: var(--cor-prim);
+  }
+}
+
+#banner-breadcrumb {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  line-height: 1em;
+
+  &.lined {
+    &:after {
+      flex-grow: 1;
+      width: 100%;
+    }
+  }
+
+  ol.breadcrumb {
+    --bs-breadcrumb-divider-color: inherit;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 0.9rem;
+    flex-grow: 0;
+    width: 100%;
+  }
+  .breadcrumb-item {
+    color: inherit;
+    margin: 0;
+    padding: 0 0 0.25rem 0;
+    display: inline-flex;
+    float: none;
+
+    a {
+      opacity: 0.5;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    &.active {
+      display: none;
+      font-weight: bold;
+    }
+
+    &:not(:first-child) {
+      &:before {
+        display: inline-flex;
+        justify-content: center;
+        float: none;
+        content: "›";
+        margin: 0 0 0 0.5em;
+        text-align: center;
+      }
+    }
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
   }
 }

@@ -1,0 +1,67 @@
+<!-- _includes/banner.html -->
+<header class="p-3 p-lg-5 bg-dark text-bg-dark bg-covered bg-overlay_off bg-fade-left_off" 
+        data-bg-image="{{ page.banner.bgimg | relative_url }}">
+  <div class="container py-5">
+    <div class="row align-items-center">
+      <div class="col-lg-6">
+        <div class="slide-box angled-corner-box bottom-right">
+          <!-- Breadcrumb -->
+          {% include breadcrumb.html %}
+
+          <!-- Graphic Image -->
+          {% if page.banner.graphic_img %}
+            <img src="{{ page.banner.graphic_img | relative_url }}" 
+                 alt="{{ page.title }}" 
+                 class="img-fluid mb-4 rounded shadow-sm">
+          {% endif %}
+          <!-- Verifica se há pre_title e title no banner -->
+          <h1 class="h1 display-5">
+            {% if page.banner.title %}
+              {% if page.banner.pre_title %}
+              <small class="lined">{{ page.banner.pre_title }}</small>
+              {% endif %}
+              <strong>{{ page.banner.title }}</strong>
+            {% else %}
+              {{ page.title }}
+            {% endif %}
+          </h1>
+          <!-- Verifica se há desc no banner, senão usa page.desc -->
+          <p class="text-balanced text-hyphens">
+            {% if page.banner.desc %}
+              {{ page.banner.desc }}
+            {% else %}
+              {{ page.desc }}
+            {% endif %}
+          </p>
+          <div class="d-flex gap-2">
+            <!-- Botão principal (CTA) -->
+            <a href="
+              {% if page.banner.cta_link contains '#' %}
+                {{ page.banner.cta_link }}
+              {% else %}
+                {{ page.banner.cta_link | relative_url }}
+              {% endif %}" 
+               class="btn btn-primary">{{ page.banner.cta }}</a>
+            <!-- Botão secundário (CTA Secundário) -->
+            {% if page.banner.cta_sec %}
+              <a href="
+                {% if page.banner.cta_sec_link contains '#' %}
+                  {{ page.banner.cta_sec_link }}
+                {% else %}
+                  {{ page.banner.cta_sec_link | relative_url }}
+                {% endif %}" 
+                 class="btn btn-outline-light">{{ page.banner.cta_sec }}</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        {% if page.banner.img %}
+          <img src="{{ page.banner.img | relative_url }}" 
+               alt="{{ page.title }}" 
+               class="img-fluid rounded shadow-lg">
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</header>

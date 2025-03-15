@@ -9,22 +9,24 @@ menu:
   - titulo: Página Inicial
     link: /
     icone: home
-  - titulo: Empresa
-    link: /empresa
+  - titulo: A Empresa
+    link: /empresa/
   - titulo: Soluções
-    link: /solucoes
+    link: /solucoes/
     dropdown:
       - titulo: LogConsig
-        link: /solucoes/logconsig
+        link: /solucoes/logconsig/
       - titulo: LogPrivado
-        link: /solucoes/logprivado
+        link: /solucoes/logprivado/
+      - titulo: Todas as Soluções
+        link: /solucoes/
   - titulo: Contato
-    link: /contato
+    link: /contato/
     dropdown:
       - titulo: Fale Conosco
         link: /contato/
       - titulo: Trabalhe Conosco
-        link: /trabalhe-conosco
+        link: /trabalhe-conosco/
 
 # Área do Cliente
 area_cliente:

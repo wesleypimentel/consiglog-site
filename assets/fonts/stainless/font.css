@@ -1,0 +1,29 @@
+@font-face {
+  font-family: "Stainless";
+  src: url("Stainless-Regular.woff2") format("woff2"),
+    url("Stainless-Regular.woff") format("woff"),
+    url("Stainless-Regular.svg#Stainless-Regular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Stainless";
+  src: url("Stainless-Black.woff2") format("woff2"),
+    url("Stainless-Black.woff") format("woff"),
+    url("Stainless-Black.svg#Stainless-Black") format("svg");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Stainless";
+  src: url("Stainless-Light.woff2") format("woff2"),
+    url("Stainless-Light.woff") format("woff"),
+    url("Stainless-Light.svg#Stainless-Light") format("svg");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}

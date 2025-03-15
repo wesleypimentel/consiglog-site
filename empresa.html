@@ -1,15 +1,15 @@
 ---
 layout: default
 title: Sobre a ConsigLog
-descricao: Soluções em tecnologia para o mercado de consignados
-descricao_longa: >
+desc: Soluções em tecnologia para o mercado de consignados
+desc_lg: >
   A ConsigLog é uma empresa de tecnologia especializada em soluções para o mercado de consignados. Com mais de 10 anos de experiência, a empresa atua em todo o Brasil, oferecendo produtos e serviços para instituições financeiras, correspondentes bancários e empresas de tecnologia.
-descricao_media: >
+desc_md: >
   Atuamos no mercado financeiro, tecnológico e de gestão de margens consignáveis, oferecendo soluções especializadas para setores públicos e privados em todo o Brasil.
 banner:
   pre_title: Somos a
   title: Consig<span class="text-primary">Log</span>
-  bgimg: /assets/img/consiglog-empresa-bg.webp
+  bgimg: /assets/img/modern-office.webp
   img: false
   cta: Fale conosco
   cta_link: /contato
@@ -20,11 +20,28 @@ banner:
 empresa:
   section_title: A empresa
   link: false
+
+# Missão, Visão e Valores
+mvv:
+  title: "Missão, Visão e Valores"
+  subtitle: "Conheça a missão, a visão e os valores que definem e movem a <strong>ConsigLog</strong> como empresa."
+  items:
+    - title: "Missão"
+      content: "Oferecer serviços de excelência na área de tecnologia para o mercado financeiro, agregando valores para nossos clientes, colaboradores e empresa."
+    - title: "Visão"
+      content: "Ser reconhecida como uma das melhores empresas em gestão de margens consignáveis nos segmentos de empresas públicas e privadas."
+    - title: "Valores"
+      list:
+        - "Transparência;"
+        - "Comprometimento;"
+        - "Ética;"
+        - "Agilidade;"
+        - "Segurança nos processamentos."
 ---
 
 <main>
-  <!-- Hero -->
-  <header class="p-3 p-lg-5 bg-dark text-bg-dark bg-covered bg-overlay_off bg-fade-left_off" data-bg-image="{{ page.banner.bgimg | relative_url }}">
+  <!-- Banner -->
+  <header class="p-3 p-lg-5 bg-dark text-bg-dark bg-covered bg-overlay _bg-fade-left" data-bg-image="{{ page.banner.bgimg | relative_url }}">
     <div class="container py-5">
       <div class="row align-items-center">
         <div class="col-lg-6">
@@ -33,7 +50,7 @@ empresa:
               <small class="lined">{{ page.banner.pre_title }}</small>
               <strong>{{ page.banner.title }}</strong>
             </h1>
-            <p class="text-balanced text-hyphens">{{ page.descricao_longa }}</p>
+            <p class="text-balanced text-hyphens">{{ page.desc_lg }}</p>
             <div class="d-flex gap-2">
               <a href="{{ page.banner.cta_link | relative_url }}" class="btn btn-primary" type="button">{{ page.banner.cta }}</a>
               <a href="{{ page.banner.cta_sec_link }}" class="btn btn-outline-light" type="button">{{ page.banner.cta_sec }}</a>
@@ -55,38 +72,27 @@ empresa:
   <section id="mvv" class="section bg-light">
     <div class="container py-5">
       <header class="section-heading">
-        <h2 class="h1 section-title">Missão, Visão e Valores</h2>
-        <p class="text-muted">Conheça a missão, a visão e os valores da <strong>ConsigLog</strong>.</p>
+        <h2 class="h1 section-title">{{ page.mvv.title }}</h2>
+        <p class="text-muted">{{ page.mvv.subtitle | markdownify }}</p>
       </header>
       <div class="d-flex flex-column flex-lg-row gap-5 gap-lg-3 mt-5">
+        {% for item in page.mvv.items %}
         <div class="card border-0">
-          <h3 class="fw-bold bg-primary card-header p-lg-4">Missão</h3>
+          <h3 class="fw-bold bg-primary card-header p-lg-4">{{ item.title }}</h3>
           <div class="card-body p-lg-4">
-            <p>
-              Oferecer serviços de excelência na área de tecnologia para o mercado financeiro, agregando valores para nossos clientes, colaboradores e empresa.
-            </p>
-          </div>
-        </div>
-        <div class="card border-0">
-          <h3 class="fw-bold bg-primary card-header p-lg-4">Visão</h3>
-          <div class="card-body p-lg-4">
-            <p>
-              Ser reconhecida como uma das melhores empresas em gestão de margens consignáveis nos segmentos de empresas públicas e privadas.
-            </p>
-          </div>
-        </div>
-        <div class="card border-0">
-          <h3 class="fw-bold bg-primary card-header p-lg-4">Valores</h3>
-          <div class="card-body p-lg-4">
+            {% if item.content %}
+            <p>{{ item.content }}</p>
+            {% endif %}
+            {% if item.list %}
             <ul>
-              <li>Transparência;</li>
-              <li>Comprometimento;</li>
-              <li>Ética;</li>
-              <li>Agilidade;</li>
-              <li>Segurança nos processamentos.</li>
+              {% for value in item.list %}
+              <li>{{ value }}</li>
+              {% endfor %}
             </ul>
+            {% endif %}
           </div>
         </div>
+        {% endfor %}
       </div>
     </div>
   </section>
