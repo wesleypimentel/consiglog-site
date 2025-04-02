@@ -2,18 +2,18 @@
   <div class="container py-5">
     <div class="row pb-3 gx-lg-5 gy-5">
       <!-- Footer: Esquerda -->
-      <div class="col-xl-6 pe-xl-5">
+      <div class="col-xl-8 pe-xl-5">
         <!-- Empresa -->
         <div class="d-flex flex-wrap mb-5">
-          <a href="{{ site.data.global.empresa.logo.link | relative_url }}" class="col-12 col-md-5 d-flex border-opacity-25 border border-1 border-light p-4 text-center">
+          <a href="{{ site.data.global.empresa.logo.link | relative_url }}" class="col-12 col-md-6 d-flex border-opacity-25 border border-1 border-light p-4 text-center">
             <img src="{{ site.data.global.empresa.logo.src | relative_url }}" class="d-block m-auto" alt="{{ site.data.global.empresa.logo.alt }}">
           </a>
-          <div class="col-12 col-md-7 ps-md-5 mt-4 mt-md-0 text-start">
+          <div class="col-12 col-md-6 ps-md-5 mt-4 mt-md-0 text-start">
             <h5 class="text-primary fw-bold lined">
-              {{ site.data.global.empresa.titulo }}
+              {{ site.data.global.empresa.title }}
             </h5>
             <small class="opacity-50 lh-sm text-balanced">
-              <p>{{ site.data.global.empresa.descricao }}</p>
+              <p>{{ site.data.global.empresa.desc }}</p>
             </small>
           </div>
         </div>
@@ -24,6 +24,40 @@
               <img class="footer-selo" src="{{ selo.src | relative_url }}" alt="{{ selo.alt }}">
             </div>
           {% endfor %}
+
+          <!-- DigiCert -->
+          <div class="ms-lg-3">
+            <!-- Begin DigiCert site seal HTML and JavaScript -->
+            <script type="text/javascript">
+                var __dcid = __dcid || [];
+                __dcid.push(['DigiCertClickID_TpfWkB1x', '3', 'l', 'black', 'TpfWkB1x']);
+                (function() {
+                    var cid = document.createElement('script');
+                    cid.async = true;
+                    cid.src = 'https://seal.digicert.com/seals/cascade/seal.min.js';
+                    var s = document.getElementsByTagName('script');
+                    var ls = s[(s.length - 1)];
+                    ls.parentNode.insertBefore(cid, ls.nextSibling);
+                })();
+            </script>
+            <div id="DigiCertClickID_TpfWkB1x" data-language="pt">
+                <div id="DigiCertClickID_TpfWkB1xSeal">
+                  <img src="https://seal.digicert.com/seals/cascade/?tag=TpfWkB1x&amp;referer=www.consiglog.com.br&amp;format=png&amp;lang=pt&amp;seal_number=3&amp;seal_size=l&amp;an=min" 
+                    alt="DigiCert Secured Site Seal"
+                    class="digicert-seal"
+                    tabindex="0" 
+                    role="link">
+                </div>
+                {% assign digicert_badge = '/assets/img/digicert_badge.png' | relative_url %}
+                <style>
+                  .digicert-seal {
+                    background-image: url({{ digicert_badge }});
+                  }
+                </style>
+            </div>
+            <!-- End DigiCert site seal HTML and JavaScript -->
+          </div>
+        
         </div>
         <!-- Redes Sociais -->
         <div id="footer-social-icons" class="d-flex flex-wrap gap-4 align-items-center pt-3 justify-content-evenly justify-content-lg-start border-top border-opacity-25 border-light border-1">
@@ -35,14 +69,14 @@
         </div>
       </div>
       <!-- Footer: Direita -->
-      <div class="col-xl-6">
+      <div class="col-xl-4">
         <div class="row">
           {% for endereco in site.data.global.enderecos %}
             <div class="col-12 col-lg-6 col-xl-12">
               <h5 class="text-primary lined">
                 <span><b>{{ endereco.tipo }}:</b> {{ endereco.localizacao }}</span>
               </h5>
-              <ul class="icon-list py-3">
+              <ul class="icon-list py-3 text-balanced">
                 {% for detalhe in endereco.detalhes %}
                   <li>
                     <span class="material-symbols-rounded">{{ detalhe.icone }}</span>
@@ -63,11 +97,27 @@
       </div>
     </div>
   </div>
+  <!-- Footer: Políticas -->
+   <div id="footer-politicas" class="bg-light bg-opacity-10 pt-4 pb-4">
+    <div class="container">
+      <div class="small text-dark-emphasis">
+        <strong class="me-3 text-white-50">
+          {{ site.data.global.politicas.texto }}
+        </strong>
+        {% for link in site.data.global.politicas.links %}
+          {% unless forloop.first %}
+            &nbsp;&nbsp;&vert;&nbsp;&nbsp;
+          {% endunless %}
+          <a href="{{ link.link | relative_url }}" class="text-primary">{{ link.texto }}</a>
+        {% endfor %}
+      </div>
+    </div>
+   </div>
   <!-- Footer: Copyright -->
-  <div id="footer-copyright" class="bg-light bg-opacity-10 py-3">
+  <div id="footer-copyright" class="bg-dark bg-opacity-10 py-3">
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-between">
-        <div class="col-12 col-lg-auto text-center text-lg-start m-0">
+        <div class="small col-12 col-lg-auto text-center text-lg-start m-0">
           <span>
             {{ site.data.global.copyright.texto }}
           </span>

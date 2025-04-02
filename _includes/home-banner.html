@@ -1,34 +1,40 @@
 
-<section id="home-slider" class="swiper" data-bg-image="{{ '/assets/img/exemplo.webp' | relative_url }}">
+<section id="home-banner" class="swiper" data-bg-image="{{ '/assets/img/consiglog_home-banner-bg.webp' | relative_url }}">
   <canvas id="canvas" class="canvas"></canvas>
   <div class="swiper-wrapper">
     <div class="swiper-slide">
+      <div class="slide-bg" data-bg-image="{{ '/assets/img/finances.webp' | relative_url }}"></div>
       <div class="container">
-        <div class="slide-box angled-corner-box bottom-right">
-          <h1 class="h1 display-5">
-            <small class="lined">Especialista em</small>
-            <span>Gestão de margens</span>
-            <strong class="text-primary">Consignáveis</strong>
-          </h1>
-          <p>
-            Na Consiglog, somos especialistas em gestão de margens consignáveis, oferecendo <b>soluções tecnológicas</b> inovadoras e personalizadas para maximizar a eficiência e os resultados do seu negócio.
-          </p>
-          <a href="{{ '/solucoes' | relative_url }}" class="btn btn-primary">Conheça nossas soluções</a>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="slide-box angled-corner-box bottom-right">
+              <h1 class="h1 display-5">
+                <small class="lined">Especialista em</small>
+                <span>Gestão de margens</span>
+                <strong class="text-primary">Consignáveis</strong>
+              </h1>
+              <p>
+                Na Consiglog, somos especialistas em gestão de margens consignáveis, oferecendo <b>soluções tecnológicas</b> inovadoras e personalizadas para maximizar a eficiência e os resultados do seu negócio.
+              </p>
+              <a href="{{ '/solucoes' | relative_url }}" class="btn btn-primary">Conheça nossas soluções</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
     <div class="swiper-slide">
+      <div class="slide-bg" data-bg-image="{{ '/assets/img/business-handshake.webp' | relative_url }}"></div>
       <div class="container">
         <div class="slide-box angled-corner-box bottom-right">
           <h2 class="h1 display-5">
-            <small class="lined">Exemplo de</small>
-            <span>Outras</span>
-            <strong class="text-primary">Soluções</strong>
+            <small class="lined">Institucional</small>
+            <span>Sobre a</span>
+            <strong class="text-primary">ConsigLog</strong>
           </h2>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi accusantium amet tempora officia quo quas optio molestiae fugiat nam dolorum, tenetur asperiores alias culpa eos! Mollitia culpa quod laboriosam cupiditate?
+            Somos pessoas cuidando de pessoas.
           </p>
-          <a href="{{ '/solucoes' | relative_url }}" class="btn btn-primary">Conheça nossas soluções</a>
+          <a href="{{ '/empresa' | relative_url }}" class="btn btn-primary">Sobre nós</a>
         </div>
       </div>
     </div>
@@ -44,9 +50,11 @@
   </div>
 </section>
 <script>
+  let homeBanner = '#home-banner';
+
   // Swiper
   document.addEventListener("DOMContentLoaded", function () {
-    var swiper = new Swiper("#home-slider", {
+    var swiper = new Swiper(homeBanner, {
       loop: true,
       autoplay: {
         delay: 6000,
@@ -57,11 +65,11 @@
         clickable: true,
       },
       navigation: {
-        nextEl: "#home-slider .swiper-button-next",
-        prevEl: "#home-slider .swiper-button-prev",
+        nextEl: homeBanner + " .swiper-button-next",
+        prevEl: homeBanner + " .swiper-button-prev",
       },
-      effect: "slide", // Altere para "slide", "cube", "coverflow", etc.
-      speed: 1000, // Velocidade da transição
+      effect: "slide", // Altere para "fade", "slide", "cube", "coverflow", etc.
+      speed: 1200, // Velocidade da transição
   });
 });
   // Particles
@@ -76,7 +84,7 @@
   function init () {
     //Add on load scripts
     canvas = document.getElementById("canvas");
-    parent = document.getElementById('home-slider');
+    parent = document.querySelector(homeBanner);
     ctx = canvas.getContext("2d");
     parent.addEventListener("mousemove",function(evt){
       mousePos = getMousePos(canvas,evt);

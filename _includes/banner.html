@@ -1,5 +1,6 @@
 <!-- _includes/banner.html -->
-<header class="p-3 p-lg-5 bg-dark text-bg-dark bg-covered bg-overlay_off bg-fade-left_off" 
+<header id="banner" 
+        class="p-3 p-lg-5 bg-dark text-bg-dark bg-covered {% if page.banner.classes %}{{ page.banner.classes }}{% endif %} {% if page.banner.bg_overlay == true %}bg-overlay{% endif %}"
         data-bg-image="{{ page.banner.bgimg | relative_url }}">
   <div class="container py-5">
     <div class="row align-items-center">
@@ -12,10 +13,11 @@
           {% if page.banner.graphic_img %}
             <img src="{{ page.banner.graphic_img | relative_url }}" 
                  alt="{{ page.title }}" 
-                 class="img-fluid mb-4 rounded shadow-sm">
+                 class="img-fluid mb-2 rounded shadow-sm">
           {% endif %}
+
           <!-- Verifica se há pre_title e title no banner -->
-          <h1 class="h1 display-5">
+          <h1 title="banner-title" class="h1 display-5">
             {% if page.banner.title %}
               {% if page.banner.pre_title %}
               <small class="lined">{{ page.banner.pre_title }}</small>
@@ -25,7 +27,14 @@
               {{ page.title }}
             {% endif %}
           </h1>
+
+          {% if page.banner.subtitle %}
+          <!-- Subtítulo -->
+          <h2 class="h5 text-primary text-balanced">{{ page.banner.subtitle }}</h2>
+          {% endif %}
+
           <!-- Verifica se há desc no banner, senão usa page.desc -->
+          {% if page.banner.desc or page.desc %}
           <p class="text-balanced text-hyphens">
             {% if page.banner.desc %}
               {{ page.banner.desc }}
@@ -33,15 +42,21 @@
               {{ page.desc }}
             {% endif %}
           </p>
-          <div class="d-flex gap-2">
-            <!-- Botão principal (CTA) -->
-            <a href="
-              {% if page.banner.cta_link contains '#' %}
-                {{ page.banner.cta_link }}
-              {% else %}
-                {{ page.banner.cta_link | relative_url }}
-              {% endif %}" 
-               class="btn btn-primary">{{ page.banner.cta }}</a>
+          {% endif %}
+
+          <!-- Botões de ação -->
+          <div id="banner-actions" class="d-flex gap-2">
+            {% if page.banner.cta %}
+              <!-- Botão principal (CTA) -->
+              <a href="
+                {% if page.banner.cta_link contains '#' %}
+                  {{ page.banner.cta_link }}
+                {% else %}
+                  {{ page.banner.cta_link | relative_url }}
+                {% endif %}" 
+                class="btn btn-primary">{{ page.banner.cta }}</a>
+            {% endif %}
+
             <!-- Botão secundário (CTA Secundário) -->
             {% if page.banner.cta_sec %}
               <a href="

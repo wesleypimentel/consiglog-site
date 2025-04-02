@@ -1,30 +1,45 @@
 ---
 layout: default
+
 title: Sobre a ConsigLog
 desc: Soluções em tecnologia para o mercado de consignados
 desc_lg: >
-  A ConsigLog é uma empresa de tecnologia especializada em soluções para o mercado de consignados. Com mais de 10 anos de experiência, a empresa atua em todo o Brasil, oferecendo produtos e serviços para instituições financeiras, correspondentes bancários e empresas de tecnologia.
+  A ConsigLog é uma empresa de tecnologia especializada em soluções para o mercado de consignados. Com mais de 10 anos de experiência, atua em todo o Brasil, oferecendo produtos e serviços para instituições financeiras, correspondentes bancários e empresas de tecnologia.
 desc_md: >
   Atuamos no mercado financeiro, tecnológico e de gestão de margens consignáveis, oferecendo soluções especializadas para setores públicos e privados em todo o Brasil.
+
 banner:
-  pre_title: Somos a
+  pre_title: A Empresa
   title: Consig<span class="text-primary">Log</span>
-  bgimg: /assets/img/modern-office.webp
+  bgimg: /assets/img/consiglog_wall_2k.webp
+  subtitle: Soluções em tecnologia para o mercado de consignados
+  desc: Atuamos no mercado financeiro, tecnológico e de gestão de margens consignáveis, oferecendo soluções especializadas para setores públicos e privados em todo o Brasil.
+  bg_overlay: true
   img: false
   cta: Fale conosco
   cta_link: /contato
   cta_sec: Saiba mais
   cta_sec_link: '#sobre'
+  breadcrumb:
+    - title: Home
+      link: /
 
-# Quem somos
-empresa:
-  section_title: A empresa
-  link: false
+# Sobre
+sobre:
+  title: <small>Sobre a</small><strong>Consig<span class="text-primary">Log</span></strong>
+  description: |
+    A **Consiglog Tecnologia e Soluções** foi fundada por profissionais experientes do mercado financeiro e há mais de 11 anos é reconhecida como a melhor empresa de gestão de margens consignáveis do Brasil.
+
+    Com uma sede moderna em São Paulo e escritórios em diversas regiões do país, contamos com uma **equipe especializada** nas áreas de tecnologia e operações, garantindo agilidade e eficiência no processo de implantação de novos convênios.
+
+    Atualmente, estamos presentes em diversos estados brasileiros, prestando serviço de gestão de margens, incluindo Governos Estaduais, Prefeituras Municipais, Autarquias e Empresas Privadas. Além disso, orgulhamo-nos de ser a **primeira empresa na América Latina a conquistar a certificação ISO 27701**.
+  images:
+    bg: "/assets/img/consiglog_empresa-sobre-bg.webp"
+    img: "/assets/img/consiglog_empresa1.webp"
 
 # Missão, Visão e Valores
 mvv:
-  title: "Missão, Visão e Valores"
-  subtitle: "Conheça a missão, a visão e os valores que definem e movem a <strong>ConsigLog</strong> como empresa."
+  title: "Conheça a **Missão, Visão e Valores** da ConsigLog"
   items:
     - title: "Missão"
       content: "Oferecer serviços de excelência na área de tecnologia para o mercado financeiro, agregando valores para nossos clientes, colaboradores e empresa."
@@ -41,39 +56,53 @@ mvv:
 
 <main>
   <!-- Banner -->
-  <header class="p-3 p-lg-5 bg-dark text-bg-dark bg-covered bg-overlay _bg-fade-left" data-bg-image="{{ page.banner.bgimg | relative_url }}">
-    <div class="container py-5">
-      <div class="row align-items-center">
+  {% include banner.html %}
+
+  <!-- Sobre -->
+  <section id="sobre" class="section bg-covered position-relative" data-bg-image="{{ page.sobre.images.bg | relative_url }}">
+    <div class="container position-relative">
+      <div class="row g-lg-5 align-items-center">
         <div class="col-lg-6">
-          <div class="slide-box angled-corner-box bottom-right">
-            <h1 class="h1 display-5">
-              <small class="lined">{{ page.banner.pre_title }}</small>
-              <strong>{{ page.banner.title }}</strong>
-            </h1>
-            <p class="text-balanced text-hyphens">{{ page.desc_lg }}</p>
-            <div class="d-flex gap-2">
-              <a href="{{ page.banner.cta_link | relative_url }}" class="btn btn-primary" type="button">{{ page.banner.cta }}</a>
-              <a href="{{ page.banner.cta_sec_link }}" class="btn btn-outline-light" type="button">{{ page.banner.cta_sec }}</a>
+          <img src="{{ page.sobre.images.img | relative_url }}" alt="" class="img-fluid d-lg-none angled-corner-box top-right">
+        </div>
+        <div class="col-lg-6">
+          <div class="p-5 bg-white bg-opacity-75 angled-corner-box bottom-left bg-blurred">
+            <header class="section-heading">
+              <h2 class="section-title">
+                {{ page.sobre.title }}
+              </h2>
+            </header>
+            <div class="section-content mt-4">
+              {{ page.sobre.description | markdownify }}
             </div>
           </div>
         </div>
-        <div class="col-lg-6">
-          {% if page.banner.img %}
-            <img src="{{ page.banner.img | relative_url }}" alt="{{ page.title }}" class="img-fluid rounded shadow-lg">
-          {% endif %}
-        </div>
       </div>
     </div>
-  </header>
-
-  {% include home-sobre.html %}
+  </section>
+  <style>
+    #sobre {
+      background-position-y: 35%;
+    }
+    @media (max-width: 991px) {
+      #sobre:before {
+        content: '';
+        position: absolute;
+        inset: 0 0 0 0;
+        background-color: #d8e0e7cc;
+        backdrop-filter: blur(100px);
+      }
+    }
+  </style>
 
   <!-- Missão, Visão e Valores -->
   <section id="mvv" class="section bg-light">
     <div class="container py-5">
       <header class="section-heading">
-        <h2 class="h1 section-title">{{ page.mvv.title }}</h2>
-        <p class="text-muted">{{ page.mvv.subtitle | markdownify }}</p>
+        <h2 class="h3">{{ page.mvv.title | markdownify }}</h2>
+        {% if page.mvv.subtitle %}
+          <p class="text-muted">{{ page.mvv.subtitle | markdownify }}</p>
+        {% endif %}
       </header>
       <div class="d-flex flex-column flex-lg-row gap-5 gap-lg-3 mt-5">
         {% for item in page.mvv.items %}

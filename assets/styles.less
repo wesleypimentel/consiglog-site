@@ -37,6 +37,10 @@
 
   --bs-primary: @cor-prim;
   --bs-primary-rgb: 243, 195, 96;
+  --bs-light-bg-subtle: var(--cor-neutra-1);
+  --bs-light-bg-subtle-rgb: 248, 249, 250;
+  --bs-light-bg: var(--cor-neutra-2);
+  --bs-light-bg-rgb: 216, 224, 231;
 
   --swiper-theme-color: var(--cor-prim);
   --swiper-pagination-bullet-inactive-color: #888;
@@ -72,7 +76,7 @@ main {
 
 strong,
 b {
-  font-weight: 900;
+  font-weight: 700;
 }
 
 p {
@@ -207,6 +211,14 @@ select {
     content: "";
     background-image: linear-gradient(45deg, var(--cor-neutra-8), transparent);
   }
+}
+
+.bg-blurred {
+  backdrop-filter: blur(10px);
+}
+
+.grayscale {
+  filter: grayscale(1);
 }
 
 .separator {
@@ -472,7 +484,22 @@ h3 {
   }
 }
 
-#home-slider {
+.column-count {
+  column-count: 2;
+  column-gap: 1em;
+
+  @media (max-width: 767px) {
+    column-count: 1;
+  }
+}
+.column-count-3 {
+  column-count: 3;
+}
+.column-count-4 {
+  column-count: 4;
+}
+
+#home-banner {
   background-color: var(--cor-neutra-8);
   background-size: cover;
   background-position: center;
@@ -500,6 +527,7 @@ h3 {
 
   .swiper-slide {
     // background-color: var(--cor-neutra-8);
+    background-size: cover;
     border: 0;
     color: #fff;
     min-height: calc(100vh - var(--header-height));
@@ -508,6 +536,32 @@ h3 {
     padding-top: 60px;
     padding-bottom: 160px;
     .trans;
+
+    .slide-bg {
+      position: absolute;
+      inset: 0 0 0 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      .trans;
+      transition-duration: 2s;
+      transition-delay: 1s;
+    }
+    &.swiper-slide-active .slide-bg {
+      animation: kenburns 10s ease-in-out forwards;
+      opacity: 0.8;
+    }
+    @keyframes kenburns {
+      0% {
+        transform: scale(1);
+      }
+      100% {
+        transform: scale(1.05);
+      }
+    }
 
     > div {
       margin-top: auto;
@@ -534,7 +588,7 @@ h3 {
   justify-content: start;
   align-items: flex-start;
   height: 100%;
-  padding: 45px 80px 45px 60px;
+  padding: 40px 80px 40px 60px;
   text-align: left;
   max-width: 700px;
   text-wrap: balance;
@@ -555,7 +609,7 @@ h3 {
     letter-spacing: 1px;
     display: flex;
     gap: 1em;
-    margin-bottom: 0.5em;
+    margin-bottom: 0.15em;
   }
 
   p {
@@ -847,12 +901,13 @@ h3 {
       content: "";
       background-image: linear-gradient(
         45deg,
-        var(--cor-neutra-8) 33%,
-        transparent 100%
+        var(--cor-neutra-8) 20%,
+        transparent 70%
       );
       position: absolute;
       inset: 0 0 0 0;
       z-index: 1;
+      opacity: 1;
     }
     .card-body {
       position: relative;
@@ -956,6 +1011,12 @@ h3 {
       rgba(28, 52, 77, 0.5) 100%
     ),
     #131f2c;
+
+  .icon-list {
+    li {
+      line-height: 1.1em;
+    }
+  }
 
   a {
     color: inherit;

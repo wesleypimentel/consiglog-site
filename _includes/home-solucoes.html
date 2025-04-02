@@ -4,7 +4,9 @@
       <div class="row g-md-5 align-items-center">
         <div class="col-md-7">
           <h2 class="section-title">
-            {{ site.data.solucoes.home_section_title | markdownify }}
+            <a href="{{ site.data.solucoes.home_section_link | relative_url }}" class="text-decoration-none text-reset">
+              {{ site.data.solucoes.home_section_title | markdownify }}
+            </a>
           </h2>
         </div>
         <div class="col-md-5 text-balanced">
@@ -32,7 +34,10 @@
               <p>
                 {{ solucao.descricao }}
               </p>
-              <a class="btn btn-outline-info" href="{{ solucao.link | relative_url }}" title="Saiba mais sobre a solução {{ solucao.titulo }}" aria-label="Acessar página da solução {{ solucao.titulo }}">{{ site.data.solucoes.config.defaults.link_texto }}</a>
+              <a class="btn btn-outline-info d-inline-flex align-items-center gap-2" href="{{ solucao.link | relative_url }}" title="Saiba mais sobre a solução {{ solucao.titulo }}" aria-label="Acessar página da solução {{ solucao.titulo }}">
+                <span>{{ site.data.solucoes.config.defaults.link_texto }}</span>
+                <i class="material-symbols-rounded">arrow_forward</i>
+              </a>
             </div>
           </div>
         </div>

@@ -4,9 +4,9 @@ empresa:
     src: /assets/img/consiglog-logo-inv.svg
     alt: ConsigLog
     link: /
-  titulo: ConsigLog
-  descricao: >
-    Fundada por especialistas no mercado financeiro, é especializada na gestão de margens consignáveis para órgãos públicos e empresas privadas. Oferecemos tratamento personalizado, focado em resultados e melhorias nos processos de nossos clientes. Nossas certificações garantem seriedade, compromisso e responsabilidade.
+  title: ConsigLog
+  desc: >
+    Com ampla atuação no mercado de gestão de margem consignável, a ConsigLog desenvolveu um avançado e intuitivo sistema de gestão de margem para os setores público e privado.
 
 # Selos / Certificações
 selos:
@@ -62,23 +62,35 @@ enderecos:
         link: /contato
         texto: Fale conosco
 
+# Políticas
+politicas:
+  texto: "Nossas Políticas:"
+  links:
+    - texto: Política do Sistema de Gestão Integrado
+      link: /politica-do-sistema-de-gestao-integrado/
+    - texto: Política de Compliance
+      link: /politica-de-compliance-e-controles-internos/
+    - texto: Política ESG
+      link: /politica-esg/
+    - texto: Relatório Anual ESG
+      link: /ESG/Relatorio_anual_ESG.pdf
+    - texto: Código de Ética
+      link: /codigo-de-etica/
+
 # Copyright
 copyright:
   texto: ConsigLog &copy; <span data-var="year">[year]</span> &middot; Todos os direitos reservados
-  links:
-    - texto: Política de Privacidade
-      link: /politica-de-privacidade
 
 # Home > Seção: Sobre
 section_sobre:
   title: "<small>Sobre a</small> **Consig<span class='text-primary'>Log</span>**"
   subtitle: "Especialista em Gestão de Margens Consignáveis"
   description: |
-    A **Consiglog Tecnologia e Soluções** foi fundada por profissionais experientes do mercado financeiro e atua há mais de 10 anos como uma das maiores e mais respeitadas gestoras de margens consignáveis do Brasil.
+    A **Consiglog Tecnologia e Soluções** foi fundada por profissionais experientes do mercado financeiro e há mais de 11 anos é reconhecida como a melhor empresa de gestão de margens consignáveis do Brasil.
 
-    Com uma ampla sede em São Paulo e escritórios estratégicos em diversas regiões do país, contamos com uma equipe especializada nas áreas de tecnologia e operações, garantindo agilidade e eficiência no processo de implantação de novos convênios.
+    Com uma sede moderna em São Paulo e escritórios em diversas regiões do país, contamos com uma **equipe especializada** nas áreas de tecnologia e operações, garantindo agilidade e eficiência no processo de implantação de novos convênios.
 
-    Atualmente, estamos presentes em diversos estados brasileiros, com contratos firmados com mais de **140 convênios**, incluindo Governos Estaduais, Prefeituras Municipais, Autarquias e Empresas Privadas.
+    Atualmente, estamos presentes em diversos estados brasileiros, prestando serviço de gestão de margens, incluindo Governos Estaduais, Prefeituras Municipais, Autarquias e Empresas Privadas. Além disso, orgulhamo-nos de ser a **primeira empresa na América Latina a conquistar a certificação ISO 27701**.
   link: "/empresa"
   link_title: Saiba mais
   image:
@@ -88,7 +100,7 @@ section_sobre:
 # Seção: CTA
 section_cta:
   title: "Solicite uma **apresentação**"
-  description: "Conheça nossas soluções e descubra como podemos ajudar a sua empresa a otimizar a gestão de margens consignáveis."
+  description: "Conheça nossas soluções e descubra como podemos ajudar a sua organização a otimizar a gestão de margens consignáveis."
   phone: "[fone: 0800 000 4664]"
   button: "Falar com Especialista"
   button_link: "/contato?assunto=Apresentação"
