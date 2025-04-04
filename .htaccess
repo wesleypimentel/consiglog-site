@@ -1,2 +1,9 @@
 RewriteEngine On
-RewriteRule ^produtos/?$ /solucoes/ [R=301,L] 
+
+# Preserva o baseurl
+RewriteCond %{REQUEST_URI} !^/$
+RewriteCond %{REQUEST_URI} !^/index\.html$
+RewriteCond %{REQUEST_URI} !^/solucoes/.*$
+
+# Redireciona produtos para solucoes
+RewriteRule ^produtos/?$ solucoes/ [R=301,L] 
