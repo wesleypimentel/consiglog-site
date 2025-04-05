@@ -36,8 +36,6 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-minifier
-  - jekyll-relative-links
-  - jekyll-redirect-from
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
@@ -85,15 +83,3 @@ jekyll-minifier:
   html_suffix: .html
   css_suffix: .css
   js_suffix: .js
-
-# Configuração do jekyll-relative-links
-relative_links:
-  enabled: true
-  collections: true
-
-# Configuração de redirecionamentos
-gems:
-  - jekyll-redirect-from
-
-redirect_from:
-  collections: true
