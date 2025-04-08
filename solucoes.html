@@ -5,7 +5,7 @@ title: Soluções ConsigLog - Tecnologia Avançada para Gestão Eficiente e Segu
 desc: Conheça os produtos e soluções tecnológicas desenvolvidas pela ConsigLog para o mercado de consignados.
 
 banner:
-  title: Soluções
+  title: Soluções <strong>ConsigLog</strong>
   cta: Conheça as soluções
   cta_link: "#solucoes"
   cta_sec: Saiba mais
@@ -16,6 +16,7 @@ banner:
       link: /
 
 intro:
+  title: Tecnologia Avançada para uma <strong>Gestão Eficiente e Segura</strong>
   destaque: |
     O sistema da ConsigLog foi desenvolvido para Windows, utilizando banco de dados Microsoft e tecnologia de programação de **última geração**. Além disso, oferece um ambiente web totalmente compatível com todos os navegadores.
   desc: |
@@ -51,10 +52,10 @@ seguranca:
     <div class="container">
       <header class="section-heading">
         <h2 class="section-title font-bold">
-          <span><strong>Soluções</strong> ConsigLog</span>
+          {{ page.intro.title }}
         </h2>
-        <h3>
-          Tecnologia Avançada para Gestão Eficiente e Segura
+        <h3 class="h5">
+          Tecnologia de última geração para o mercado de consignados.
         </h3>
       </header>
       <div class="section-content p-5 bg-light-subtle row align-items-center mx-0 mt-5 mb-5 gy-5 gx-lg-5 rounded-4">
@@ -94,7 +95,9 @@ seguranca:
   </section>
 
   <!-- Soluções -->
-  {% include home-solucoes.html %}
+  <div class="bg-dark">
+    {% include home-solucoes.html %}
+  </div>
 
   <!-- Segurança -->
   <section id="seguranca" class="section bg-light-subtle">

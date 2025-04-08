@@ -1,0 +1,57 @@
+<!-- Nossas Políticas -->
+<section id="politicas" class="section">
+  <div class="container py-5">
+    <div class="section-heading mb-5">
+      <h2 class="h2">
+        Nossas Políticas
+      </h2>
+      <p class="lead">
+        Conheça todas as nossas políticas e diretrizes que norteiam nossa atuação.
+      </p>
+    </div>
+    
+    <div class="row g-4 text-balanced">
+      {% for politica in site.data.global.politicas.links %}
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 border-0 p-4 shadow-sm">
+          <div class="card-body">
+            <h3 class="h5">
+              <a href="{{ politica.link | relative_url }}" class="text-decoration-none text-dark">{{ politica.texto }}</a>
+            </h3>
+            <small class="card-text text-muted">{{ politica.desc }}</small>
+          </div>
+          <div class="card-footer bg-white border-0">
+            <a href="{{ politica.link | relative_url }}" class="btn btn-link p-0 d-inline-flex align-items-center gap-2">
+              <span>Saiba mais</span>
+              <span class="material-symbols-rounded align-middle">arrow_forward</span></a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+.card {
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.btn-link {
+  color: var(--bs-primary);
+  text-decoration: none;
+}
+
+.btn-link:hover {
+  color: var(--bs-primary-dark);
+}
+
+.material-symbols-rounded {
+  font-size: 1.25rem;
+  vertical-align: middle;
+}
+</style> 

@@ -1,0 +1,58 @@
+---
+layout: default
+permalink: /politica-esg/
+title: Política ESG - Consiglog
+desc: Conheça as diretrizes da Política ESG da Consiglog.
+
+banner:
+  title: Política ESG
+  subtitle: "Diretrizes e Compromissos"
+  desc: "Conheça as diretrizes que norteiam nossa política ambiental, social e de governança (ESG)."
+  bgimg: /assets/img/consiglog_home-banner-bg.webp
+  slide_box: false
+  bg_overlay: true
+  breadcrumb:
+    - title: Home
+      link: /
+
+conteudo:
+  title: "Diretrizes da Política ESG"
+  items:
+    - "Promover práticas sustentáveis em todas as operações;"
+    - "Reduzir o impacto ambiental das atividades;"
+    - "Investir em tecnologias limpas e eficientes;"
+    - "Promover a diversidade e inclusão no ambiente de trabalho;"
+    - "Garantir condições de trabalho seguras e saudáveis;"
+    - "Investir no desenvolvimento profissional dos colaboradores;"
+    - "Manter relacionamento ético com fornecedores;"
+    - "Contribuir para o desenvolvimento das comunidades locais;"
+    - "Assegurar transparência nas práticas de governança;"
+    - "Implementar controles internos eficazes;"
+    - "Promover a ética nos negócios;"
+    - "Manter canais de comunicação abertos com stakeholders;"
+    - "Monitorar e reportar o desempenho ESG;"
+    - "Estabelecer metas de sustentabilidade;"
+    - "Promover a inovação sustentável."
+---
+
+<main>
+  {% include banner.html %}
+
+  <section class="py-5 bg-white">
+    <div class="container py-5">
+      <h2 class="mb-5 text-balanced">{{ page.conteudo.title }}</h2>
+      <ul class="list-unstyled column-count gx-5">
+        {% for item in page.conteudo.items %}
+        <li class="mb-3 d-flex align-items-start bg-light p-3 rounded-3">
+          <span class="material-symbols-rounded text-primary me-2">check_circle</span>
+          <span>{{ item }}</span>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
+
+  <div class="bg-light">
+    {% include politicas.html %}
+  </div>
+</main>

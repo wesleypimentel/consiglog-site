@@ -1,11 +1,11 @@
 <!-- _includes/banner.html -->
 <header id="banner" 
-        class="p-3 p-lg-5 bg-dark text-bg-dark bg-covered {% if page.banner.classes %}{{ page.banner.classes }}{% endif %} {% if page.banner.bg_overlay == true %}bg-overlay{% endif %}"
+        class="p-3 p-lg-5 bg-dark text-bg-dark bg-covered mouse-glow {% if page.banner.classes %}{{ page.banner.classes }}{% endif %} {% if page.banner.bg_overlay == true %}bg-overlay{% endif %}"
         data-bg-image="{{ page.banner.bgimg | relative_url }}">
-  <div class="container py-5">
+  <div class="container py-5 position-relative">
     <div class="row align-items-center">
-      <div class="col-lg-6">
-        <div class="slide-box angled-corner-box bottom-right">
+      <div id="banner-left" class="col-lg-6 {% if page.banner.left_classes %}{{ page.banner.left_classes }}{% endif %}">
+        <div id="banner-content" class="{% if page.banner.slide_box != false %}slide-box angled-corner-box bottom-right{% endif %}">
           <!-- Breadcrumb -->
           {% include breadcrumb.html %}
 
@@ -13,11 +13,11 @@
           {% if page.banner.graphic_img %}
             <img src="{{ page.banner.graphic_img | relative_url }}" 
                  alt="{{ page.title }}" 
-                 class="img-fluid mb-2 rounded shadow-sm">
+                 class="img-fluid mb-2">
           {% endif %}
 
           <!-- Verifica se há pre_title e title no banner -->
-          <h1 title="banner-title" class="h1 display-5">
+          <h1 id="banner-title" class="h1 display-5">
             {% if page.banner.title %}
               {% if page.banner.pre_title %}
               <small class="lined">{{ page.banner.pre_title }}</small>
@@ -30,12 +30,12 @@
 
           {% if page.banner.subtitle %}
           <!-- Subtítulo -->
-          <h2 class="h5 text-primary text-balanced">{{ page.banner.subtitle }}</h2>
+          <h2 id="banner-subtitle" class="h5 text-primary text-balanced">{{ page.banner.subtitle }}</h2>
           {% endif %}
 
           <!-- Verifica se há desc no banner, senão usa page.desc -->
           {% if page.banner.desc or page.desc %}
-          <p class="text-balanced text-hyphens">
+          <p id="banner-desc" class="text-balanced text-hyphens">
             {% if page.banner.desc %}
               {{ page.banner.desc }}
             {% else %}
@@ -70,13 +70,13 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-6">
-        {% if page.banner.img %}
+      {% if page.banner.img %}
+        <div id="banner-right" class="col-lg">
           <img src="{{ page.banner.img | relative_url }}" 
                alt="{{ page.title }}" 
                class="img-fluid rounded shadow-lg">
-        {% endif %}
-      </div>
+        </div>
+      {% endif %}
     </div>
   </div>
 </header>

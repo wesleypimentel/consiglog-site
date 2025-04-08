@@ -39,7 +39,7 @@ enderecos:
     detalhes:
       - icone: location_on
         texto: Av. Francisco Matarazzo, 1400 - 16º andar - Água Branca
-        link: "#mapa"
+        link: "/contato/#mapa"
       - icone: call
         texto: "[fone: (11) 4082-4664] / [fone: (11) 4550-6850]"
       - icone: call
@@ -67,14 +67,19 @@ politicas:
   texto: "Nossas Políticas:"
   links:
     - texto: Política do Sistema de Gestão Integrado
+      desc: Diretrizes que norteiam nossa gestão integrada de qualidade, segurança da informação e privacidade.
       link: /politica-do-sistema-de-gestao-integrado/
     - texto: Política de Compliance
+      desc: Diretrizes que norteiam nossa política de compliance e controles internos.
       link: /politica-de-compliance-e-controles-internos/
     - texto: Política ESG
+      desc: Diretrizes que norteiam nossa política ambiental, social e de governança (ESG).
       link: /politica-esg/
     - texto: Relatório Anual ESG
-      link: /ESG/Relatorio_anual_ESG.pdf
+      desc: Relatório anual da ConsigLog sobre sua política ambiental, social e de governança (ESG).
+      link: /relatorio-anual-esg/
     - texto: Código de Ética
+      desc: Valores e princípios que norteiam nossa conduta ética.
       link: /codigo-de-etica/
 
 # Copyright
@@ -104,3 +109,22 @@ section_cta:
   phone: "[fone: 0800 000 4664]"
   button: "Falar com Especialista"
   button_link: "/contato?assunto=Apresentação"
+
+# Contato
+contato:
+  assuntos:
+    - value: comercial
+      texto: Comercial
+      email: comercial@consiglog.com.br
+    - value: suporte
+      texto: Suporte
+      email: suporte@consiglog.com.br
+    - value: financeiro
+      texto: Financeiro
+      email: financeiro@consiglog.com.br
+    - value: rh
+      texto: Recursos Humanos
+      email: rh@consiglog.com.br
+    - value: outros
+      texto: Outros Assuntos
+      email: contato@consiglog.com.br

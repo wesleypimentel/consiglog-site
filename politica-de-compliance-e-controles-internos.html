@@ -1,0 +1,58 @@
+---
+layout: default
+permalink: /politica-de-compliance-e-controles-internos/
+title: Política de Compliance e Controles Internos - Consiglog
+desc: Conheça as diretrizes da Política de Compliance e Controles Internos da Consiglog.
+
+banner:
+  title: Política de Compliance e Controles Internos
+  subtitle: "Diretrizes e Compromissos"
+  desc: "Conheça as diretrizes que norteiam nossa política de compliance e controles internos."
+  bgimg: /assets/img/consiglog_home-banner-bg.webp
+  slide_box: false
+  bg_overlay: true
+  breadcrumb:
+    - title: Home
+      link: /
+
+conteudo:
+  title: "Diretrizes da Política de Compliance e Controles Internos"
+  items:
+    - "Garantir o cumprimento e atendimento dos requisitos normativos e legais aplicáveis ao negócio;"
+    - "Assegurar a imparcialidade dos colaboradores em suas atividades;"
+    - "Manter um ambiente de trabalho ético e transparente;"
+    - "Implementar controles internos eficazes para mitigação de riscos;"
+    - "Promover a comunicação clara e objetiva sobre questões de compliance;"
+    - "Realizar treinamentos periódicos sobre compliance e controles internos;"
+    - "Estabelecer canais de denúncia e whistleblowing;"
+    - "Monitorar e avaliar continuamente os controles internos;"
+    - "Garantir a independência da área de compliance;"
+    - "Assegurar a confidencialidade das informações;"
+    - "Implementar políticas de prevenção à fraude e corrupção;"
+    - "Manter registros adequados de todas as operações;"
+    - "Realizar auditorias internas periódicas;"
+    - "Reportar irregularidades às autoridades competentes quando necessário;"
+    - "Promover a cultura de compliance em toda a organização."
+---
+
+<main>
+  {% include banner.html %}
+
+  <section class="py-5 bg-white">
+    <div class="container py-5">
+      <h2 class="mb-5 text-balanced">{{ page.conteudo.title }}</h2>
+      <ul class="list-unstyled column-count gx-5">
+        {% for item in page.conteudo.items %}
+        <li class="mb-3 d-flex align-items-start bg-light p-3 rounded-3">
+          <span class="material-symbols-rounded text-primary me-2">check_circle</span>
+          <span>{{ item }}</span>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
+
+  <div class="bg-light">
+    {% include politicas.html %}
+  </div>
+</main>

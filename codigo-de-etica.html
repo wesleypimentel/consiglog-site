@@ -1,0 +1,91 @@
+---
+layout: default
+permalink: /codigo-de-etica/
+title: Código de Ética - Consiglog
+desc: Conheça o Código de Ética da Consiglog.
+
+banner:
+  title: Código de Ética
+  subtitle: "Valores e Princípios"
+  desc: "Conheça os valores e princípios que norteiam nossa conduta ética."
+  bgimg: /assets/img/consiglog_home-banner-bg.webp
+  slide_box: false
+  bg_overlay: true
+  breadcrumb:
+    - title: Home
+      link: /
+
+conteudo:
+  title: "Diretrizes do Código de Ética"
+  items:
+    - "Agir com integridade e honestidade em todas as relações;"
+    - "Respeitar a diversidade e promover a inclusão;"
+    - "Manter a confidencialidade das informações;"
+    - "Evitar conflitos de interesse;"
+    - "Promover um ambiente de trabalho saudável;"
+    - "Respeitar os direitos humanos;"
+    - "Cumprir as leis e regulamentos aplicáveis;"
+    - "Promover a sustentabilidade;"
+    - "Manter relacionamentos éticos com stakeholders;"
+    - "Reportar violações éticas;"
+    - "Promover a transparência;"
+    - "Valorizar o desenvolvimento profissional;"
+    - "Respeitar a propriedade intelectual;"
+    - "Promover a responsabilidade social;"
+    - "Manter altos padrões de qualidade."
+---
+
+<main>
+  {% include banner.html %}
+
+  <section class="py-5 bg-white">
+    <div class="container py-5">
+      <h2 class="mb-5 text-balanced">{{ page.conteudo.title }}</h2>
+      <ul class="list-unstyled column-count gx-5">
+        {% for item in page.conteudo.items %}
+        <li class="mb-3 d-flex align-items-start bg-light p-3 rounded-3">
+          <span class="material-symbols-rounded text-primary me-2">check_circle</span>
+          <span>{{ item }}</span>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
+
+  {% include politicas.html %}
+</main>
+
+<style>
+.column-count {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .column-count {
+    column-count: 1;
+  }
+}
+
+.card {
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.btn-link {
+  color: var(--bs-primary);
+  text-decoration: none;
+}
+
+.btn-link:hover {
+  color: var(--bs-primary-dark);
+}
+
+.material-symbols-rounded {
+  font-size: 1.25rem;
+  vertical-align: middle;
+}
+</style> 

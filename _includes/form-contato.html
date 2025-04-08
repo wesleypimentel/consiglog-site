@@ -1,0 +1,102 @@
+<form id="formContato" class="needs-validation" novalidate>
+  <!-- Honeypot -->
+  <div class="d-none">
+    <input type="text" name="website" id="website">
+  </div>
+
+  <div class="row g-3">
+    <!-- Nome -->
+    <div class="col-md-6">
+      <label for="nome" class="form-label visually-hidden">Nome Completo</label>
+      <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome Completo" required>
+    </div>
+
+    <!-- Email -->
+    <div class="col-md-6">
+      <label for="email" class="form-label visually-hidden">E-mail</label>
+      <input type="email" class="form-control" id="email" name="email" placeholder="E-mail" required>
+    </div>
+
+    <!-- Telefone -->
+    <div class="col-md-6">
+      <label for="telefone" class="form-label visually-hidden">Telefone</label>
+      <input type="tel" class="form-control fone-br" id="telefone" name="telefone" placeholder="Telefone" required>
+    </div>
+
+    <!-- Assunto -->
+    <div class="col-md-6">
+      <label for="assunto" class="form-label visually-hidden">Assunto</label>
+      <select class="form-control" id="assunto" name="assunto" required>
+        <option value="" selected disabled>Selecione um assunto</option>
+        {% for assunto in site.data.global.contato.assuntos %}
+        <option value="{{ assunto.value }}" data-email="{{ assunto.email }}">{{ assunto.texto }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <!-- Mensagem -->
+    <div class="col-12">
+      <label for="mensagem" class="form-label visually-hidden">Mensagem</label>
+      <textarea class="form-control" id="mensagem" name="mensagem" placeholder="Mensagem" rows="4" required></textarea>
+    </div>
+
+    <!-- Botão Enviar -->
+    <div class="col-12 mt-4">
+      <button type="submit" class="btn btn-primary btn-lg">
+        <span class="material-symbols-rounded me-2">send</span>
+        Enviar Mensagem
+      </button>
+    </div>
+  </div>
+</form>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Validação do formulário
+  const form = document.getElementById('formContato');
+  if (form) {
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      
+      // Verifica honeypot
+      if (form.querySelector('#website').value) {
+        return;
+      }
+
+      if (!form.checkValidity()) {
+        event.stopPropagation();
+        form.classList.add('was-validated');
+        return;
+      }
+
+      // Obtém o e-mail de destino baseado no assunto
+      const assuntoSelect = form.querySelector('#assunto');
+      const emailDestino = assuntoSelect.options[assuntoSelect.selectedIndex].dataset.email;
+
+      // Prepara os dados do formulário
+      const formData = new FormData(form);
+      formData.append('destino', emailDestino);
+
+      try {
+        // Aqui você implementaria a lógica de envio do formulário
+        // Por exemplo, usando fetch para enviar para um endpoint
+        const response = await fetch('/api/contato', {
+          method: 'POST',
+          body: formData
+        });
+
+        if (response.ok) {
+          // Sucesso no envio
+          alert('Mensagem enviada com sucesso!');
+          form.reset();
+        } else {
+          throw new Error('Erro ao enviar mensagem');
+        }
+      } catch (error) {
+        console.error('Erro:', error);
+        alert('Erro ao enviar mensagem. Por favor, tente novamente.');
+      }
+    });
+  }
+});
+</script> 

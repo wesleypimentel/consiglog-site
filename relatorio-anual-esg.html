@@ -1,0 +1,50 @@
+---
+layout: default
+permalink: /relatorio-anual-esg/
+title: Relatório Anual ESG - Consiglog
+desc: Acesse o Relatório Anual ESG da Consiglog.
+
+banner:
+  title: Relatório Anual ESG
+  subtitle: "Sustentabilidade e Responsabilidade"
+  desc: "Conheça nosso Relatório Anual ESG e saiba mais sobre nossas práticas de sustentabilidade e responsabilidade social."
+  bgimg: /assets/img/consiglog_home-banner-bg.webp
+  slide_box: false
+  bg_overlay: true
+  breadcrumb:
+    - title: Home
+      link: /
+    - title: Relatório Anual ESG
+      link: /relatorio-anual-esg/
+      classe: d-none
+
+pdf:
+  url: /uploads/Relatorio_anual_ESG.pdf
+  title: "Relatório Anual ESG"
+  desc: "Acesse nosso relatório completo com todas as informações sobre nossas iniciativas ESG."
+---
+
+<main>
+  {% include banner.html %}
+
+  <section class="py-5 bg-white">
+    <div class="container py-5">
+      <div class="pdf-viewer mb-4">
+        <iframe src="{{ page.pdf.url }}" width="100%" height="600px" frameborder="0">
+          Seu navegador não suporta visualização de PDF. <a href="{{ page.pdf.url }}" download>Clique aqui para baixar</a>.
+        </iframe>
+      </div>
+
+      <div class="text-center">
+        <a href="{{ page.pdf.url }}" class="btn btn-primary btn-lg" download>
+          <span class="material-symbols-rounded me-2">download</span>
+          Baixar Relatório
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="bg-light">
+    {% include politicas.html %}
+  </div>
+</main>

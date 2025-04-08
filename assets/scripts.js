@@ -42,13 +42,9 @@ document.addEventListener("DOMContentLoaded", () => {
     menu.addEventListener("mouseenter", showDropdown);
     menu.addEventListener("mouseleave", hideDropdown);
   });
-});
 
-
-document.addEventListener("DOMContentLoaded", () => {
   // Seleciona todos os elementos com o atributo data-bg-image
   const elements = document.querySelectorAll("[data-bg-image]");
-  
   // Itera sobre cada elemento encontrado
   elements.forEach((element) => {
     const bgImage = element.getAttribute("data-bg-image"); // Pega o valor do atributo
@@ -100,7 +96,6 @@ function observeElementHeight(selector, cssVariable) {
   // Atualiza a altura inicial imediatamente
   updateHeight();
 }
-
 document.addEventListener('DOMContentLoaded', () => {
   // Monitora o header e atualiza a variável --header-height
   observeElementHeight('#header', 'header-height');
@@ -108,8 +103,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // Você pode monitorar outros elementos também, por exemplo:
   // observeElementHeight('.sidebar', 'sidebar-height');
 });
-
-
 
 
 // Função para rolar a página de forma suave
@@ -346,9 +339,12 @@ document.addEventListener("DOMContentLoaded", () => {
   processarTelefones();
 });
 
-// Fone Brasil
+// Máscaras
 document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll('.fone-br').forEach((input) => {
+  
+  // Fone Brasil
+  const fones = document.querySelectorAll('.fone-br');
+  fones.forEach((input) => {
     input.addEventListener('keyup', (e) => {
       let value = e.target.value.replace(/\D/g, ''); // Remove todos os caracteres não numéricos
       
@@ -371,6 +367,28 @@ document.addEventListener("DOMContentLoaded", () => {
       if (value.length < 10) {
         e.target.value = ''; // Limpa o campo se houver menos de 10 dígitos
       }
+    });
+  });
+
+  // CPF
+  const cpfs = document.querySelectorAll('.cpf');
+  cpfs.forEach(input => {
+    input.addEventListener('input', (e) => {
+      let value = e.target.value.replace(/\D/g, '');
+      value = value.replace(/(\d{3})(\d)/, '$1.$2');
+      value = value.replace(/(\d{3})(\d)/, '$1.$2');
+      value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+      e.target.value = value;
+    });
+  });
+
+  // CEP
+  const ceps = document.querySelectorAll('.cep');
+  ceps.forEach(input => {
+    input.addEventListener('input', (e) => {
+      let value = e.target.value.replace(/\D/g, '');
+      value = value.replace(/^(\d{5})(\d)/, '$1-$2');
+      e.target.value = value;
     });
   });
 });
