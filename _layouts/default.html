@@ -55,13 +55,7 @@
     }
   </style>
 
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="/assets/css/style.css">
-
-  <!-- Custom JS -->
-  <script src="/assets/js/main.js" defer></script>
-
-  <!-- Google Analytics -->
+  <!-- Google Analytics >
   {% if jekyll.environment == "production" %}
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>
@@ -71,6 +65,7 @@
     gtag('config', 'G-XXXXXXXXXX');
   </script>
   {% endif %}
+  -->
 </head>
 <body class="{% if page.url == '/' or page.url == '/index.html' %}home{% else %}{{ page.url | remove: '/' | remove: '.html' }}{% endif %} loading">
   <!-- Header -->
