@@ -108,7 +108,7 @@ section_cta:
   description: "Conheça nossas soluções e descubra como podemos ajudar a sua organização a otimizar a gestão de margens consignáveis."
   phone: "[fone: 0800 000 4664]"
   button: "Falar com Especialista"
-  button_link: "/contato?assunto=Apresentação"
+  button_link: "#apresentacao"
 
 # Contato
 contato:
@@ -125,6 +125,13 @@ contato:
     - value: rh
       texto: Recursos Humanos
       email: rh@consiglog.com.br
+    - value: apresentacao
+      texto: Apresentação de Produtos
+      email: comercial@consiglog.com.br
     - value: outros
       texto: Outros Assuntos
       email: contato@consiglog.com.br
+
+# FormEasy Configuration
+formeasy:
+  url: "https://script.google.com/macros/s/AKfycbxApeiUhqQ6Dvp8mcO7N-6QjkVvEi_W_q3gzmoeV1KrM6Q4Cit2MRtPsIRKxwZU0tLv/exec"

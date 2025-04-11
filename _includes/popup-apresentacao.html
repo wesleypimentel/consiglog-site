@@ -2,14 +2,22 @@
 <div class="modal fade" id="popup-apresentacao" tabindex="-1" aria-labelledby="popup-apresentacao-label" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="popup-apresentacao-label">Solicite uma Apresentação</h5>
+      <header class="modal-header">
+        <h5 class="modal-title font-title text-uppercase" id="popup-apresentacao-label">
+          Solicitar Apresentação
+        </h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
-      </div>
+      </header>
       <div class="modal-body">
-        <p class="lead mb-4">Preencha o formulário abaixo e nossa equipe entrará em contato para agendar uma apresentação personalizada.</p>
-        {% include form-contato.html %}
-      </div>
+        <div class="text-balanced">
+          <h2 class="font-title text-uppercase">Fale com um Especialista</h2>
+          <p class="lead mb-4">
+            Preencha o formulário abaixo e nossa equipe entrará em contato para agendar uma apresentação personalizada.
+          </p>
+        </div>
+        <div class="mt-4">
+          {% include form-contato.html src="popup" %}
+        </div>
     </div>
   </div>
 </div>
@@ -19,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const modal = new bootstrap.Modal(document.getElementById('popup-apresentacao'));
   
   // Abrir modal via link com href="#apresentacao"
-  document.querySelectorAll('a[href="#apresentacao"]').forEach(link => {
+  document.querySelectorAll('a[href*="#apresentacao"]').forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
       modal.show();

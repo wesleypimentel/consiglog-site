@@ -32,6 +32,20 @@
     border: 2px solid #fbc25c;
     transform: translate(-50%, -50%);
   }
+  /* Versão com octógono */
+  .icon-showcase-circle {
+    border: 0;
+  }
+  .icon-showcase-circle:before {
+    content: '';
+    position: absolute;
+    height: calc(100% + 70px);
+    width: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.2346 1.31703C11.7247 1.11404 12.2753 1.11404 12.7654 1.31703L19.0128 3.9048C19.5029 4.10779 19.8922 4.49714 20.0952 4.98719L22.683 11.2346C22.886 11.7247 22.886 12.2753 22.683 12.7654L20.0952 19.0128C19.8922 19.5029 19.5029 19.8922 19.0128 20.0952L12.7654 22.683C12.2753 22.886 11.7247 22.886 11.2346 22.683L4.98719 20.0952C4.49714 19.8922 4.10779 19.5029 3.9048 19.0128L1.31703 12.7654C1.11404 12.2753 1.11404 11.7247 1.31703 11.2346L3.9048 4.98719C4.10779 4.49714 4.49714 4.10779 4.98719 3.9048L11.2346 1.31703Z' stroke='%23edc263' stroke-width='.2'/%3E%3C/svg%3E");
+    background-size: calc(100%);
+    width: calc(100% + 70px);
+    transform: translate(-35px, -35px);
+  }
   .icon-showcase-icon {
     position: absolute;
     width: 72px;
@@ -44,6 +58,8 @@
     cursor: pointer;
     transition: all 0.3s ease;
     color: var(--cor-neutra-8);
+    border: 3px solid #FFF;
+    box-shadow: 0 0 0 10px rgba(200, 200, 200, 0.2);
   }
   .icon-showcase-icon:hover,
   .icon-showcase-icon.active {
@@ -58,6 +74,7 @@
     transform: translate(-50%, -50%);
     text-align: center;
     width: 80%;
+    transition: opacity 0.3s ease;
   }
 
   @media (max-width: 991px) {
@@ -73,6 +90,9 @@
       display: flex;
       flex-direction: column;
       gap: 1rem;
+    }
+    .icon-showcase-circle:before {
+      display: none;
     }
     .icon-showcase-icon {
       position: relative;
@@ -107,6 +127,7 @@
     const icons = document.querySelectorAll('.icon-showcase-icon');
     const titleElement = document.getElementById('icon-showcase-title');
     const descElement = document.getElementById('icon-showcase-desc');
+    const content = document.querySelector('.icon-showcase-content');
     let currentIndex = 0;
     let interval;
     let isLargeScreen = window.innerWidth >= 992;
@@ -118,12 +139,17 @@
       const icon = icons[index];
       const title = icon.querySelector('h3').textContent;
       const desc = icon.querySelector('p').textContent;
+      content.style.opacity = 0;
+
+      setTimeout((icon) => {
+        content.style.opacity = 1;
       
+        titleElement.textContent = title;
+        descElement.textContent = desc;
+      }, 300);
+        
       // Add active class to current icon
       icon.classList.add('active');
-      
-      titleElement.textContent = title;
-      descElement.textContent = desc;
     }
 
     function startTimer() {

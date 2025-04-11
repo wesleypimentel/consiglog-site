@@ -1,48 +1,70 @@
-<form id="formContato" class="needs-validation" novalidate>
+{% assign form_id = include.src | default: 'form' %}
+<form id="{{ form_id }}" class="needs-validation" novalidate data-popup="{{ include.src | default: false }}">
   <!-- Honeypot -->
   <div class="d-none">
-    <input type="text" name="website" id="website">
+    <input type="text" name="{{ form_id }}-website" id="{{ form_id }}-website">
+  </div>
+
+  <!-- Campos de Referência -->
+  <div class="d-none">
+    <input type="hidden" name="{{ form_id }}-ref_title" id="{{ form_id }}-ref_title" value="{% if include.src %}Solicitação de Apresentação{% else %}{% if page.ref %}{{ page.ref }}{% else %}{{ page.title }}{% endif %}{% endif %}">
+    <input type="hidden" name="{{ form_id }}-ref_url" id="{{ form_id }}-ref_url" value="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
+    {% if include.src %}
+    <input type="hidden" name="{{ form_id }}-assunto" id="{{ form_id }}-assunto" value="apresentacao">
+    {% endif %}
   </div>
 
   <div class="row g-3">
     <!-- Nome -->
-    <div class="col-md-6">
-      <label for="nome" class="form-label visually-hidden">Nome Completo</label>
-      <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome Completo" required>
+    <div class="col-md-12">
+      <label for="{{ form_id }}-nome" class="form-label visually-hidden">Nome Completo</label>
+      <input type="text" class="form-control" id="{{ form_id }}-nome" name="{{ form_id }}-nome" placeholder="Nome Completo" required>
     </div>
 
     <!-- Email -->
     <div class="col-md-6">
-      <label for="email" class="form-label visually-hidden">E-mail</label>
-      <input type="email" class="form-control" id="email" name="email" placeholder="E-mail" required>
+      <label for="{{ form_id }}-email" class="form-label visually-hidden">E-mail</label>
+      <input type="email" class="form-control" id="{{ form_id }}-email" name="{{ form_id }}-email" placeholder="E-mail" required>
     </div>
 
     <!-- Telefone -->
     <div class="col-md-6">
-      <label for="telefone" class="form-label visually-hidden">Telefone</label>
-      <input type="tel" class="form-control fone-br" id="telefone" name="telefone" placeholder="Telefone" required>
+      <label for="{{ form_id }}-telefone" class="form-label visually-hidden">Telefone</label>
+      <input type="tel" class="form-control fone-br" id="{{ form_id }}-telefone" name="{{ form_id }}-telefone" placeholder="Telefone" required>
     </div>
 
-    <!-- Assunto -->
+    <!-- Assunto (apenas visível fora da popup) -->
+    {% unless include.src %}
     <div class="col-md-6">
-      <label for="assunto" class="form-label visually-hidden">Assunto</label>
-      <select class="form-control" id="assunto" name="assunto" required>
+      <label for="{{ form_id }}-assunto" class="form-label visually-hidden">Assunto</label>
+      <select class="form-control" id="{{ form_id }}-assunto" name="{{ form_id }}-assunto" required>
         <option value="" selected disabled>Selecione um assunto</option>
         {% for assunto in site.data.global.contato.assuntos %}
         <option value="{{ assunto.value }}" data-email="{{ assunto.email }}">{{ assunto.texto }}</option>
         {% endfor %}
       </select>
     </div>
+    {% endunless %}
 
     <!-- Mensagem -->
     <div class="col-12">
-      <label for="mensagem" class="form-label visually-hidden">Mensagem</label>
-      <textarea class="form-control" id="mensagem" name="mensagem" placeholder="Mensagem" rows="4" required></textarea>
+      <label for="{{ form_id }}-mensagem" class="form-label visually-hidden">Mensagem</label>
+      <textarea class="form-control" id="{{ form_id }}-mensagem" name="{{ form_id }}-mensagem" placeholder="Mensagem" rows="4" required></textarea>
+    </div>
+
+    <!-- Aceite -->
+    <div class="col-12">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="{{ form_id }}-aceite" name="{{ form_id }}-aceite" required>
+        <label class="form-check-label small fst-italic cursor-pointer" for="{{ form_id }}-aceite">
+          Aceito fornecer meus dados para que a ConsigLog possa retornar meu contato.
+        </label>
+      </div>
     </div>
 
     <!-- Botão Enviar -->
     <div class="col-12 mt-4">
-      <button type="submit" class="btn btn-primary btn-lg">
+      <button type="submit" class="btn btn-primary btn-lg" id="{{ form_id }}-submit" disabled>
         <span class="material-symbols-rounded me-2">send</span>
         Enviar Mensagem
       </button>
@@ -50,53 +72,109 @@
   </div>
 </form>
 
+<!-- Alertas -->
+<div id="{{ form_id }}-success" class="alert alert-success alert-dismissible fade show mt-3" role="alert" style="display: none;">
+  Formulário enviado com sucesso!
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+<div id="{{ form_id }}-error" class="alert alert-danger alert-dismissible fade show mt-3" role="alert" style="display: none;">
+  Ocorreu um erro ao enviar o formulário. Tente novamente.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-  // Validação do formulário
-  const form = document.getElementById('formContato');
-  if (form) {
-    form.addEventListener('submit', async (event) => {
-      event.preventDefault();
-      
-      // Verifica honeypot
-      if (form.querySelector('#website').value) {
-        return;
-      }
+(function() {
+  // Configurações do FormEasy e variáveis do template
+  const CONFIG = {
+    url: "{{ site.data.global.formeasy.url }}",
+    isPopup: "{{ include.src }}" !== "",
+    apresentacaoEmail: "{{ site.data.global.contato.assuntos | where: 'value', 'apresentacao' | map: 'email' | first }}"
+  };
 
-      if (!form.checkValidity()) {
-        event.stopPropagation();
-        form.classList.add('was-validated');
-        return;
-      }
+  document.addEventListener('DOMContentLoaded', () => {
+    const formId = '{{ form_id }}';
+    const form = document.getElementById(formId);
+    const submitButton = document.getElementById(`${formId}-submit`);
+    const aceiteCheckbox = document.getElementById(`${formId}-aceite`);
+    const successAlert = document.getElementById(`${formId}-success`);
+    const errorAlert = document.getElementById(`${formId}-error`);
 
-      // Obtém o e-mail de destino baseado no assunto
-      const assuntoSelect = form.querySelector('#assunto');
-      const emailDestino = assuntoSelect.options[assuntoSelect.selectedIndex].dataset.email;
+    // Obtém parâmetros da URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const refParam = urlParams.get('ref');
+    
+    // Atualiza o campo ref_title se houver parâmetro ref na URL
+    if (refParam) {
+      document.getElementById(`${formId}-ref_title`).value = refParam;
+    }
 
-      // Prepara os dados do formulário
-      const formData = new FormData(form);
-      formData.append('destino', emailDestino);
-
-      try {
-        // Aqui você implementaria a lógica de envio do formulário
-        // Por exemplo, usando fetch para enviar para um endpoint
-        const response = await fetch('/api/contato', {
-          method: 'POST',
-          body: formData
-        });
-
-        if (response.ok) {
-          // Sucesso no envio
-          alert('Mensagem enviada com sucesso!');
-          form.reset();
-        } else {
-          throw new Error('Erro ao enviar mensagem');
-        }
-      } catch (error) {
-        console.error('Erro:', error);
-        alert('Erro ao enviar mensagem. Por favor, tente novamente.');
-      }
+    // Habilita/desabilita o botão baseado no checkbox
+    aceiteCheckbox.addEventListener('change', () => {
+      submitButton.disabled = !aceiteCheckbox.checked;
     });
-  }
-});
+
+    if (form) {
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        
+        if (form.querySelector(`#${formId}-website`).value) {
+          return;
+        }
+
+        if (!form.checkValidity()) {
+          event.stopPropagation();
+          form.classList.add('was-validated');
+          return;
+        }
+
+        submitButton.innerHTML = `
+          <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+          Enviando...
+        `;
+        submitButton.disabled = true;
+
+        try {
+          const formData = {
+            name: form.querySelector(`#${formId}-nome`).value,
+            email: form.querySelector(`#${formId}-email`).value,
+            phone: form.querySelector(`#${formId}-telefone`).value,
+            message: form.querySelector(`#${formId}-mensagem`).value,
+            subject: CONFIG.isPopup ? 'apresentacao' : form.querySelector(`#${formId}-assunto`).value,
+            destination: CONFIG.isPopup ? CONFIG.apresentacaoEmail : form.querySelector(`#${formId}-assunto`).options[form.querySelector(`#${formId}-assunto`).selectedIndex].dataset.email,
+            ref_title: form.querySelector(`#${formId}-ref_title`).value,
+            ref_url: form.querySelector(`#${formId}-ref_url`).value
+          };
+
+          const response = await fetch(CONFIG.url, {
+            method: "POST",
+            headers: {
+              "Content-Type": "text/plain;charset=utf-8"
+            },
+            body: JSON.stringify(formData)
+          });
+
+          const data = await response.json();
+          console.log("Resposta do servidor:", data);
+
+          form.reset();
+          successAlert.style.display = "block";
+          
+          if (form.dataset.popup !== 'false') {
+            document.getElementById('popup-apresentacao').querySelector('.btn-close').click();
+          }
+        } catch (error) {
+          console.error('Erro:', error);
+          errorAlert.style.display = "block";
+        } finally {
+          submitButton.innerHTML = `
+            <span class="material-symbols-rounded me-2">send</span>
+            Enviar Mensagem
+          `;
+          submitButton.disabled = !aceiteCheckbox.checked;
+        }
+      });
+    }
+  });
+})();
 </script> 

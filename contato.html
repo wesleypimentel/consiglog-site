@@ -48,7 +48,7 @@ contato:
           <div class="contact-info">
             {% for endereco in site.data.global.enderecos %}
               <div class="p-4 bg-white rounded-4 shadow-sm {% if forloop.last == false %}mb-4{% endif %}">
-                <h5 class="text-primary lined">
+                <h5 class="text-secondary lined">
                   <span><b>{{ endereco.tipo }}:</b> {{ endereco.localizacao }}</span>
                 </h5>
                 <ul class="icon-list py-3 text-balanced">
@@ -91,27 +91,12 @@ contato:
   </section>
 </main>
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    // Honeypot
-    const honeypotField = document.getElementById('website');
-    const randomString = Math.random().toString(36).substring(2, 15);
-    honeypotField.value = randomString;
-
-    // Form validation
-    const form = document.getElementById('formContato');
-    form.addEventListener('submit', function(event) {
-      if (!form.checkValidity()) {
-        event.preventDefault();
-        event.stopPropagation();
-      } else {
-        // Check honeypot
-        if (honeypotField.value !== randomString) {
-          event.preventDefault();
-          return false;
-        }
-      }
-      form.classList.add('was-validated');
-    });
-  });
-</script>
+<style>
+  #contato #form .col-md-6 {
+    width: 100%;
+  }
+  #contato #form textarea {
+    min-height: 200px;
+    resize: vertical;
+  }
+</style>

@@ -175,6 +175,15 @@ select {
   --bs-btn-hover-border-color: var(--cor-prim-hgl);
   --bs-btn-color: var(--cor-neutra-8);
   --bs-btn-hover-color: var(--cor-neutra-8);
+  
+  --bs-btn-disabled-bg: var(--cor-neutra-2);
+  --bs-btn-disabled-border-color: var(--cor-neutra-2);
+  --bs-btn-disabled-color: var(--cor-neutra-3);
+  --bs-btn-disabled-opacity: .25;
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
 }
 
 .text-hyphens {
@@ -247,6 +256,12 @@ select.form-control:focus,
 select.form-control:hover {
   filter: brightness(.95);
   border-color: #222;
+}
+
+form {
+  .col-md-6 {
+    flex: 1 0 auto; 
+  }
 }
 
 .separator {
@@ -523,6 +538,10 @@ h3 {
     width: 100%;
     height: 0px;
   }
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }
 
 .column-count {
@@ -1186,3 +1205,8 @@ h3 {
   }
 }
 
+.modal {
+  --bs-modal-padding: 2rem;
+
+  backdrop-filter: blur(5px);
+}
