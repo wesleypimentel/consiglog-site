@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll("[data-bs-toggle='dropdown']").forEach((toggle) => {
     const parent = toggle.parentElement; // Elemento pai (dropdown ou btn-group)
     const menu = parent.querySelector(".dropdown-menu");
+    const link = parent.querySelector("a"); // Link principal
     
     // Função para mostrar o dropdown
     const showDropdown = () => {
@@ -24,23 +25,52 @@ document.addEventListener("DOMContentLoaded", () => {
       
       if (isDesktop) {
         setTimeout(() => {
-          if (!menu.matches(":hover") && !toggle.matches(":hover")) {
+          // Verifica se o mouse ainda está sobre o menu ou o submenu
+          const isMouseOverMenu = parent.matches(":hover") || menu.matches(":hover");
+          if (!isMouseOverMenu) {
             toggle.classList.remove("show");
             toggle.setAttribute("aria-expanded", "false");
             menu.classList.remove("show");
             menu.removeAttribute("data-bs-popper");
           }
-        }, 100); // Pequeno delay para permitir transição suave
+        }, 100);
       }
     };
     
     // Eventos para o elemento pai (dropdown ou btn-group)
     parent.addEventListener("mouseenter", showDropdown);
     parent.addEventListener("mouseleave", hideDropdown);
+    parent.addEventListener("focusin", showDropdown);
+    parent.addEventListener("focusout", hideDropdown);
     
     // Eventos para o submenu (.dropdown-menu)
     menu.addEventListener("mouseenter", showDropdown);
     menu.addEventListener("mouseleave", hideDropdown);
+    menu.addEventListener("focusin", showDropdown);
+    menu.addEventListener("focusout", hideDropdown);
+
+    // Remove o comportamento padrão do toggle para permitir cliques no link
+    toggle.addEventListener("click", (e) => {
+      const isDesktop = window.matchMedia("(min-width: 992px)").matches;
+      
+      if (isDesktop) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    });
+
+    // Permite que o link principal seja clicado
+    if (link) {
+      link.addEventListener("click", (e) => {
+        const isDesktop = window.matchMedia("(min-width: 992px)").matches;
+        
+        if (isDesktop) {
+          e.preventDefault();
+          e.stopPropagation();
+          window.location.href = link.getAttribute("href");
+        }
+      });
+    }
   });
 
   // Seleciona todos os elementos com o atributo data-bg-image

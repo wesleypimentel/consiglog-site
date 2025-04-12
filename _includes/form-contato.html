@@ -54,7 +54,7 @@
 
     <!-- Aceite -->
     <div class="col-12">
-      <div class="form-check">
+      <div class="form-check text-balanced">
         <input class="form-check-input" type="checkbox" id="{{ form_id }}-aceite" name="{{ form_id }}-aceite" required>
         <label class="form-check-label small fst-italic cursor-pointer" for="{{ form_id }}-aceite">
           Aceito fornecer meus dados para que a ConsigLog possa retornar meu contato.
@@ -151,6 +151,7 @@
             headers: {
               "Content-Type": "text/plain;charset=utf-8"
             },
+            // mode: 'no-cors',
             body: JSON.stringify(formData)
           });
 

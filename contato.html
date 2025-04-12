@@ -26,7 +26,7 @@ contato:
 <main>
   {% include banner.html %}
   <style>
-    #banner {
+    #banner-bg {
       background-position: 53% 24%;
     }
   </style>
@@ -39,9 +39,15 @@ contato:
       </header>
       <div class="row gx-lg-5 gy-4">
         <div class="col-lg-7">
-          <div class="bg-dark text-bg-dark p-4 p-lg-5 rounded-4">
+          <div class="bg-dark bg-gradient mouse-glow text-bg-dark p-4 p-lg-5 rounded-4">
             {% include form-contato.html %}
           </div>
+          <style>
+            #contato .glow-effect {
+              --glow-size: 500px;
+              opacity: 0.15 !important;
+            }
+          </style>
         </div>
         <!-- Aside -->
         <aside id="informacoes" class="col-lg-5 h-100 sticky-top">

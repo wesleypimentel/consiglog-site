@@ -41,21 +41,31 @@
             <ul class="navbar-nav nav-justified gap-0 gap-xl-3 p-lg-3">
               {% for item in site.data.header.menu %}
                 <li class="nav-item {% if item.dropdown %}dropdown{% endif %}">
-                  <a class="nav-link {% if item.dropdown %}dropdown-toggle{% endif %}" href="{{ item.link | relative_url }}" {% if item.dropdown %}role="button" data-bs-toggle="dropdown" aria-expanded="false"{% endif %}>
-                    <!-- Ícone (exibido apenas em telas grandes, se existir) -->
-                    {% if item.icone %}
-                      <span class="material-symbols-rounded d-none d-lg-inline">{{ item.icone }}</span>
-                    {% endif %}
-                    <!-- Texto (exibido apenas em telas pequenas ou se não houver ícone) -->
-                    <span class="{% if item.icone %}d-lg-none{% endif %}">{{ item.titulo }}</span>
-                  </a>
-                  <!-- Dropdown (se houver) -->
                   {% if item.dropdown %}
-                    <ul class="dropdown-menu">
-                      {% for subitem in item.dropdown %}
-                        <li><a class="dropdown-item" href="{{ subitem.link | relative_url }}">{{ subitem.titulo }}</a></li>
-                      {% endfor %}
-                    </ul>
+                    <div class="dropdown">
+                      <a class="nav-link {% if item.dropdown %}dropdown-toggle{% endif %}" href="{{ item.link | relative_url }}" {% if item.dropdown %}role="button" data-bs-toggle="dropdown" aria-expanded="false"{% endif %}>
+                        <!-- Ícone (exibido apenas em telas grandes, se existir) -->
+                        {% if item.icone %}
+                          <span class="material-symbols-rounded d-none d-lg-inline">{{ item.icone }}</span>
+                        {% endif %}
+                        <!-- Texto (exibido apenas em telas pequenas ou se não houver ícone) -->
+                        <span class="{% if item.icone %}d-lg-none{% endif %}">{{ item.titulo }}</span>
+                      </a>
+                      <ul class="dropdown-menu">
+                        {% for subitem in item.dropdown %}
+                          <li><a class="dropdown-item" href="{{ subitem.link | relative_url }}">{{ subitem.titulo }}</a></li>
+                        {% endfor %}
+                      </ul>
+                    </div>
+                  {% else %}
+                    <a class="nav-link" href="{{ item.link | relative_url }}">
+                      <!-- Ícone (exibido apenas em telas grandes, se existir) -->
+                      {% if item.icone %}
+                        <span class="material-symbols-rounded d-none d-lg-inline">{{ item.icone }}</span>
+                      {% endif %}
+                      <!-- Texto (exibido apenas em telas pequenas ou se não houver ícone) -->
+                      <span class="{% if item.icone %}d-lg-none{% endif %}">{{ item.titulo }}</span>
+                    </a>
                   {% endif %}
                 </li>
               {% endfor %}

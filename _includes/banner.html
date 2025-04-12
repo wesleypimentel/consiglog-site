@@ -1,7 +1,8 @@
 <!-- _includes/banner.html -->
 <header id="banner" 
-        class="p-3 p-lg-5 bg-dark text-bg-dark bg-covered mouse-glow {% if page.banner.classes %}{{ page.banner.classes }}{% endif %} {% if page.banner.bg_overlay == true %}bg-overlay{% endif %}"
-        data-bg-image="{{ page.banner.bgimg | relative_url }}">
+        class="p-3 p-lg-5 bg-dark text-bg-dark mouse-glow">
+  <div id="banner-bg"
+  data-bg-image="{{ page.banner.bgimg | relative_url }}" class="bg-covered {% if page.banner.classes %}{{ page.banner.classes }}{% endif %} {% if page.banner.bg_overlay == true %}bg-overlay{% endif %}"></div>
   <div class="container py-5 position-relative">
     <div class="row align-items-center">
       <div id="banner-left" class="col-lg-6 {% if page.banner.left_classes %}{{ page.banner.left_classes }}{% endif %}">
@@ -12,8 +13,8 @@
           <!-- Graphic Image -->
           {% if page.banner.graphic_img %}
             <img src="{{ page.banner.graphic_img | relative_url }}" 
-                 alt="{{ page.title }}" 
-                 class="img-fluid mb-2">
+                alt="{{ page.title }}" 
+                class="img-fluid mb-2">
           {% endif %}
 
           <!-- Verifica se há pre_title e title no banner -->
@@ -45,27 +46,15 @@
           {% endif %}
 
           <!-- Botões de ação -->
-          <div id="banner-actions" class="d-flex gap-2">
+          <div id="banner-actions" class="d-flex gap-md-2 flex-md-wrap flex-column flex-md-row">
             {% if page.banner.cta %}
               <!-- Botão principal (CTA) -->
-              <a href="
-                {% if page.banner.cta_link contains '#' %}
-                  {{ page.banner.cta_link }}
-                {% else %}
-                  {{ page.banner.cta_link | relative_url }}
-                {% endif %}" 
-                class="btn btn-primary">{{ page.banner.cta }}</a>
+              <a href="{% if page.banner.cta_link contains '#' %}{{ page.banner.cta_link }}{% else %}{{ page.banner.cta_link | relative_url }}{% endif %}" class="btn btn-primary">{{ page.banner.cta }}</a>
             {% endif %}
 
             <!-- Botão secundário (CTA Secundário) -->
             {% if page.banner.cta_sec %}
-              <a href="
-                {% if page.banner.cta_sec_link contains '#' %}
-                  {{ page.banner.cta_sec_link }}
-                {% else %}
-                  {{ page.banner.cta_sec_link | relative_url }}
-                {% endif %}" 
-                 class="btn btn-outline-light">{{ page.banner.cta_sec }}</a>
+              <a href="{% if page.banner.cta_sec_link contains '#' %}{{ page.banner.cta_sec_link }}{% else %}{{ page.banner.cta_sec_link | relative_url }}{% endif %}" class="btn btn-outline-light">{{ page.banner.cta_sec }}</a>
             {% endif %}
           </div>
         </div>
