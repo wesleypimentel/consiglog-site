@@ -1,5 +1,5 @@
 {% assign form_id = include.src | default: 'form' %}
-<form id="{{ form_id }}" class="needs-validation" novalidate data-popup="{{ include.src | default: false }}">
+<form id="{{ form_id }}" class="needs-validation" novalidate data-popup="{{ include.src | default: false }}" data-include-src="{{ include.src | default: 'form' }}">
   <!-- Honeypot -->
   <div class="d-none">
     <input type="text" name="{{ form_id }}-website" id="{{ form_id }}-website">
@@ -33,8 +33,7 @@
       <input type="tel" class="form-control fone-br" id="{{ form_id }}-telefone" name="{{ form_id }}-telefone" placeholder="Telefone" required>
     </div>
 
-    <!-- Assunto (apenas visível fora da popup) -->
-    {% unless include.src %}
+    <!-- Assunto -->
     <div class="col-md-6">
       <label for="{{ form_id }}-assunto" class="form-label visually-hidden">Assunto</label>
       <select class="form-control" id="{{ form_id }}-assunto" name="{{ form_id }}-assunto" required>
@@ -44,7 +43,6 @@
         {% endfor %}
       </select>
     </div>
-    {% endunless %}
 
     <!-- Mensagem -->
     <div class="col-12">
@@ -103,10 +101,26 @@
     // Obtém parâmetros da URL
     const urlParams = new URLSearchParams(window.location.search);
     const refParam = urlParams.get('ref');
+    const assuntoParam = urlParams.get('assunto');
     
     // Atualiza o campo ref_title se houver parâmetro ref na URL
     if (refParam) {
       document.getElementById(`${formId}-ref_title`).value = refParam;
+    }
+
+    // Verifica se o formulário está na popup
+    const isPopup = form.dataset.includeSrc === 'popup';
+    
+    // Se não estiver na popup e houver parâmetro assunto, tenta selecionar
+    if (!isPopup && assuntoParam) {
+      const selectAssunto = form.querySelector(`#${formId}-assunto`);
+      if (selectAssunto) {
+        // Verifica se existe uma opção com o valor do parâmetro
+        const optionExists = Array.from(selectAssunto.options).some(option => option.value === assuntoParam);
+        if (optionExists) {
+          selectAssunto.value = assuntoParam;
+        }
+      }
     }
 
     // Habilita/desabilita o botão baseado no checkbox

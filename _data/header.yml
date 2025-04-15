@@ -27,6 +27,8 @@ menu:
         link: /contato/
       - titulo: Trabalhe Conosco
         link: /trabalhe-conosco/
+      - titulo: Ouvidoria
+        link: /ouvidoria/
 
 # Área do Cliente
 area_cliente:

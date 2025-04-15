@@ -1,0 +1,37 @@
+---
+layout: default
+permalink: /ouvidoria/
+title: Ouvidoria - Consiglog
+desc: "Entre em contato com nossa ouvidoria para manifestações, reclamações, sugestões e elogios."
+banner:
+  title: "Ouvidoria"
+  subtitle: "Queremos ouvir você"
+  desc: "A Ouvidoria da Consiglog é nosso elo com o cliente/usuário para garantir o direito à manifestação e orientações sobre como proceder na defesa de seus direitos."
+  bgimg: /assets/img/contato-banner.webp
+  bg_overlay: true
+  breadcrumb:
+    - title: Home
+      link: /
+---
+
+<main>
+  {% include banner.html %}
+  <style>
+    #banner-bg {
+      background-position: 53% 24%;
+    }
+  </style>
+
+  <div class="container py-5">
+    <p>
+      Nosso canal de ouvidoria recebe reclamações, sugestões, elogios, solicitações de providências e denúncias. Quando o usuário não se sentir completamente atendido pelo nosso suporte, ele pode (e deve!) recorrer à Ouvidoria.
+    </p>
+    <div class="alert alert-info">
+      <strong>Lembramos que, para utilizar o serviço, é necessário ter o protocolo de atendimento do nosso suporte técnico.</strong>
+    </div>
+    
+    <div class="bg-light p-4 rounded-3">
+      {% include form-ouvidoria.html %}
+    </div>
+  </div>
+</main>

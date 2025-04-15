@@ -1,0 +1,106 @@
+<!-- Formulário de Ouvidoria -->
+<form id="form-ouvidoria" class="needs-validation" novalidate>
+  <!-- Honeypot -->
+  <div class="d-none">
+    <label for="website">Website</label>
+    <input type="text" name="website" id="website" tabindex="-1" autocomplete="off">
+  </div>
+
+  <!-- Protocolo -->
+  <div class="mb-3">
+    <label for="protocolo" class="form-label visually-hidden">Número do Protocolo <span class="text-danger">*</span></label>
+    <input type="text" class="form-control" id="protocolo" name="protocolo" placeholder="Número do Protocolo*" required>
+    <small class="d-block fst-italic d-flex align-items-center gap-1 mt-2 cursor-help text-info">
+      <span class="material-symbols-rounded md-18">info</span>
+      Este número de protocolo deve ter sido obtido anteriormente, com o <a href="{{ root | relative_url }}/contato/?assunto=suporte#contato">Suporte da ConsigLog</a>.
+    </small>
+    <div class="invalid-feedback">
+      Por favor, informe o número do protocolo.
+    </div>
+  </div>
+
+  <!-- Nome -->
+  <div class="mb-3">
+    <label for="nome" class="form-label visually-hidden">Nome Completo <span class="text-danger">*</span></label>
+    <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome completo*" required>
+    <div class="invalid-feedback">
+      Por favor, informe seu nome completo.
+    </div>
+  </div>
+
+  <!-- Email -->
+  <div class="mb-3">
+    <label for="email" class="form-label visually-hidden">Email <span class="text-danger">*</span></label>
+    <input type="email" class="form-control" id="email" name="email" placeholder="Email*" required>
+    <div class="invalid-feedback">
+      Por favor, informe um email válido.
+    </div>
+  </div>
+
+  <!-- Telefone -->
+  <div class="mb-3">
+    <label for="telefone" class="form-label visually-hidden">Telefone <span class="text-danger">*</span></label>
+    <input type="tel" class="form-control fone-br" id="telefone" name="telefone" placeholder="Telefone*" required>
+    <div class="invalid-feedback">
+      Por favor, informe um telefone válido.
+    </div>
+  </div>
+
+  <!-- Mensagem -->
+  <div class="mb-3">
+    <label for="mensagem" class="form-label visually-hidden">Mensagem <span class="text-danger">*</span></label>
+    <textarea class="form-control" id="mensagem" name="mensagem" rows="5" placeholder="Mensagem*" required></textarea>
+    <div class="invalid-feedback">
+      Por favor, escreva sua mensagem.
+    </div>
+  </div>
+
+  <!-- Botão Enviar -->
+  <div class="-d-grid">
+    <button type="submit" class="btn btn-primary">
+      <span class="material-symbols-rounded">send</span>
+      Enviar Mensagem
+    </button>
+  </div>
+</form>
+
+<script>
+  // Formulário de Ouvidoria
+  document.addEventListener("DOMContentLoaded", () => {
+    const formOuvidoria = document.getElementById("form-ouvidoria");
+    
+    if (formOuvidoria) {
+      formOuvidoria.addEventListener("submit", (e) => {
+        e.preventDefault();
+        
+        // Verifica honeypot
+        const website = formOuvidoria.querySelector("#website").value;
+        if (website) {
+          return; // É um bot, não processa o formulário
+        }
+        
+        // Validação do formulário
+        if (!formOuvidoria.checkValidity()) {
+          e.stopPropagation();
+          formOuvidoria.classList.add("was-validated");
+          return;
+        }
+        
+        // Aqui você pode adicionar o código para enviar o formulário
+        // Por exemplo, usando fetch ou axios
+        
+        // Exemplo de envio (substitua pela sua lógica real):
+        const formData = new FormData(formOuvidoria);
+        const data = Object.fromEntries(formData.entries());
+        
+        // Simulação de envio (remova e implemente sua lógica real)
+        console.log("Dados do formulário:", data);
+        
+        // Mostra mensagem de sucesso
+        alert("Mensagem enviada com sucesso! Entraremos em contato em breve.");
+        formOuvidoria.reset();
+        formOuvidoria.classList.remove("was-validated");
+      });
+    }
+  });
+</script>
