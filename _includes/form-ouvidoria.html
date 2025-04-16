@@ -55,52 +55,124 @@
     </div>
   </div>
 
+  <!-- Aceite -->
+  <div class="mb-3">
+    <div class="form-check text-balanced">
+      <input class="form-check-input" type="checkbox" id="aceite" name="aceite" required>
+      <label class="form-check-label small fst-italic cursor-pointer" for="aceite">
+        Aceito fornecer meus dados para que a ConsigLog possa retornar meu contato.
+      </label>
+    </div>
+  </div>
+  
+
+  <!-- Alertas -->
+  <div class="form-alertas">
+    <div id="form-ouvidoria-invalid" class="alert alert-warning alert-dismissible fade show mt-3 d-none" role="alert">
+      {{ site.data.global.form_messages.invalid }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  
+    <div id="form-ouvidoria-success" class="alert alert-success alert-dismissible fade show mt-3 d-none" role="alert">
+      {{ site.data.global.form_messages.success.ouvidoria }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  
+    <div id="form-ouvidoria-error" class="alert alert-danger alert-dismissible fade show mt-3 d-none" role="alert">
+      {{ site.data.global.form_messages.error.ouvidoria }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  </div>
+  
   <!-- Botão Enviar -->
   <div class="-d-grid">
-    <button type="submit" class="btn btn-primary">
-      <span class="material-symbols-rounded">send</span>
+    <button type="submit" class="btn btn-primary btn-lg" id="form-ouvidoria-submit" disabled>
+      <span class="material-symbols-rounded me-2">send</span>
       Enviar Mensagem
     </button>
   </div>
 </form>
 
 <script>
-  // Formulário de Ouvidoria
-  document.addEventListener("DOMContentLoaded", () => {
-    const formOuvidoria = document.getElementById("form-ouvidoria");
-    
-    if (formOuvidoria) {
-      formOuvidoria.addEventListener("submit", (e) => {
-        e.preventDefault();
+(function() {
+  // Configurações do FormEasy
+  const CONFIG = {
+    url: "{{ site.data.global.formeasy.url }}"
+  };
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('form-ouvidoria');
+    const submitButton = document.getElementById('form-ouvidoria-submit');
+    const aceiteCheckbox = document.getElementById('aceite');
+    const successAlert = document.getElementById('form-ouvidoria-success');
+    const errorAlert = document.getElementById('form-ouvidoria-error');
+    const invalidAlert = document.getElementById('form-ouvidoria-invalid');
+
+    // Habilita/desabilita o botão baseado no checkbox
+    aceiteCheckbox.addEventListener('change', () => {
+      submitButton.disabled = !aceiteCheckbox.checked;
+    });
+
+    if (form) {
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
         
         // Verifica honeypot
-        const website = formOuvidoria.querySelector("#website").value;
-        if (website) {
-          return; // É um bot, não processa o formulário
-        }
-        
-        // Validação do formulário
-        if (!formOuvidoria.checkValidity()) {
-          e.stopPropagation();
-          formOuvidoria.classList.add("was-validated");
+        if (form.querySelector('#website').value) {
           return;
         }
-        
-        // Aqui você pode adicionar o código para enviar o formulário
-        // Por exemplo, usando fetch ou axios
-        
-        // Exemplo de envio (substitua pela sua lógica real):
-        const formData = new FormData(formOuvidoria);
-        const data = Object.fromEntries(formData.entries());
-        
-        // Simulação de envio (remova e implemente sua lógica real)
-        console.log("Dados do formulário:", data);
-        
-        // Mostra mensagem de sucesso
-        alert("Mensagem enviada com sucesso! Entraremos em contato em breve.");
-        formOuvidoria.reset();
-        formOuvidoria.classList.remove("was-validated");
+
+        if (!form.checkValidity()) {
+          event.stopPropagation();
+          form.classList.add('was-validated');
+          invalidAlert.classList.remove('d-none');
+          return;
+        }
+
+        submitButton.innerHTML = `
+          <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+          Enviando...
+        `;
+        submitButton.disabled = true;
+
+        try {
+          const formData = {
+            name: form.querySelector('#nome').value,
+            email: form.querySelector('#email').value,
+            phone: form.querySelector('#telefone').value,
+            message: form.querySelector('#mensagem').value,
+            subject: 'ouvidoria',
+            protocol: form.querySelector('#protocolo').value,
+            pagina: 'Ouvidoria',
+            origem: window.location.href
+          };
+
+          const response = await fetch(CONFIG.url, {
+            method: "POST",
+            headers: {
+              "Content-Type": "text/plain;charset=utf-8"
+            },
+            body: JSON.stringify(formData)
+          });
+
+          const data = await response.json();
+          console.log("Resposta do servidor:", data);
+
+          form.reset();
+          successAlert.classList.remove('d-none');
+          invalidAlert.classList.add('d-none');
+        } catch (error) {
+          console.error('Erro:', error);
+          errorAlert.classList.remove('d-none');
+        } finally {
+          submitButton.innerHTML = `
+            <span class="material-symbols-rounded me-2">send</span>
+            Enviar Mensagem
+          `;
+          submitButton.disabled = !aceiteCheckbox.checked;
+        }
       });
     }
   });
+})();
 </script>

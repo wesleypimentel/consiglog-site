@@ -136,3 +136,16 @@ contato:
 formeasy:
   # url: "https://script.google.com/macros/s/AKfycbxApeiUhqQ6Dvp8mcO7N-6QjkVvEi_W_q3gzmoeV1KrM6Q4Cit2MRtPsIRKxwZU0tLv/exec"
   url: "https://script.google.com/macros/s/AKfycbwXsPuPyE4sbDboKU-SGevzklChtW5F_kRIrPfBRRyGSCuptSLLFde8bkQe8aFbwc_L/exec"
+
+# Mensagens dos Formulários
+form_messages:
+  invalid: "Por favor, preencha todos os campos obrigatórios e aceite os termos para prosseguir."
+  success:
+    default: "Recebemos sua mensagem! Nossa equipe entrará em contato o mais breve possível para atender sua solicitação."
+    popup: "Agradecemos seu interesse! Nossa equipe comercial entrará em contato em breve para agendar uma apresentação personalizada."
+    ouvidoria: "Sua solicitação foi registrada com sucesso! Nossa equipe de ouvidoria analisará seu caso com atenção e retornará o contato em breve."
+    curriculo: "Seu currículo foi cadastrado com sucesso! Nossa equipe de Recursos Humanos analisará seu perfil e entrará em contato caso haja oportunidades compatíveis com suas habilidades."
+  error:
+    default: "Desculpe, não foi possível enviar sua mensagem no momento. Por favor, tente novamente ou entre em contato através dos nossos canais alternativos."
+    ouvidoria: "Desculpe, não foi possível registrar sua solicitação no momento. Por favor, verifique os dados informados e tente novamente."
+    curriculo: "Desculpe, não foi possível cadastrar seu currículo no momento. Por favor, verifique os dados informados e tente novamente."
