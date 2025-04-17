@@ -90,6 +90,7 @@ mvv:
         position: absolute;
         inset: 0 0 0 0;
         background-color: #d8e0e7cc;
+        -webkit-backdrop-filter: blur(100px);
         backdrop-filter: blur(100px);
       }
     }
@@ -125,6 +126,8 @@ mvv:
       </div>
     </div>
   </section>
+
+  <section class="section-img-parallax" data-bg-image="{{ '/assets/img/consiglog-empresa-aerea-1.webp' | relative_url }}"></section>
 
   <div class="bg-dark text-white">
     {% include politicas.html %}

@@ -1,0 +1,26 @@
+<section id="garantias" class="section bg-dark text-bg-dark mouse-glow">
+  <div class="container position-relative z-1">
+    <header class="section-heading text-balanced">
+      <h2 class="section-title mb-2">{{ page.garantias.title }}</h2>
+      <div class="mb-5">{{ page.garantias.intro | markdownify }}</div>
+    </header>
+    <div class="row g-4">
+      {% for item in page.garantias.items %}
+      <div class="col-md-12 col-lg-6 flex-grow-1">
+        <div class="card h-100 border-0 bg-dark text-bg-dark bg-opacity-50 text-bg-dark text-balanced angled-corner-box bottom-right">
+          <div class="card-body p-4">
+            <span class="material-symbols-rounded light md-64 text-primary mb-3">verified</span>
+            <h3 class="h5 mb-2">{{ item.titulo }}</h3>
+            <p class="mb-0 line-height-1 opacity-50">{{ item.desc }}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+<style>
+  #garantias {
+    --glow-color: var(--cor-neutra-8);
+  }
+</style>

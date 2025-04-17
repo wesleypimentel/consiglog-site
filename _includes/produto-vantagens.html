@@ -1,0 +1,21 @@
+<section id="vantagens" class="section bg-light-subtle">
+  <div class="container">
+    <header class="section-heading text-balanced">
+      <h2 class="section-title mb-2">{{ page.vantagens.title | markdownify }}</h2>
+      <div class="mb-5">{{ page.vantagens.desc | markdownify }}</div>
+    </header>
+    <div class="row g-4">
+      {% for item in page.vantagens.items %}
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 border-0 bg-white shadow-sm hover-shadow">
+          <div class="card-body p-4 text-center text-balanced">
+            <span class="material-symbols-rounded light md-72 md-lg-96 text-primary mb-3">{{ item.icone }}</span>
+            <h3 class="h4 mb-2">{{ item.titulo }}</h3>
+            <p class="mb-0 line-height-1">{{ item.desc }}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

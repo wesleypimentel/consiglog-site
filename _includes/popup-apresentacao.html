@@ -8,14 +8,34 @@
         </h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
       </header>
-      <div class="modal-body">
-        <div class="text-balanced">
-          <h2 class="font-title text-uppercase">Fale com um Especialista</h2>
-          <p class="lead mb-4">
+      <div class="p-3 p-lg-4 bg-dark text-bg-dark text-balanced position-relative mouse-glow">
+        <div class="popup-brow" data-bg-image="{{ '/assets/img/especialistas.webp' | relative_url }}"></div>
+        <div class="position-relative z-1 col-lg-7">
+          <h2 class="font-title text-primary text-uppercase fw-bold">Fale com um Especialista</h2>
+          <p class="lead line-height-1">
             Preencha o formulário abaixo e nossa equipe entrará em contato para agendar uma apresentação personalizada.
           </p>
         </div>
-        <div class="mt-4">
+      </div>
+      <style>
+        #popup-apresentacao .glow-effect {
+          opacity: 0.15 !important;
+        }
+        .popup-brow {
+          position: absolute;
+          height: 100%;
+          width: 100%;
+          top: 0;
+          left: 0;
+          background-size: cover;
+          background-position: 75% 0%;
+          background-repeat: no-repeat;
+          margin-bottom: 20px;
+          opacity: 0.3;
+        }
+      </style>
+      <div class="modal-body">
+        <div class="bg-light-subtle p-3 rounded-4">
           {% include form-contato.html src="popup" %}
         </div>
     </div>

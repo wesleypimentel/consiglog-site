@@ -85,5 +85,13 @@
   <!-- Site Scripts -->
   <script src="{{ '/assets/loading.js' | relative_url | asset_hash  }}"></script>
   <script src="{{ '/assets/scripts.js' | relative_url | asset_hash  }}"></script>
+
+  <!-- HandTalk (Libras) -->
+  <script src="https://plugin.handtalk.me/web/latest/handtalk.min.js"></script>
+  <script>
+   var ht = new HT({
+    token: "bc62ea26d4dddbbae6cec030aefd4b21"
+   });
+  </script>
 </body>
 </html>

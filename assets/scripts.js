@@ -1,4 +1,36 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
+  
+  const currentPath = window.location.pathname.replace(/\/$/, "") || "/";
+  const navLinks = document.querySelectorAll("a[href]");
+
+  // Passo 1: Marcar o item atual com `.current`
+  navLinks.forEach(link => {
+    const href = link.getAttribute("href");
+    if (!href || href === "#") return;
+
+    const linkPath = href.replace(/\/$/, "") || "/";
+
+    if (currentPath === linkPath) {
+      const currentLi = link.closest("li");
+      if (currentLi) currentLi.classList.add("current");
+    }
+  });
+
+  // Passo 2: Se algum item estiver com `.current`, subimos nos pais até achar o dropdown
+  document.querySelectorAll("li.current").forEach(currentItem => {
+    let parent = currentItem.parentElement;
+
+    while (parent && parent !== document.body) {
+      if (parent.classList.contains("dropdown-menu")) {
+        const dropdownRoot = parent.closest("li.nav-item.dropdown");
+        if (dropdownRoot) dropdownRoot.classList.add("current-parent");
+        break; // achou o dropdown raiz, não precisa subir mais
+      }
+      parent = parent.parentElement;
+    }
+  });
+
+
   // Seleciona todos os elementos com data-bs-toggle="dropdown"
   document.querySelectorAll("[data-bs-toggle='dropdown']").forEach((toggle) => {
     const parent = toggle.parentElement; // Elemento pai (dropdown ou btn-group)

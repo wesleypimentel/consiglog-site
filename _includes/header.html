@@ -53,7 +53,14 @@
                       </a>
                       <ul class="dropdown-menu">
                         {% for subitem in item.dropdown %}
-                          <li><a class="dropdown-item" href="{{ subitem.link | relative_url }}">{{ subitem.titulo }}</a></li>
+                          <li class="nav-item">
+                            <a class="dropdown-item {% if subitem.desc %}has-desc{% endif %}" href="{{ subitem.link | relative_url }}">
+                              <span>{{ subitem.titulo }}</span>
+                              {% if subitem.desc %}
+                                <small class="dropdown-item-desc">{{ subitem.desc }}</small>
+                              {% endif %}
+                            </a>
+                          </li>
                         {% endfor %}
                       </ul>
                     </div>

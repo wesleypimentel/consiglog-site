@@ -54,7 +54,7 @@ beneficios:
 
 vantagens:
   title: Vantagens
-  intro: |
+  desc: |
     O **LogConsig** é uma solução completa para órgãos públicos, oferecendo automação de processos, economia de recursos, segurança com certificações ISO, suporte 24/7, acesso web seguro, backup automático e ferramentas de auditoria e controle. Tudo isso com foco em eficiência, confiabilidade e gestão inteligente.
   items:
     - titulo: "Agilidade"
@@ -103,27 +103,22 @@ garantias:
 
     O sistema também disponibiliza arquivo de fechamento mensal das transações realizadas para conciliação financeira das consignatárias.
   items:
-    - titulo: "Certificação ISO 27001"
-      desc: "Garantia de segurança da informação"
-    - titulo: "Certificação ISO 27701"
-      desc: "Proteção de dados pessoais"
-    - titulo: "Certificado SSL"
-      desc: "Criptografia de dados"
-    - titulo: "Monitoramento 24/7"
-      desc: "Supervisão contínua do sistema"
-    - titulo: "Backup Diário"
-      desc: "Cópias de segurança automáticas"
-    - titulo: "Controle de Acesso"
-      desc: "Gestão de usuários e permissões"
-    - titulo: "Suporte Técnico"
-      desc: "Atendimento especializado 24 horas"
-    - titulo: "Atualizações Regulares"
-      desc: "Sistema sempre atualizado com as últimas tecnologias"
-    - titulo: "Conformidade LGPD"
-      desc: "Total adequação à Lei Geral de Proteção de Dados"
+  - titulo: "Reserva de margem conforme disponibilidade"
+    desc: "A reserva de margem só ocorre se houver margem disponível no momento da solicitação. O sistema bloqueia automaticamente reservas com margem negativa."
+  - titulo: "Aceitacao ou negativa direta das consignacoes"
+    desc: "As consignatarias podem aceitar ou negar as consignacoes diretamente no sistema, sem burocracias ou intermediarios."
+  - titulo: "Atendimento a demandas judiciais"
+    desc: "Permite suspensao, reativacao, alteracao e inclusao de consignacoes, com bloqueio de acoes indevidas junto aos servidores."
+  - titulo: "Arquivo de fechamento mensal para conciliacao"
+    desc: "Disponibiliza arquivos mensais de todas as transacoes, facilitando a conciliacao financeira das consignatarias."
+  - titulo: "Seguranca no processo de averbacao"
+    desc: "Garante que as consignacoes foram efetivadas corretamente, com rastreabilidade e confiabilidade das informacoes."
+  - titulo: "Historico completo das transacoes"
+    desc: "Todas as transacoes sao registradas e acessiveis, oferecendo total transparencia e suporte para auditorias."
 
 implantacao:
-  intro: |
+  title: "Como Implantar"
+  desc: |
     O cronograma de implantação e operação do sistema é criado em conjunto com o setor de recursos humanos do órgão público. Todo o processo é acompanhado pela equipe de convênios da Consiglog, de forma a conferir segurança e garantir a implantação conforme o planejado.
 
     O departamento de recursos humanos do órgão público realiza a validação e homologação de todas as informações e parâmetros inseridos no banco de dados antes da liberação do sistema para utilização pela Consiglog.
@@ -164,7 +159,7 @@ cta:
   titulo: "Solicite uma apresentação"
   desc: "Conheça mais sobre o LogConsig e descubra como podemos ajudar sua instituição"
   botao: "Falar com Especialista"
-  link: "/contato?assunto=LogConsig"
+  link: "#apresentacao"
 ---
 
 <main>
@@ -192,66 +187,17 @@ cta:
   </section>
 
   <!-- Vantagens -->
-  <section id="vantagens" class="section bg-light-subtle">
-    <div class="container">
-      <header class="section-heading text-balanced">
-        <h2 class="section-title mb-2">{{ page.vantagens.title | markdownify }}</h2>
-        <div class="mb-5">{{ page.vantagens.intro | markdownify }}</div>
-      </header>
-      <div class="row g-4">
-        {% for item in page.vantagens.items %}
-        <div class="col-md-6 col-lg-4">
-          <div class="card h-100 border-0 bg-white shadow-sm hover-shadow">
-            <div class="card-body p-4 text-center text-balanced">
-              <span class="material-symbols-rounded light md-128 text-primary mb-3">{{ item.icone }}</span>
-              <h3 class="h4 mb-2">{{ item.titulo }}</h3>
-              <p class="mb-0">{{ item.desc }}</p>
-            </div>
-          </div>
-        </div>
-        {% endfor %}
-      </div>
-    </div>
-  </section>
+  {% include produto-vantagens.html %}
 
   <!-- Garantias -->
-  <section id="garantias" class="section bg-dark text-bg-dark mouse-glow">
-    <div class="container position-relative z-1">
-      <header class="section-heading text-balanced">
-        <h2 class="section-title mb-2">{{ page.garantias.title }}</h2>
-        <div class="mb-5">{{ page.garantias.intro | markdownify }}</div>
-      </header>
-      <div class="row g-4">
-        {% for item in page.garantias.items %}
-        <div class="col-md-6 col-lg-4">
-          <div class="card h-100 border-0 bg-dark text-bg-dark">
-            <div class="card-body p-4">
-              <h3 class="h5 mb-3">{{ item.titulo }}</h3>
-              <p class="mb-0">{{ item.desc }}</p>
-            </div>
-          </div>
-        </div>
-        {% endfor %}
-      </div>
-    </div>
-  </section>
-  <style>
-    #garantias {
-      --glow-color: var(--cor-neutra-8);
-    }
-  </style>
+  {% include produto-garantias.html %}
+
+  <!-- Benefícios -->
 
   <section class="section-img-parallax" data-bg-image="{{ '/assets/img/orgao-publico.webp' | relative_url }}"></section>
 
   <!-- Como Implantar -->
-  <section id="implantacao" class="section bg-light-subtle">
-    <div class="container">
-      <header class="section-heading text-balanced">
-        <h2 class="section-title mb-4">Como Implantar</h2>
-        <div class="mb-5">{{ page.implantacao.intro | markdownify }}</div>
-      </header>
-    </div>
-  </section>
+  {% include produto-implantacao.html %}
 
   <!-- Fluxo de Averbação -->
   <section id="fluxo" class="section bg-white">
@@ -269,7 +215,7 @@ cta:
     <div class="container text-center">
       <h2 class="section-title">{{ page.cta.titulo }}</h2>
       <p class="lead mb-4">{{ page.cta.desc }}</p>
-      <a href="{{ page.cta.link | relative_url }}" class="btn btn-light btn-lg border-0">
+      <a href="{{ page.cta.link | relative_url }}" class="btn btn-light btn-lg px-4 py-3 border-0">
         <span>{{ page.cta.botao }}</span>
         <span class="material-symbols-rounded ms-2">arrow_forward</span>
       </a>

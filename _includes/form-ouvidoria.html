@@ -10,9 +10,11 @@
   <div class="mb-3">
     <label for="protocolo" class="form-label visually-hidden">Número do Protocolo <span class="text-danger">*</span></label>
     <input type="text" class="form-control" id="protocolo" name="protocolo" placeholder="Número do Protocolo*" required>
-    <small class="d-block fst-italic d-flex align-items-center gap-1 mt-2 cursor-help text-info">
+    <small class="d-flex align-items-center gap-1 mt-2 fst-italic text-info cursor-help line-height-1">
       <span class="material-symbols-rounded md-18">info</span>
-      Este número de protocolo deve ter sido obtido anteriormente, com o <a href="{{ root | relative_url }}/contato/?assunto=suporte#contato">Suporte da ConsigLog</a>.
+      <span>
+        Este número de protocolo deve ter sido obtido anteriormente, com o <b>Suporte da ConsigLog</b>.
+      </span>
     </small>
     <div class="invalid-feedback">
       Por favor, informe o número do protocolo.

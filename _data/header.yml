@@ -16,8 +16,10 @@ menu:
     dropdown:
       - titulo: LogConsig
         link: /solucoes/logconsig/
+        desc: Sistema de Averbação Eletrônica para Órgãos Públicos
       - titulo: LogPrivado
         link: /solucoes/logprivado/
+        desc: Sistema de Averbação Eletrônica para Empresas Privadas
       - titulo: Todas as Soluções
         link: /solucoes/
   - titulo: Contato
