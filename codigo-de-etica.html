@@ -1,8 +1,8 @@
 ---
 layout: default
 permalink: /codigo-de-etica/
-title: Código de Ética - Consiglog
-desc: Conheça o Código de Ética da Consiglog.
+title: Código de Ética - ConsigLog
+desc: Conheça o Código de Ética da ConsigLog.
 
 banner:
   title: Código de Ética
@@ -42,54 +42,9 @@ conteudo:
 <main>
   {% include banner.html %}
 
-  <section class="py-5 bg-white">
-    <div class="container py-5">
-      <h2 class="mb-5 text-balanced">{{ page.conteudo.title }}</h2>
-      <ul class="list-unstyled column-count gx-5">
-        {% for item in page.conteudo.items %}
-        <li class="mb-3 d-flex align-items-start bg-light p-3 rounded-3">
-          <span class="material-symbols-rounded text-primary me-2">check_circle</span>
-          <span>{{ item }}</span>
-        </li>
-        {% endfor %}
-      </ul>
-    </div>
-  </section>
+  {% include politicas-conteudo.html %}
 
-  {% include politicas.html %}
+  <div class="bg-light">
+    {% include politicas.html %}
+  </div>
 </main>
-
-<style>
-.column-count {
-  column-count: 2;
-  column-gap: 2rem;
-}
-
-@media (max-width: 768px) {
-  .column-count {
-    column-count: 1;
-  }
-}
-
-.card {
-  transition: transform 0.2s ease-in-out;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-}
-
-.btn-link {
-  color: var(--bs-primary);
-  text-decoration: none;
-}
-
-.btn-link:hover {
-  color: var(--bs-primary-dark);
-}
-
-.material-symbols-rounded {
-  font-size: 1.25rem;
-  vertical-align: middle;
-}
-</style> 

@@ -1,8 +1,8 @@
 ---
 layout: default
 permalink: /politica-esg/
-title: Política ESG - Consiglog
-desc: Conheça as diretrizes da Política ESG da Consiglog.
+title: Política ESG - ConsigLog
+desc: Conheça as diretrizes da Política ESG da ConsigLog.
 
 banner:
   title: Política ESG
@@ -42,19 +42,7 @@ conteudo:
 <main>
   {% include banner.html %}
 
-  <section class="py-5 bg-white">
-    <div class="container py-5">
-      <h2 class="mb-5 text-balanced">{{ page.conteudo.title }}</h2>
-      <ul class="list-unstyled column-count gx-5">
-        {% for item in page.conteudo.items %}
-        <li class="mb-3 d-flex align-items-start bg-light p-3 rounded-3">
-          <span class="material-symbols-rounded text-primary me-2">check_circle</span>
-          <span>{{ item }}</span>
-        </li>
-        {% endfor %}
-      </ul>
-    </div>
-  </section>
+  {% include politicas-conteudo.html %}
 
   <div class="bg-light">
     {% include politicas.html %}

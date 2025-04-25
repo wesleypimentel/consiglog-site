@@ -1,8 +1,8 @@
 ---
 layout: default
 permalink: /politica-do-sistema-de-gestao-integrado/
-title: Política do Sistema de Gestão Integrado - Consiglog
-desc: Conheça as diretrizes da Política do Sistema de Gestão Integrado da Consiglog.
+title: Política do Sistema de Gestão Integrado - ConsigLog
+desc: Conheça as diretrizes da Política do Sistema de Gestão Integrado da ConsigLog.
 
 banner:
   title: Política do Sistema de Gestão Integrado
@@ -32,7 +32,7 @@ conteudo:
     - "Assegurar a execução de auditorias internas anuais para prover informação sobre o sistema de gestão integrado;"
     - "Garantir o atendimento das necessidades dos Clientes e partes interessadas;"
     - "Assegurar o compromisso com a satisfação do cliente e com a eficiência operacional, bem como a qualidade de seus produtos e serviços;"
-    - "Garantir o apoio e comprometimento para alcançar a conformidade com as regulamentações e legislações de proteção de dados pessoais aplicáveis, e com termos contratuais acordados entre a Consiglog e seus clientes, parceiros, subcontratados e terceiros;"
+    - "Garantir o apoio e comprometimento para alcançar a conformidade com as regulamentações e legislações de proteção de dados pessoais aplicáveis, e com termos contratuais acordados entre a ConsigLog e seus clientes, parceiros, subcontratados e terceiros;"
     - "Controlar o acesso à informação e aos recursos de processamento da informação, assegurar acesso de usuário autorizado e prevenir acesso não autorizado a sistemas e serviços. Prevenir o acesso físico não autorizado, danos e interferências nos recursos de processamento das informações e nas informações da organização;"
     - "Deve-se assegurar que a proteção de dados e informações relevantes ao negócio não sofra perdas e mantenha sua integridade;"
     - "Deve-se assegurar que a informação receba um nível adequado de proteção, de acordo com a sua importância para a organização;"
@@ -44,19 +44,7 @@ conteudo:
 <main>
   {% include banner.html %}
 
-  <section class="py-5 bg-white">
-    <div class="container py-5">
-      <h2 class="mb-5 text-balanced">{{ page.conteudo.title }}</h2>
-      <ul class="list-unstyled column-count gx-5">
-        {% for item in page.conteudo.items %}
-        <li class="mb-3 d-flex align-items-start bg-light p-3 rounded-3">
-          <span class="material-symbols-rounded text-primary me-2">check_circle</span>
-          <span>{{ item }}</span>
-        </li>
-        {% endfor %}
-      </ul>
-    </div>
-  </section>
+  {% include politicas-conteudo.html %}
 
   <div class="bg-light">
     {% include politicas.html %}
