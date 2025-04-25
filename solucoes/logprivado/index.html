@@ -194,25 +194,8 @@ cta:
   {% include produto-implantacao.html %}
 
   <!-- Fluxo de Averbação -->
-  <section id="fluxo" class="section bg-white">
-    <div class="container">
-      <header class="section-heading text-balanced text-center mb-5 border-0">
-        <h2 class="section-title mb-2">{{ page.fluxo.title }}</h2>
-        <div class="mb-5">{{ page.fluxo.desc | markdownify }}</div>
-      </header>
-      {% include fluxo-averbacao-chart.html %}
-    </div>
-  </section>
+  {% include produto-fluxo-averbacao.html %}
 
   <!-- CTA -->
-  <section class="section bg-primary">
-    <div class="container text-center">
-      <h2 class="section-title">{{ page.cta.titulo }}</h2>
-      <p class="lead mb-4">{{ page.cta.desc }}</p>
-      <a href="{{ page.cta.link | relative_url }}" class="btn btn-light btn-lg px-4 py-3 border-0">
-        <span>{{ page.cta.botao }}</span>
-        <span class="material-symbols-rounded ms-2">arrow_forward</span>
-      </a>
-    </div>
-  </section>
+  {% include produto-cta.html %}
 </main>

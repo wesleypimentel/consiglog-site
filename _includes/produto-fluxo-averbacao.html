@@ -1,0 +1,9 @@
+<section id="fluxo" class="section bg-white">
+  <div class="container">
+    <header class="section-heading text-balanced text-center mb-5 border-0">
+      <h2 class="section-title mb-2">{{ page.fluxo.title }}</h2>
+      <div class="mb-5">{{ page.fluxo.desc | markdownify }}</div>
+    </header>
+    {% include fluxo-averbacao-chart.html %}
+  </div>
+</section>

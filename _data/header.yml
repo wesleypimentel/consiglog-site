@@ -11,6 +11,11 @@ menu:
     icone: home
   - titulo: A Empresa
     link: /empresa/
+    dropdown:
+      - titulo: Quem somos
+        link: /empresa/
+      - titulo: Nossas Políticas
+        link: '/empresa/#politicas'
   - titulo: Soluções
     link: /solucoes/
     dropdown:

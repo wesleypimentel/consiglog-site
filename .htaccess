@@ -6,4 +6,8 @@ RewriteCond %{REQUEST_URI} !^/index\.html$
 RewriteCond %{REQUEST_URI} !^/solucoes/.*$
 
 # Redireciona produtos para solucoes
-RewriteRule ^produtos/?$ solucoes/ [R=301,L] 
+RewriteRule ^produtos/?$ solucoes/ [R=301,L]
+
+# Redirecionamentos específicos
+RewriteRule ^produtos/logconsig/?$ solucoes/logconsig/ [R=301,L]
+RewriteRule ^produtos/logprivado/?$ solucoes/logprivado/ [R=301,L] 

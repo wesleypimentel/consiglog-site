@@ -22,11 +22,11 @@ banner:
 
 intro:
   title: "Sistema de Averbação Eletrônica para Órgãos Públicos"
+  img: /assets/img/logconsig_telas.gif
   desc: |
     O LogConsig é um sistema de averbação eletrônica para empréstimo consignado em folha de pagamento destinado a órgãos públicos. É inteiramente desenvolvido em plataforma web, permitindo acesso através de qualquer dispositivo conectado à internet.
 
     Com economia de recursos humanos, automação de processo, supressão de papel e eficiência de controle, o sistema da ConsigLog é ideal para a organização de órgãos públicos.
-
 
 caracteristicas:
   - titulo: "Acesso via Web"
@@ -179,7 +179,7 @@ cta:
         </div>
         <div class="col-lg-6">
           <figure class="border border-4 border-white rounded-4 overflow-hidden shadow-lg">
-            <img src="{{ '/assets/img/logconsig_telas.gif' | relative_url }}" alt="Interface do LogConsig" class="img-fluid">
+            <img src="{{ page.intro.img | relative_url }}" alt="Interface do LogConsig" class="img-fluid">
           </figure>
         </div>
       </div>
@@ -192,33 +192,14 @@ cta:
   <!-- Garantias -->
   {% include produto-garantias.html %}
 
-  <!-- Benefícios -->
-
   <section class="section-img-parallax" data-bg-image="{{ '/assets/img/orgao-publico.webp' | relative_url }}"></section>
 
   <!-- Como Implantar -->
   {% include produto-implantacao.html %}
 
   <!-- Fluxo de Averbação -->
-  <section id="fluxo" class="section bg-white">
-    <div class="container">
-      <header class="section-heading text-balanced text-center mb-5 border-0">
-        <h2 class="section-title mb-2">{{ page.fluxo.title }}</h2>
-        <div class="mb-5">{{ page.fluxo.desc | markdownify }}</div>
-      </header>
-      {% include fluxo-averbacao-chart.html %}
-    </div>
-  </section>
+  {% include produto-fluxo-averbacao.html %}
 
   <!-- CTA -->
-  <section class="section bg-primary">
-    <div class="container text-center">
-      <h2 class="section-title">{{ page.cta.titulo }}</h2>
-      <p class="lead mb-4">{{ page.cta.desc }}</p>
-      <a href="{{ page.cta.link | relative_url }}" class="btn btn-light btn-lg px-4 py-3 border-0">
-        <span>{{ page.cta.botao }}</span>
-        <span class="material-symbols-rounded ms-2">arrow_forward</span>
-      </a>
-    </div>
-  </section>
+  {% include produto-cta.html %}
 </main> 
