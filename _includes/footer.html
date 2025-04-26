@@ -20,9 +20,9 @@
         <!-- Selos / Certificações -->
         <div id="footer-selos-consiglog" class="d-flex flex-wrap gap-2 align-items-center mb-4 justify-content-evenly justify-content-lg-start">
           {% for selo in site.data.global.selos %}
-            <div class="{{ selo.classe }}">
+            <a {% if selo.link %}href="{{ selo.link }}" target="_blank" rel="noopener"{% endif %} class="{{ selo.classe }}">
               <img class="footer-selo" src="{{ selo.src | relative_url }}" alt="{{ selo.alt }}">
-            </div>
+            </a>
           {% endfor %}
 
           <!-- DigiCert -->
@@ -32,12 +32,12 @@
                 var __dcid = __dcid || [];
                 __dcid.push(['DigiCertClickID_TpfWkB1x', '3', 'l', 'black', 'TpfWkB1x']);
                 (function() {
-                    var cid = document.createElement('script');
-                    cid.async = true;
-                    cid.src = 'https://seal.digicert.com/seals/cascade/seal.min.js';
-                    var s = document.getElementsByTagName('script');
-                    var ls = s[(s.length - 1)];
-                    ls.parentNode.insertBefore(cid, ls.nextSibling);
+                  var cid = document.createElement('script');
+                  cid.async = true;
+                  cid.src = 'https://seal.digicert.com/seals/cascade/seal.min.js';
+                  var s = document.getElementsByTagName('script');
+                  var ls = s[(s.length - 1)];
+                  ls.parentNode.insertBefore(cid, ls.nextSibling);
                 })();
             </script>
             <div id="DigiCertClickID_TpfWkB1x" data-language="pt">

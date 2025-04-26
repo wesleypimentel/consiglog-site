@@ -555,6 +555,12 @@ form .col-md-6 {
 #areaClienteOffcanvas .offcanvas-title i {
   font-size: 2em;
 }
+#areaClienteOffcanvasImg {
+  max-height: 200px;
+  object-fit: cover;
+  border-bottom: 6px solid var(--cor-prim);
+}
+#areaClienteOffcanvas .accordion button,
 #areaClienteOffcanvas .nav-link {
   --bs-nav-link-padding-y: 1rem;
   --bs-nav-link-color: var(--cor-neutra-8);
@@ -563,11 +569,24 @@ form .col-md-6 {
   --bs-nav-link-hover-bg: var(--cor-neutra-4);
   background-color: var(--bs-nav-link-bg);
 }
+#areaClienteOffcanvas .accordion button:focus,
 #areaClienteOffcanvas .nav-link:focus,
+#areaClienteOffcanvas .accordion button:hover,
 #areaClienteOffcanvas .nav-link:hover {
   --bs-nav-link-bg: var(--bs-nav-link-hover-bg);
+  color: #FFF;
+  outline: none;
+  box-shadow: none;
 }
+#areaClienteOffcanvas .accordion button:focus:after,
+#areaClienteOffcanvas .nav-link:focus:after,
+#areaClienteOffcanvas .accordion button:hover:after,
+#areaClienteOffcanvas .nav-link:hover:after {
+  filter: invert();
+}
+#areaClienteOffcanvas .accordion button ul a:hover,
 #areaClienteOffcanvas .nav-link ul a:hover,
+#areaClienteOffcanvas .accordion button ul a:focus,
 #areaClienteOffcanvas .nav-link ul a:focus {
   background-color: var(--cor-neutra-4);
   color: white;
@@ -578,6 +597,9 @@ form .col-md-6 {
 .offcanvas-backdrop.show {
   -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
+}
+.offcanvas-nav-item {
+  margin-bottom: 5px;
 }
 .font-title {
   font-family: var(--font-title);

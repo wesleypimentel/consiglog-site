@@ -63,7 +63,7 @@ mvv:
     <div class="container position-relative">
       <div class="row g-lg-5 align-items-center">
         <div class="col-lg-6">
-          <img src="{{ page.sobre.images.img | relative_url }}" alt="" class="img-fluid d-lg-none angled-corner-box top-right">
+          <img src="{{ page.sobre.images.img | relative_url }}" alt="" class="img-fluid d-lg-none angled-corner-box top-right" loading="lazy">
         </div>
         <div class="col-lg-6">
           <div class="p-5 bg-white bg-opacity-75 angled-corner-box bottom-left bg-blurred">
@@ -129,8 +129,13 @@ mvv:
 
   <section class="section-img-parallax" data-bg-image="{{ '/assets/img/consiglog-empresa-aerea-1.webp' | relative_url }}"></section>
 
-  <div class="bg-dark text-white">
+  <div class="bg-dark text-white mouse-glow">
     {% include politicas.html %}
+    <style>
+      #politicas ~ .glow-effect {
+        opacity: 0.1 !important;
+      }
+    </style>
   </div>
 
   {% include cta-apresentacao-fone-btn.html %}

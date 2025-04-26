@@ -10,12 +10,15 @@
       </p>
     </div>
     
-    <div class="row g-4 text-balanced">
+    <div id="politicas-cards" class="row g-4 text-balanced">
       {% for politica in site.data.global.politicas.links %}
       <div class="col-md-6 col-lg-4">
-        <div class="card h-100 border-0 p-4 shadow-sm">
+        <div class="card h-100 border-0 p-4 shadow-sm angled-corner-box bottom-right">
+          <a href="{{ politica.link | relative_url }}" class="card-thumb text-decoration-none">
+            <img src="{{ politica.bg | relative_url }}" alt="{{ politica.texto }}" loading="lazy">
+          </a>
           <div class="card-body">
-            <h3 class="h5">
+            <h3 class="h4">
               <a href="{{ politica.link | relative_url }}" class="text-decoration-none text-dark">{{ politica.texto }}</a>
             </h3>
             <small class="card-text text-muted">{{ politica.desc }}</small>
@@ -28,6 +31,22 @@
         </div>
       </div>
       {% endfor %}
+      <style>
+        #politicas-cards .card-thumb img {
+          display: block;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+        #politicas-cards .card-thumb {
+          display: block;
+          width: calc(100% + 3rem);
+          max-width: calc(100% + 3rem);
+          height: 180px;
+          margin: -1.5rem;
+          margin-bottom: 1.5rem;
+        }
+      </style>
     </div>
   </div>
 </section>

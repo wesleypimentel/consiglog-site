@@ -95,44 +95,4 @@
   </div>
 </header>
 
-<!-- Offcanvas no lado direito -->
-<aside class="offcanvas offcanvas-end text-start" tabindex="-1" id="areaClienteOffcanvas" aria-labelledby="areaClienteOffcanvasLabel">
-  <header class="offcanvas-header shadow-sm bg-dark text-bg-dark">
-    <h5 class="offcanvas-title d-flex align-items-center gap-2" id="areaClienteOffcanvasLabel">
-      <i class="material-symbols-rounded light">account_circle</i>
-      <span>Área do Cliente</span>
-    </h5>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close">
-      <span class="material-symbols-rounded">close</span>
-    </button>
-  </header>
-  <div class="offcanvas-body">
-    <!-- Navegação dentro do offcanvas -->
-    <nav class="nav flex-column">
-      {% for item in site.data.header.area_cliente.links %}
-        {% if item.sublinks %}
-          <!-- Item com Submenu (Accordion) -->
-          <div class="accordion" id="areaDoClienteAccordion">
-            <div class="accordion-item">
-              <span class="accordion-header" id="heading-{{ item.titulo | slugify }}">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#submenu-{{ item.titulo | slugify }}" aria-expanded="false" aria-controls="submenu-{{ item.titulo | slugify }}">
-                  {{ item.titulo }}
-                </button>
-              </span>
-              <div id="submenu-{{ item.titulo | slugify }}" class="accordion-collapse collapse" aria-labelledby="heading-{{ item.titulo | slugify }}" data-bs-parent="#areaDoClienteAccordion">
-                <ul class="list-unstyled mb-0">
-                  {% for sublink in item.sublinks %}
-                    <li><a class="nav-link" href="{{ sublink.link }}" target="_blank">{{ sublink.titulo }}</a></li>
-                  {% endfor %}
-                </ul>
-              </div>
-            </div>
-          </div>
-        {% else %}
-          <!-- Item Simples -->
-          <a class="nav-link" href="{{ item.link }}" target="_blank">{{ item.titulo }}</a>
-        {% endif %}
-      {% endfor %}
-    </nav>
-  </div>
-</aside>
+{% include offcanvas-area-cliente.html %}

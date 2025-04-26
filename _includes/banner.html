@@ -14,7 +14,8 @@
           {% if page.banner.graphic_img %}
             <img src="{{ page.banner.graphic_img | relative_url }}" 
                 alt="{{ page.title }}" 
-                class="img-fluid mb-2">
+                class="img-fluid mb-2"
+                loading="lazy">
           {% endif %}
 
           <!-- Verifica se há pre_title e title no banner -->
@@ -62,8 +63,9 @@
       {% if page.banner.img %}
         <div id="banner-right" class="col-lg">
           <img src="{{ page.banner.img | relative_url }}" 
-               alt="{{ page.title }}" 
-               class="img-fluid rounded shadow-lg">
+              alt="{{ page.title }}" 
+              class="img-fluid rounded shadow-lg"
+              loading="lazy">
         </div>
       {% endif %}
     </div>

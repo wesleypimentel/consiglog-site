@@ -12,6 +12,7 @@ empresa:
 selos:
   - src: /assets/img/consiglog_selo_gptw.webp
     alt: "GPTW: Great Place to Work Brasil [2024-2025]"
+    link: https://connect.gptw.info/certified-company?s=c1b51d32-f422-412f-b4f2-a25f3e5c5144
     classe: "pe-3" # Estilo personalizado
   - src: /assets/img/consiglog_iso_9001-2015.svg
     alt: Certificado ISO 9001:2015
@@ -69,18 +70,23 @@ politicas:
     - texto: Política do Sistema de Gestão Integrado
       desc: Diretrizes que norteiam nossa gestão integrada de qualidade, segurança da informação e privacidade.
       link: /politica-do-sistema-de-gestao-integrado/
+      bg: /assets/img/seguranca.webp
     - texto: Política de Compliance
       desc: Diretrizes que norteiam nossa política de compliance e controles internos.
       link: /politica-de-compliance-e-controles-internos/
+      bg: /assets/img/compliance.webp
     - texto: Política ESG
       desc: Diretrizes que norteiam nossa política ambiental, social e de governança (ESG).
       link: /politica-esg/
+      bg: /assets/img/esg.webp
     - texto: Relatório Anual ESG
       desc: Relatório anual da ConsigLog sobre sua política ambiental, social e de governança (ESG).
       link: /relatorio-anual-esg/
+      bg: /assets/img/esg-chart.webp
     - texto: Código de Ética
       desc: Valores e princípios que norteiam nossa conduta ética.
       link: /codigo-de-etica/
+      bg: /assets/img/etica.webp
 
 # Copyright
 copyright:
