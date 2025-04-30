@@ -1,13 +1,30 @@
 <section class="py-5 bg-white">
   <div class="container py-5">
-    <h2 class="mb-5 text-balanced">{{ page.conteudo.title }}</h2>
-    <ul class="list-unstyled column-count gx-5">
-      {% for item in page.conteudo.items %}
-      <li class="mb-3 d-flex align-items-start bg-light p-3 rounded-3">
-        <span class="material-symbols-rounded text-primary me-2">check_circle</span>
-        <span>{{ item }}</span>
-      </li>
+    <h2 class="mb-5 text-balanced fw-bold">{{ page.conteudo.title }}</h2>
+    
+    {% if page.conteudo.grupos %}
+      {% for grupo in page.conteudo.grupos %}
+        <div class="my-4">
+          <h3 class="h3 mt-5 mb-3">{{ grupo.titulo }}</h3>
+          <ul class="list-unstyled {% if page.conteudo.colunas != false %}column-count gx-5{% endif %}">
+            {% for item in grupo.itens %}
+            <li class="mb-3 d-flex align-items-start bg-light p-3 rounded-3">
+              <span class="material-symbols-rounded text-primary me-2">check_circle</span>
+              <span>{{ item }}</span>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
       {% endfor %}
-    </ul>
+    {% else %}
+      <ul class="list-unstyled {% if page.conteudo.colunas != false %}column-count gx-5{% endif %}">
+        {% for item in page.conteudo.items %}
+        <li class="mb-3 d-flex align-items-start bg-light p-3 rounded-3">
+          <span class="material-symbols-rounded text-primary me-2">check_circle</span>
+          <span>{{ item }}</span>
+        </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
   </div>
 </section>

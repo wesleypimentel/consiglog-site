@@ -5,8 +5,8 @@
       <div class="col-xl-8 pe-xl-5">
         <!-- Empresa -->
         <div class="d-flex flex-wrap mb-5">
-          <a href="{{ site.data.global.empresa.logo.link | relative_url }}" class="col-12 col-md-6 d-flex border-opacity-25 border border-1 border-light p-4 text-center">
-            <img src="{{ site.data.global.empresa.logo.src | relative_url }}" class="d-block m-auto" alt="{{ site.data.global.empresa.logo.alt }}">
+          <a href="{{ site.data.global.empresa.logo.link | relative_url }}" class="col-12 col-md-6 d-flex rounded-2 bg-light p-4 text-center">
+            <img src="{{ site.data.global.empresa.logo.src | relative_url }}" class="d-block full-w m-auto" alt="{{ site.data.global.empresa.logo.alt }}" width="200">
           </a>
           <div class="col-12 col-md-6 ps-md-5 mt-4 mt-md-0 text-start">
             <h5 class="text-primary fw-bold lined">
@@ -20,7 +20,7 @@
         <!-- Selos / Certificações -->
         <div id="footer-selos-consiglog" class="d-flex flex-wrap gap-2 align-items-center mb-4 justify-content-evenly justify-content-lg-start">
           {% for selo in site.data.global.selos %}
-            <a {% if selo.link %}href="{{ selo.link }}" target="_blank" rel="noopener"{% endif %} class="{{ selo.classe }}">
+            <a {% if selo.link %}href="{{ selo.link }}" target="_blank" rel="nofollow noreferrer noopener"{% endif %} class="{{ selo.classe }}">
               <img class="footer-selo" src="{{ selo.src | relative_url }}" alt="{{ selo.alt }}">
             </a>
           {% endfor %}
@@ -41,13 +41,13 @@
                 })();
             </script>
             <div id="DigiCertClickID_TpfWkB1x" data-language="pt">
-                <div id="DigiCertClickID_TpfWkB1xSeal">
+                <a href="https://seal.digicert.com/seals/popup/?tag=TpfWkB1x&url=www.consiglog.com.br&lang=pt&cbr=1745523519158" id="DigiCertClickID_TpfWkB1xSeal" target="_blank" rel="nofollow noopener noreferrer">
                   <img src="https://seal.digicert.com/seals/cascade/?tag=TpfWkB1x&amp;referer=www.consiglog.com.br&amp;format=png&amp;lang=pt&amp;seal_number=3&amp;seal_size=l&amp;an=min" 
                     alt="DigiCert Secured Site Seal"
                     class="digicert-seal"
                     tabindex="0" 
                     role="link">
-                </div>
+                </a>
                 {% assign digicert_badge = '/assets/img/digicert_badge.png' | relative_url %}
                 <style>
                   .digicert-seal {
@@ -101,9 +101,9 @@
   <div id="footer-politicas" class="bg-light bg-opacity-10 pt-4 pb-4">
     <div class="container">
       <div class="small text-dark-emphasis d-flex flex-wrap gap-2 flex-column flex-lg-row">
-        <strong class="me-3 text-white-50">
+        <a href="{{ site.data.global.politicas.link }}" class="me-3 text-white-50 fw-bold">
           {{ site.data.global.politicas.texto }}
-        </strong>
+        </a>
         {% for link in site.data.global.politicas.links %}
           {% unless forloop.first %}
             <span class="text-white-50 opacity-25 d-none d-lg-inline">&nbsp;&vert;&nbsp;</span>

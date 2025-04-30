@@ -1,25 +1,28 @@
 # Empresa
 empresa:
   logo:
-    src: /assets/img/consiglog-logo-inv.svg
-    alt: ConsigLog
+    src: /assets/img/consiglog-logo.svg
+    alt: Consiglog
     link: /
-  title: ConsigLog
+  title: Consiglog
   desc: >
-    Com ampla atuação no mercado de gestão de margem consignável, a ConsigLog desenvolveu um avançado e intuitivo sistema de gestão de margem para os setores público e privado.
+    Com ampla atuação no mercado de gestão de margem consignável, a Consiglog desenvolveu um avançado e intuitivo sistema de gestão de margem para os setores público e privado.
 
 # Selos / Certificações
 selos:
-  - src: /assets/img/consiglog_selo_gptw.webp
+  - src: /assets/img/consiglog_selo_gptw.svg
     alt: "GPTW: Great Place to Work Brasil [2024-2025]"
     link: https://connect.gptw.info/certified-company?s=c1b51d32-f422-412f-b4f2-a25f3e5c5144
     classe: "pe-3" # Estilo personalizado
   - src: /assets/img/consiglog_iso_9001-2015.svg
     alt: Certificado ISO 9001:2015
+    link: https://www.bsigroup.com/pt-BR/validar-certificados-emitidos-pelo-bsi/client-directory-certificate/FS%20701296
   - src: /assets/img/consiglog_iso_27701-2019.svg
     alt: Certificado ISO 27701:2019
+    link: https://www.bsigroup.com/pt-BR/validar-certificados-emitidos-pelo-bsi/client-directory-certificate/PM%20735562
   - src: /assets/img/consiglog_iso_27001-2022.svg
     alt: Certificado ISO 27001:2022
+    link: https://www.bsigroup.com/pt-BR/validar-certificados-emitidos-pelo-bsi/client-directory-certificate/IS%20701295
 
 # Redes Sociais
 redes_sociais:
@@ -66,6 +69,7 @@ enderecos:
 # Políticas
 politicas:
   texto: "Nossas Políticas:"
+  link: "/empresa/#politicas"
   links:
     - texto: Política do Sistema de Gestão Integrado
       desc: Diretrizes que norteiam nossa gestão integrada de qualidade, segurança da informação e privacidade.
@@ -80,7 +84,7 @@ politicas:
       link: /politica-esg/
       bg: /assets/img/esg.webp
     - texto: Relatório Anual ESG
-      desc: Relatório anual da ConsigLog sobre sua política ambiental, social e de governança (ESG).
+      desc: Relatório anual da Consiglog sobre sua política ambiental, social e de governança (ESG).
       link: /relatorio-anual-esg/
       bg: /assets/img/esg-chart.webp
     - texto: Código de Ética
@@ -90,23 +94,23 @@ politicas:
 
 # Copyright
 copyright:
-  texto: ConsigLog &copy; <span data-var="year">[year]</span> &middot; Todos os direitos reservados
+  texto: Consiglog &copy; <span data-var="year">[year]</span> &middot; Todos os direitos reservados
 
 # Home > Seção: Sobre
 section_sobre:
   title: "<small>Sobre a</small> **Consig<span class='text-primary'>Log</span>**"
   subtitle: "Especialista em Gestão de Margens Consignáveis"
   description: |
-    A **ConsigLog Tecnologia e Soluções** foi fundada por profissionais experientes do mercado financeiro e há mais de 11 anos é reconhecida como a melhor empresa de gestão de margens consignáveis do Brasil.
+    A **Consiglog Tecnologia e Soluções** foi fundada por profissionais experientes do mercado financeiro e há mais de 11 anos é reconhecida como a melhor empresa de gestão de margens consignáveis do Brasil.
 
     Com uma sede moderna em São Paulo e escritórios em diversas regiões do país, contamos com uma **equipe especializada** nas áreas de tecnologia e operações, garantindo agilidade e eficiência no processo de implantação de novos convênios.
 
-    Atualmente, estamos presentes em diversos estados brasileiros, prestando serviço de gestão de margens, incluindo Governos Estaduais, Prefeituras Municipais, Autarquias e Empresas Privadas. Além disso, orgulhamo-nos de ser a **primeira empresa na América Latina a conquistar a certificação ISO 27701**.
+    Atualmente, estamos presentes em diversos estados brasileiros, prestando serviço de gestão de margens, incluindo Governos Estaduais, Prefeituras Municipais, Autarquias e Empresas Privadas. Além disso, temos orgulho de ser a **primeira empresa na América Latina em nosso ramo de atuação a conquistar a certificação ISO 27701**.
   link: "/empresa"
   link_title: Saiba mais
   image:
     src: "/assets/img/consiglog-predio.webp"
-    alt: "ConsigLog (Prédio)"
+    alt: "Consiglog (Prédio)"
 
 # Seção: CTA
 section_cta:
@@ -119,23 +123,14 @@ section_cta:
 # Contato
 contato:
   assuntos:
-    - value: comercial
-      texto: Comercial
-      email: comercial@consiglog.com.br
     - value: suporte
       texto: Suporte
       email: suporte@consiglog.com.br
-    - value: financeiro
-      texto: Financeiro
-      email: financeiro@consiglog.com.br
-    - value: rh
-      texto: Recursos Humanos
-      email: rh@consiglog.com.br
-    - value: apresentacao
-      texto: Apresentação de Produtos
+    - value: comercial
+      texto: Comercial
       email: comercial@consiglog.com.br
-    - value: outros
-      texto: Outros Assuntos
+    - value: contato
+      texto: Contato
       email: contato@consiglog.com.br
 
 # FormEasy Configuration
