@@ -192,7 +192,12 @@ cta:
   <!-- Garantias -->
   {% include produto-garantias.html %}
 
-  <section class="section-img-parallax" data-bg-image="{{ '/assets/img/orgao-publico.webp' | relative_url }}"></section>
+  <section id="img-prlx-logconsig" class="section-img-parallax" data-bg-image="{{ '/assets/img/orgao-publico-consiglog.webp' | relative_url }}"></section>
+  <style>
+    #img-prlx-logconsig {
+      background-position: 66% 33%;
+    }
+  </style>
 
   <!-- Como Implantar -->
   {% include produto-implantacao.html %}
