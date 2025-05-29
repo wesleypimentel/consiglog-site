@@ -1,16 +1,15 @@
 <div class="icon-showcase">
   <div class="icon-showcase-circle">
-    {% for item in page.fluxo.items %}
+    {% for item in page.fluxo.items_folder %}
     <div class="icon-showcase-icon{% if forloop.first %} active{% endif %}">
-      <span class="material-symbols-rounded md-48">{{ item.icone }}</span>
+      <img src="{{ '/assets/img/consiglog-ico-' | append: item.icone | relative_url }}.svg" alt="{{ item.titulo }}" />
       <h3 class="d-none">{{ item.titulo }}</h3>
-      <p class="d-none">{{ item.desc }}</p>
     </div>
     {% endfor %}
   </div>
   <div class="icon-showcase-content text-balanced mt-4">
-    <h3 id="icon-showcase-title" class="fw-bold">{{ page.fluxo.items[0].titulo }}</h3>
-    <p id="icon-showcase-desc">{{ page.fluxo.items[0].desc }}</p>
+    <h3 id="icon-showcase-title" class="fw-bold">{{ page.fluxo.items_folder[0].titulo }}</h3>
+    <!-- <p id="icon-showcase-desc">{{ page.fluxo.items_folder[0].desc }}</p> -->
   </div>
 </div>
 
@@ -19,7 +18,7 @@
     position: relative;
     width: 100%;
     max-width: 600px;
-    margin: 64px auto;
+    margin: 128px auto;
     height: 600px;
   }
   .icon-showcase-circle {
@@ -31,7 +30,9 @@
     border-radius: 50%;
     border: 4px solid #fbc25c;
     transform: translate(-50%, -50%);
+    box-shadow: 0 0 0 20px rgba(var(--cor-prim-rgb), .1), 0 0 0 20px rgba(var(--cor-prim-rgb), .1) inset;
   }
+
   /* Versão com octógono */
   .icon-showcase.rect .icon-showcase-circle {
     border: 0;
@@ -46,26 +47,33 @@
     width: calc(100% + 70px);
     transform: translate(-35px, -35px);
   }
+
   .icon-showcase-icon {
     position: absolute;
-    width: 72px;
-    height: 72px;
-    background-color: var(--cor-prim);
+    width: 134px;
+    height: 134px;
+    background-color: var(--cor-neutra-8);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     transition: all 0.3s ease;
-    color: var(--cor-neutra-8);
+    color: var(--cor-prim);
     border: 3px solid #FFF;
-    box-shadow: 0 0 0 10px rgba(200, 200, 200, 0.2);
+    box-shadow: 0 0 0 10px rgba(200, 200, 200, 0.2), 0 0 0 0 transparent;
+  }
+  .icon-showcase-icon img {
+    padding: 15px;
+    max-height: 70%;
+    max-width: 80%;
   }
   .icon-showcase-icon:hover,
   .icon-showcase-icon.active {
     transform: scale(1.2);
-    background-color: var(--cor-neutra-8);
+    background-color: var(--cor-neutra-4);
     color: var(--cor-prim);
+    box-shadow: 0 0 0 10px rgba(200, 200, 200, 0.25), 0 0 0 30px rgba(200, 200, 200, 0.15);
   }
   .icon-showcase-content {
     position: absolute;
@@ -104,6 +112,12 @@
       gap: 0.5rem;
       text-wrap: balance;
     }
+    .icon-showcase-icon img {
+      width: 96px;
+      height: 96px;
+      max-width: 96px;
+      max-height: 96px;
+    }
     .icon-showcase-icon h3,
     .icon-showcase-icon p {
       display: block !important;
@@ -126,7 +140,7 @@
     const circle = document.querySelector('.icon-showcase-circle');
     const icons = document.querySelectorAll('.icon-showcase-icon');
     const titleElement = document.getElementById('icon-showcase-title');
-    const descElement = document.getElementById('icon-showcase-desc');
+    // const descElement = document.getElementById('icon-showcase-desc');
     const content = document.querySelector('.icon-showcase-content');
     let currentIndex = 0;
     let interval;
@@ -138,14 +152,14 @@
       
       const icon = icons[index];
       const title = icon.querySelector('h3').textContent;
-      const desc = icon.querySelector('p').textContent;
+      // const desc = icon.querySelector('p').textContent;
       content.style.opacity = 0;
 
       setTimeout((icon) => {
         content.style.opacity = 1;
       
         titleElement.textContent = title;
-        descElement.textContent = desc;
+        // descElement.textContent = desc;
       }, 300);
         
       // Add active class to current icon
@@ -173,8 +187,8 @@
         const radius = 50;
         const x = radius * Math.cos(angle * (Math.PI / 180));
         const y = radius * Math.sin(angle * (Math.PI / 180));
-        icon.style.left = `calc(calc(50% + ${x}%) - 32px)`;
-        icon.style.top = `calc(calc(50% + ${y}%) - 32px)`;
+        icon.style.left = `calc(calc(50% + ${x}%) - 64px)`;
+        icon.style.top = `calc(calc(50% + ${y}%) - 64px)`;
       });
     }
 
@@ -212,8 +226,8 @@
             const radius = 50;
             const x = radius * Math.cos(angle * (Math.PI / 180));
             const y = radius * Math.sin(angle * (Math.PI / 180));
-            icon.style.left = `calc(calc(50% + ${x}%) - 32px)`;
-            icon.style.top = `calc(calc(50% + ${y}%) - 32px)`;
+            icon.style.left = `calc(calc(50% + ${x}%) - 64px)`;
+            icon.style.top = `calc(calc(50% + ${y}%) - 64px)`;
           });
           startTimer();
         } else {

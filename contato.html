@@ -55,7 +55,10 @@ contato:
             {% for endereco in site.data.global.enderecos %}
               <div class="p-4 bg-white rounded-4 shadow-sm {% if forloop.last == false %}mb-4{% endif %}">
                 <h5 class="text-secondary lined">
-                  <span><b>{{ endereco.tipo }}:</b> {{ endereco.localizacao }}</span>
+                  <span>
+                    <!-- <b>{{ endereco.tipo }}:</b> -->
+                    {{ endereco.localizacao }}
+                  </span>
                 </h5>
                 <ul class="icon-list py-3 text-balanced">
                   {% for detalhe in endereco.detalhes %}

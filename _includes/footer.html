@@ -74,7 +74,10 @@
           {% for endereco in site.data.global.enderecos %}
             <div class="col-12 col-lg-6 col-xl-12">
               <h5 class="text-primary lined">
-                <span><b>{{ endereco.tipo }}:</b> {{ endereco.localizacao }}</span>
+                <span>
+                  <!-- <b>{{ endereco.tipo }}:</b> -->
+                  {{ endereco.localizacao }}
+                </span>
               </h5>
               <ul class="icon-list py-3 text-balanced">
                 {% for detalhe in endereco.detalhes %}

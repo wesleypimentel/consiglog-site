@@ -38,33 +38,36 @@ redes_sociais:
 
 # Endereços (Matriz e Filiais)
 enderecos:
-  - tipo: Matriz
-    localizacao: São Paulo, SP
+  - tipo: Geral
+    localizacao: Contato
     detalhes:
-      - icone: location_on
-        texto: Av. Francisco Matarazzo, 1400 - 16º andar - Água Branca
-        link: "/contato/#mapa"
-      - icone: call
-        texto: "[fone: (11) 4082-4664] / [fone: (11) 4550-6850]"
       - icone: call
         texto: "[fone: 0800 000 4664]"
-        subtexto: "(demais localidades)"
+        subtexto_off: "(demais localidades)"
       - icone: mail
         link: /contato
         texto: Fale conosco
       - icone: headset_mic
         link: /ouvidoria
         texto: Ouvidoria
+      - icone: work
+        link: /trabalhe-conosco
+        texto: Trabalhe conosco
+  - tipo: Matriz
+    localizacao: São Paulo, SP
+    detalhes:
+      - icone: location_on
+        texto: Av. Francisco Matarazzo, 1400 - 16º andar - Água Branca
+        link: "/contato/#mapa"
+      - icone_off: call
+        texto_off: "[fone: (11) 4082-4664] / [fone: (11) 4550-6850]"
   - tipo: Filial
     localizacao: Salvador, BA
     detalhes:
       - icone: location_on
         texto: Av. Tancredo Neves, 620 - 22º andar - Caminho das Árvores - Salvador, BA
-      - icone: call
-        texto: "[fone: (71) 2132-9585] / [fone: (71) 2132-9584]"
-      - icone: mail
-        link: /contato
-        texto: Fale conosco
+      - icone_off: call
+        texto_off: "[fone: (71) 2132-9585] / [fone: (71) 2132-9584]"
 
 # Políticas
 politicas:

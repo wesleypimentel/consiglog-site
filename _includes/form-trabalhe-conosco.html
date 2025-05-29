@@ -8,15 +8,7 @@
     <!-- Área de Atuação -->
     <div class="col-12">
       <label for="area" class="form-label visually-hidden">Área de Atuação / Interesse</label>
-      <select class="form-control" id="area" name="area" required>
-        <option value="" selected disabled>Área de Atuação / Interesse</option>
-        <option value="ti">Tecnologia da Informação</option>
-        <option value="rh">Recursos Humanos</option>
-        <option value="financeiro">Financeiro</option>
-        <option value="comercial">Comercial</option>
-        <option value="juridico">Jurídico</option>
-        <option value="operacional">Operacional</option>
-      </select>
+      <input type="text" class="form-control" id="area" name="area" placeholder="Área de Atuação / Interesse" required>
     </div>
 
     <!-- Dados Pessoais -->
@@ -60,6 +52,11 @@
       <input type="email" class="form-control" id="email" name="email" placeholder="E-mail" required>
     </div>
 
+    <div class="col-12">
+      <label for="linkedin" class="form-label visually-hidden">LinkedIn</label>
+      <input type="url" class="form-control" id="linkedin" name="linkedin" placeholder="Link do seu perfil no LinkedIn">
+    </div>
+
     <!-- Endereço -->
     <div class="col-12">
       <h3 class="h5 mt-4 mb-2 lined text-light">Endereço</h3>
@@ -97,7 +94,7 @@
 
     <div class="col-md-6">
       <label for="escolaridade" class="form-label visually-hidden">Escolaridade</label>
-      <select class="form-control" id="escolaridade" name="escolaridade" required>
+      <select class="form-control" id="escolaridade" name="escolaridade" required onchange="toggleFormacaoFields()">
         <option value="" selected disabled>Escolaridade</option>
         <option value="fundamental">Ensino Fundamental</option>
         <option value="medio">Ensino Médio</option>
@@ -105,13 +102,39 @@
         <option value="superior_completo">Ensino Superior Completo</option>
         <option value="pos_graduacao">Pós-Graduação</option>
         <option value="mba">MBA</option>
+        <option value="mestrado">Mestrado</option>
         <option value="doutorado">Doutorado</option>
       </select>
     </div>
 
-    <div class="col-md-6">
-      <label for="formacao" class="form-label visually-hidden">Formação</label>
-      <input type="text" class="form-control" id="formacao" name="formacao" placeholder="Formação" required>
+    <div class="col-12 d-none" id="graduacao_container">
+      <label for="graduacao" class="form-label visually-hidden">Curso / Graduação</label>
+      <input type="text" class="form-control" id="graduacao" name="graduacao" placeholder="Curso / Graduação">
+    </div>
+
+    <div class="col-12 d-none" id="pos_graduacao1_container">
+      <label for="pos_graduacao1" class="form-label visually-hidden">Pós-Graduação 1 (opcional)</label>
+      <input type="text" class="form-control" id="pos_graduacao1" name="pos_graduacao1" placeholder="Pós-Graduação 1 (opcional)" onkeydown="togglePosGraduacao2()" onblur="togglePosGraduacao2()">
+    </div>
+
+    <div class="col-12 d-none" id="pos_graduacao2_container">
+      <label for="pos_graduacao2" class="form-label visually-hidden">Pós-Graduação 2 (opcional)</label>
+      <input type="text" class="form-control" id="pos_graduacao2" name="pos_graduacao2" placeholder="Pós-Graduação 2 (opcional)">
+    </div>
+
+    <div class="col-12 d-none" id="mba_container">
+      <label for="mba" class="form-label visually-hidden">MBA</label>
+      <input type="text" class="form-control" id="mba" name="mba" placeholder="MBA">
+    </div>
+
+    <div class="col-12 d-none" id="mestrado_container">
+      <label for="mestrado" class="form-label visually-hidden">Mestrado</label>
+      <input type="text" class="form-control" id="mestrado" name="mestrado" placeholder="Mestrado">
+    </div>
+
+    <div class="col-12 d-none" id="doutorado_container">
+      <label for="doutorado" class="form-label visually-hidden">Doutorado</label>
+      <input type="text" class="form-control" id="doutorado" name="doutorado" placeholder="Doutorado">
     </div>
 
     <!-- Experiência Profissional -->
@@ -124,14 +147,14 @@
       <textarea class="form-control" id="experiencia" name="experiencia" rows="4" placeholder="Descreva sua experiência profissional" required></textarea>
     </div>
 
-    <!-- Cursos e Eventos -->
+    <!-- Cursos Complementares -->
     <div class="col-12">
-      <h3 class="h5 mt-4 mb-2 lined text-light">Cursos e Eventos</h3>
+      <h3 class="h5 mt-4 mb-2 lined text-light">Cursos Complementares</h3>
     </div>
 
     <div class="col-12">
-      <label for="cursos" class="form-label visually-hidden">Descreva seus cursos e eventos relevantes</label>
-      <textarea class="form-control" id="cursos" name="cursos" rows="4" placeholder="Descreva seus cursos e eventos relevantes"></textarea>
+      <label for="cursos" class="form-label visually-hidden">Descreva seus cursos complementares</label>
+      <textarea class="form-control" id="cursos" name="cursos" rows="4" placeholder="Descreva seus cursos complementares"></textarea>
     </div>
 
     <!-- Aceite -->
@@ -259,23 +282,30 @@
 
         try {
           const formData = {
-            nome: form.querySelector('#nome').value,
-            email: form.querySelector('#email').value,
-            fone: form.querySelector('#telefone').value,
+            nome: form.querySelector('#nome')?.value || '',
+            email: form.querySelector('#email')?.value || '',
+            fone: form.querySelector('#telefone')?.value || '',
             assunto: 'curriculo',
-            area: form.querySelector('#area option:checked').text,
-            nascimento: form.querySelector('#nascimento').value,
-            estadoCivil: form.querySelector('#estadoCivil option:checked').text,
-            cpf: form.querySelector('#cpf').value,
-            endereco: form.querySelector('#endereco').value,
-            bairro: form.querySelector('#bairro').value,
-            cidade: form.querySelector('#cidade').value,
-            estado: form.querySelector('#estado').value,
-            cep: form.querySelector('#cep').value,
-            escolaridade: form.querySelector('#escolaridade option:checked').text,
-            formacao: form.querySelector('#formacao').value,
-            experiencia: form.querySelector('#experiencia').value,
-            cursos: form.querySelector('#cursos').value,
+            area: form.querySelector('#area')?.value || '',
+            graduacao: form.querySelector('#graduacao')?.value || '',
+            pos_graduacao1: form.querySelector('#pos_graduacao1')?.value || '',
+            pos_graduacao2: form.querySelector('#pos_graduacao2')?.value || '',
+            linkedin: form.querySelector('#linkedin')?.value || '',
+            nascimento: form.querySelector('#nascimento')?.value || '',
+            estadoCivil: form.querySelector('#estadoCivil option:checked')?.text || '',
+            cpf: form.querySelector('#cpf')?.value || '',
+            endereco: form.querySelector('#endereco')?.value || '',
+            bairro: form.querySelector('#bairro')?.value || '',
+            cidade: form.querySelector('#cidade')?.value || '',
+            estado: form.querySelector('#estado')?.value || '',
+            cep: form.querySelector('#cep')?.value || '',
+            escolaridade: form.querySelector('#escolaridade option:checked')?.text || '',
+            mba: form.querySelector('#mba')?.value || '',
+            mestrado: form.querySelector('#mestrado')?.value || '',
+            doutorado: form.querySelector('#doutorado')?.value || '',
+            formacao: form.querySelector('#formacao')?.value || '',
+            experiencia: form.querySelector('#experiencia')?.value || '',
+            cursos: form.querySelector('#cursos')?.value || '',
             pagina: 'Trabalhe Conosco',
             origem: window.location.href
           };
@@ -308,6 +338,86 @@
     }
   });
 })();
+
+function togglePosGraduacao2() {
+  const posGrad1 = document.getElementById('pos_graduacao1');
+  const posGrad2Container = document.getElementById('pos_graduacao2_container');
+  const posGrad2 = document.getElementById('pos_graduacao2');
+  
+  if (posGrad1.value.trim() !== '') {
+    posGrad2Container.classList.remove('d-none');
+  } else {
+    posGrad2Container.classList.add('d-none');
+    posGrad2.value = ''; // Clear the value when hiding
+  }
+}
+
+function toggleFormacaoFields() {
+  const escolaridade = document.getElementById('escolaridade').value;
+  const containers = {
+    graduacao: document.getElementById('graduacao_container'),
+    pos_graduacao1: document.getElementById('pos_graduacao1_container'),
+    pos_graduacao2: document.getElementById('pos_graduacao2_container'),
+    mba: document.getElementById('mba_container'),
+    mestrado: document.getElementById('mestrado_container'),
+    doutorado: document.getElementById('doutorado_container')
+  };
+  const fields = {
+    graduacao: document.getElementById('graduacao'),
+    pos_graduacao1: document.getElementById('pos_graduacao1'),
+    pos_graduacao2: document.getElementById('pos_graduacao2'),
+    mba: document.getElementById('mba'),
+    mestrado: document.getElementById('mestrado'),
+    doutorado: document.getElementById('doutorado')
+  };
+
+  // Primeiro, oculta e limpa todos os campos
+  Object.keys(containers).forEach(key => {
+    containers[key].classList.add('d-none');
+    fields[key].value = '';
+    if (fields[key].hasAttribute('required')) {
+      fields[key].removeAttribute('required');
+    }
+  });
+
+  // Depois, exibe os campos necessários baseado na escolaridade
+  switch(escolaridade) {
+    case 'superior_incompleto':
+    case 'superior_completo':
+      containers.graduacao.classList.remove('d-none');
+      fields.graduacao.setAttribute('required', '');
+      break;
+
+    case 'mba':
+      containers.graduacao.classList.remove('d-none');
+      containers.mba.classList.remove('d-none');
+      fields.graduacao.setAttribute('required', '');
+      fields.mba.setAttribute('required', '');
+      break;
+
+    case 'pos_graduacao':
+      containers.graduacao.classList.remove('d-none');
+      containers.pos_graduacao1.classList.remove('d-none');
+      fields.graduacao.setAttribute('required', '');
+      break;
+
+    case 'mestrado':
+      containers.graduacao.classList.remove('d-none');
+      containers.mestrado.classList.remove('d-none');
+      fields.graduacao.setAttribute('required', '');
+      fields.mestrado.setAttribute('required', '');
+      break;
+
+    case 'doutorado':
+      containers.graduacao.classList.remove('d-none');
+      containers.mestrado.classList.remove('d-none');
+      containers.doutorado.classList.remove('d-none');
+      fields.graduacao.setAttribute('required', '');
+      fields.mestrado.setAttribute('required', '');
+      fields.doutorado.setAttribute('required', '');
+      break;
+  }
+}
 </script>
 
 <style>
@@ -315,4 +425,4 @@
   --glow-size: 500px;
   opacity: 0.15 !important;
 }
-</style> 
+</style>
