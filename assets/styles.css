@@ -1035,11 +1035,15 @@ h3 b {
 }
 .card.card-cover::before {
   content: "";
-  background-image: linear-gradient(45deg, var(--cor-neutra-8) 20%, transparent 70%);
+  background-image: linear-gradient(40deg, var(--cor-neutra-8) 30%, transparent 70%);
   position: absolute;
   inset: 0 0 0 0;
   z-index: 1;
   opacity: 1;
+}
+.card.card-cover .card-solucao-logo {
+  max-width: 100px;
+  filter: drop-shadow(0 0 12px #00000044) brightness(1.1);
 }
 .card.card-cover .card-body {
   position: relative;

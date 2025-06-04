@@ -25,7 +25,7 @@
             <img src="{{ '/assets/img/' | append: solucao.imagem | relative_url }}" class="card-img" alt="{{ solucao.titulo }}">
             <div class="card-body my-auto mb-0">
               {% assign logo = solucao.logo | default: site.data.solucoes.config.defaults.logo_padrao %}
-              <img src="{{ '/assets/img/' | append: logo | relative_url }}" alt="{{ solucao.titulo }}">
+              <img src="{{ '/assets/img/' | append: logo | relative_url }}" alt="{{ solucao.titulo }}" width="100" class="card-solucao-logo">
               <h3 class="card-title">
                 <a href="{{ solucao.link | relative_url }}">
                   {{ solucao.tituloHTML }}
@@ -44,5 +44,10 @@
         {% endif %}
       {% endfor %}
     </div>
+    <style>
+      #solucoes-loop .glow-effect {
+        background-color: #f3c36033;
+      }
+    </style>
   </div>
 </section>

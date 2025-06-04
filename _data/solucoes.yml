@@ -12,7 +12,7 @@ home_section_desc: |
 # Configurações globais
 config:
   defaults:
-    logo_padrao: consiglog-symbol-inv.svg
+    logo_padrao: consiglog-symbol-cor.svg
     link_texto: Saiba mais
 
 # Lista de soluções
