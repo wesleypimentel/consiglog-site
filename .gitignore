@@ -7,3 +7,4 @@ vendor
 **/*.bkp.html
 **/*.min.markdown
 **/*.bkp.markdown
+send.php

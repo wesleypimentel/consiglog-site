@@ -141,6 +141,10 @@ formeasy:
   # url: "https://script.google.com/macros/s/AKfycbxApeiUhqQ6Dvp8mcO7N-6QjkVvEi_W_q3gzmoeV1KrM6Q4Cit2MRtPsIRKxwZU0tLv/exec"
   url: "https://script.google.com/macros/s/AKfycbwXsPuPyE4sbDboKU-SGevzklChtW5F_kRIrPfBRRyGSCuptSLLFde8bkQe8aFbwc_L/exec"
 
+# Send (PHP Mailer)
+sender:
+  url: "https://www.consiglog.com.br/novo/send.php"
+
 # Mensagens dos Formulários
 form_messages:
   invalid: "Por favor, preencha todos os campos obrigatórios e aceite os termos para prosseguir."
