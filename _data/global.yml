@@ -77,23 +77,23 @@ politicas:
     - texto: Política do Sistema de Gestão Integrado
       desc: Diretrizes que norteiam nossa gestão integrada de qualidade, segurança da informação e privacidade.
       link: /politica-do-sistema-de-gestao-integrado/
-      bg: /assets/img/seguranca.webp
+      bg: /assets/img/seguranca.jpg
     - texto: Política de Compliance
       desc: Diretrizes que norteiam nossa política de compliance e controles internos.
       link: /politica-de-compliance-e-controles-internos/
-      bg: /assets/img/compliance.webp
+      bg: /assets/img/compliance.jpg
     - texto: Política ESG
       desc: Diretrizes que norteiam nossa política ambiental, social e de governança (ESG).
       link: /politica-esg/
-      bg: /assets/img/esg.webp
+      bg: /assets/img/esg.jpg
     - texto: Relatório Anual ESG
       desc: Relatório anual da Consiglog sobre sua política ambiental, social e de governança (ESG).
       link: /relatorio-anual-esg/
-      bg: /assets/img/esg-chart.webp
+      bg: /assets/img/esg-chart.jpg
     - texto: Código de Ética
       desc: Valores e princípios que norteiam nossa conduta ética.
       link: /codigo-de-etica/
-      bg: /assets/img/etica.webp
+      bg: /assets/img/etica.jpg
 
 # Copyright
 copyright:
@@ -112,7 +112,7 @@ section_sobre:
   link: "/empresa"
   link_title: Saiba mais
   image:
-    src: "/assets/img/consiglog-predio.webp"
+    src: "/assets/img/consiglog-predio.jpg"
     alt: "Consiglog (Prédio)"
 
 # Seção: CTA
